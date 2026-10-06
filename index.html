@@ -1,0 +1,271 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>The Mushling Oracle</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+<div id="app">
+
+  <!-- ============ HOME ============ -->
+  <section id="screen-home" class="screen active">
+    <div class="screen-bg bg-home" style="background-image:url('assets/bg/home.webp')"></div>
+    <div class="screen-content">
+      <button class="back-btn" style="position:absolute;top:18px;right:18px;z-index:2" data-nav="screen-settings">⚙️</button>
+      <div class="home-hero">
+        <h1 class="display">The Mushling Oracle</h1>
+        <p>49 small guides from the forest floor.</p>
+        <button class="btn-primary" data-nav="screen-reading">Draw a Card</button>
+      </div>
+      <div class="home-quicklinks">
+        <button class="btn-secondary" data-nav="screen-gallery">Gallery</button>
+        <button class="btn-secondary" data-nav="screen-journal">Journal</button>
+        <button class="btn-secondary" data-nav="screen-games">Games</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ READING / SPREAD PICKER ============ -->
+  <section id="screen-reading" class="screen">
+    <div class="screen-bg bg-reading" style="background-image:url('assets/bg/reading.webp')"></div>
+    <div class="screen-content">
+      <div class="topbar">
+        <button class="back-btn" data-nav="screen-home">←</button>
+        <h2>Choose a Spread</h2>
+      </div>
+      <div class="spread-picker">
+        <div class="spread-pills" id="spread-pills"></div>
+        <div class="spread-detail" id="spread-detail"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DRAW RESULT ============ -->
+  <section id="screen-draw-result" class="screen">
+    <div class="screen-bg bg-reading" style="background-image:url('assets/bg/reading.webp')"></div>
+    <div class="screen-content">
+      <div class="topbar">
+        <button class="back-btn" data-nav="screen-reading">←</button>
+        <h2 id="draw-position-label">Today's Mushling</h2>
+      </div>
+      <div class="card-progress" id="draw-progress"></div>
+      <p class="position-explain" id="draw-position-explain"></p>
+      <div class="card-stage">
+        <div class="card-art-wrap" id="draw-art-wrap">
+          <img id="draw-card-img" src="" alt="">
+          <div class="card-zoom-hint">🔍 tap to enlarge</div>
+        </div>
+        <div class="card-name display" id="draw-card-name"></div>
+      </div>
+
+      <div class="draw-tabs" id="draw-tabs">
+        <button class="draw-tab active" data-tab="message">Message</button>
+        <button class="draw-tab" data-tab="meaning">Meaning</button>
+        <button class="draw-tab draw-tab-story" data-action="story">📖 Story</button>
+      </div>
+
+      <div class="draw-tab-panel active" data-panel="message">
+        <div class="card-message-block">
+          <div class="message-text" id="draw-card-message"></div>
+        </div>
+      </div>
+
+      <div class="draw-tab-panel" data-panel="meaning">
+        <p class="card-interp" id="draw-card-interp"></p>
+      </div>
+
+      <button class="btn-primary next-card-btn" id="draw-next-btn" style="display:none">Next Card →</button>
+      <button class="btn-primary next-card-btn" id="draw-finish-btn" style="display:none">Finish Reading</button>
+    </div>
+  </section>
+
+  <!-- ============ STORY TIME ============ -->
+  <section id="screen-story" class="screen">
+    <div class="screen-bg bg-journal" style="background-image:url('assets/bg/journal.webp')"></div>
+    <div class="screen-content">
+      <div class="topbar">
+        <button class="back-btn" data-nav="screen-draw-result">←</button>
+        <h2 id="story-title">Story Time</h2>
+      </div>
+      <div class="story-page">
+        <p id="story-text"></p>
+      </div>
+      <div class="story-nav">
+        <button class="link-btn" id="story-prev">‹ Back</button>
+        <div class="story-dots" id="story-dots"></div>
+        <button class="link-btn" id="story-next">Next ›</button>
+      </div>
+      <div class="story-end" id="story-end" style="display:none">🍄 The End 🍄</div>
+    </div>
+  </section>
+
+  <!-- ============ GALLERY ============ -->
+  <section id="screen-gallery" class="screen">
+    <div class="screen-bg bg-gallery" style="background-image:url('assets/bg/gallery.webp')"></div>
+    <div class="screen-content">
+      <div class="topbar">
+        <button class="back-btn" data-nav="screen-home">←</button>
+        <h2>Gallery</h2>
+      </div>
+      <p class="gallery-intro">Forty-nine Mushlings. Meet them all, or let one find you.</p>
+      <div class="gallery-grid" id="gallery-grid"></div>
+    </div>
+  </section>
+
+  <!-- ============ JOURNAL ============ -->
+  <section id="screen-journal" class="screen">
+    <div class="screen-bg bg-journal" style="background-image:url('assets/bg/journal.webp')"></div>
+    <div class="screen-content">
+      <div class="topbar">
+        <button class="back-btn" data-nav="screen-home">←</button>
+        <h2>Journal</h2>
+      </div>
+      <div class="journal-search-row" id="journal-search-row">
+        <input type="text" id="journal-search" placeholder="🔍 Search your journal…">
+      </div>
+      <div id="journal-list"></div>
+    </div>
+  </section>
+
+  <!-- ============ MINI-GAMES HUB ============ -->
+  <section id="screen-games" class="screen">
+    <div class="screen-bg bg-minigames" style="background-image:url('assets/bg/minigames.webp')"></div>
+    <div class="screen-content">
+      <div class="topbar">
+        <button class="back-btn" data-nav="screen-home">←</button>
+        <h2>Mini-Games</h2>
+      </div>
+      <div class="games-grid">
+        <button class="game-tile" data-nav="screen-match">
+          <span class="emoji">🍄</span>
+          <div><h3>Mushling Match</h3><p>Flip and pair up Mushling portraits.</p></div>
+        </button>
+        <div class="game-tile disabled">
+          <span class="emoji">🌻</span>
+          <div><h3>Which Mushling Are You?</h3><p>A 7-question personality quiz.</p></div>
+          <span class="soon-badge">Coming soon</span>
+        </div>
+        <div class="game-tile disabled">
+          <span class="emoji">🌱</span>
+          <div><h3>Grow the Garden</h3><p>Plant seeds, build a streak.</p></div>
+          <span class="soon-badge">Coming soon</span>
+        </div>
+        <div class="game-tile disabled">
+          <span class="emoji">🏡</span>
+          <div><h3>Walk Mushling Home</h3><p>A sliding-puzzle maze, 10 levels.</p></div>
+          <span class="soon-badge">Coming soon</span>
+        </div>
+        <div class="game-tile disabled">
+          <span class="emoji">✨</span>
+          <div><h3>Firefly Catch</h3><p>Tap fireflies at their bright peak.</p></div>
+          <span class="soon-badge">Coming soon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MUSHLING MATCH ============ -->
+  <section id="screen-match" class="screen">
+    <div class="screen-bg bg-minigames" style="background-image:url('assets/bg/minigames.webp')"></div>
+    <div class="screen-content">
+      <div class="topbar">
+        <button class="back-btn" data-nav="screen-games">←</button>
+        <h2>Mushling Match</h2>
+      </div>
+      <div class="match-header">
+        <span id="match-level-label">Level 1</span>
+        <span id="match-moves-label">Moves: 0</span>
+      </div>
+      <div class="match-grid" id="match-grid"></div>
+      <div class="match-win" id="match-win" style="display:none">
+        <p class="display" id="match-win-text"></p>
+        <button class="btn-primary" id="match-next-level">Next Level →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SAGE CHAT ============ -->
+  <section id="screen-sage" class="screen">
+    <div class="screen-bg bg-ai-chat" style="background-image:url('assets/bg/ai-chat.webp')"></div>
+    <div class="screen-content screen-content-chat">
+      <div class="topbar">
+        <button class="back-btn" data-nav="screen-home">←</button>
+        <h2>Sage</h2>
+      </div>
+
+      <!-- shown until a reading has been finished this session -->
+      <div class="sage-gate" id="sage-gate">
+        <p class="display" style="font-size:1.3rem">Finish a reading first</p>
+        <p>Sage reflects on a whole reading, not one card in isolation. Pull a spread, see it through to the end, and Sage will help you make sense of what came up — and keep talking as long as you want.</p>
+        <button class="btn-primary" data-nav="screen-reading">Draw a Reading</button>
+      </div>
+
+      <div class="sage-chat-ui" id="sage-chat-ui">
+        <div class="sage-counter" id="sage-counter"></div>
+        <div class="chat-log" id="chat-log"></div>
+        <div class="chat-input-row">
+          <input type="text" id="chat-input" placeholder="Say something to Sage…">
+          <button id="chat-send">➤</button>
+        </div>
+        <div id="sage-save-slot"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SETTINGS ============ -->
+  <section id="screen-settings" class="screen">
+    <div class="screen-bg bg-settings" style="background-image:url('assets/bg/settings.webp')"></div>
+    <div class="screen-content">
+      <div class="topbar">
+        <button class="back-btn" data-nav="screen-home">←</button>
+        <h2>Settings</h2>
+      </div>
+
+      <div class="settings-block">
+        <h3 id="unlock-settings-title">Meet the rest of the forest</h3>
+        <p id="unlock-settings-copy">You've met 13 Mushlings so far. There are 36 more waiting — plus every spread, every story, every game. Unlock the whole deck once, keep it forever.</p>
+        <button class="btn-primary" id="btn-unlock-deck" style="margin-top:8px">Unlock for $5</button>
+      </div>
+
+      <div class="settings-block">
+        <h3>Mushling AI Guide</h3>
+        <p>Up to 300 conversations a month with Sage, the Oracle's resident guide.</p>
+        <button class="btn-secondary" id="btn-subscribe">Start for $5/month</button>
+        <p class="fine">Resets monthly. Unused conversations don't carry over.</p>
+      </div>
+
+      <div class="settings-block">
+        <div class="toggle-row">
+          <div>
+            <h3 style="margin-bottom:2px">Demo: Preview Free-Tier (Locked) View</h3>
+            <p style="margin:0">This prototype opens with everything unlocked so you can see the full app. Flip this to preview what a non-paying visitor sees instead.</p>
+          </div>
+          <button class="switch" id="demo-toggle"><span class="knob"></span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- Bottom nav -->
+<nav class="bottom-nav">
+  <button data-nav="screen-home"><span class="icon">🏠</span>Home</button>
+  <button data-nav="screen-reading"><span class="icon">🔮</span>Draw</button>
+  <button data-nav="screen-gallery"><span class="icon">🖼️</span>Gallery</button>
+  <button data-nav="screen-journal"><span class="icon">📓</span>Journal</button>
+  <button data-nav="screen-games"><span class="icon">🎲</span>Games</button>
+  <button data-nav="screen-sage"><span class="icon">🍄</span>Sage</button>
+</nav>
+
+<!-- Zoom modal -->
+<div class="modal-backdrop" id="zoom-modal">
+  <button class="modal-close" id="zoom-close">✕</button>
+  <img id="zoom-img" src="" alt="">
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/data.js"></script>
+<script src="js/games.js"></script>
+<script src="js/app.js"></script>
+
+</body></html>

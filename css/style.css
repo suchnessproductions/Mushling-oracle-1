@@ -1,0 +1,993 @@
+/* The Mushling Oracle — prototype stylesheet
+   Layout: a fixed-size app shell (not a scrolling document) with one
+   full-bleed forest-photo background per screen and a gradient scrim,
+   content stacked on top. Each screen owns its own internal scroll
+   container (.screen-content) rather than letting the whole page scroll —
+   keeps scrolling predictable when this runs inside an embedded frame.
+   Deliberately single-theme (a moonlit/dappled forest at every hour of day
+   it depicts) rather than light/dark-adaptive — the world it's set in
+   doesn't have a "light mode". */
+
+:root {
+  color-scheme: dark;
+
+  /* color */
+  --forest-deep: #16231b;
+  --forest-mid: #26402e;
+  --moss: #4c7a52;
+  --toadstool-red: #b4482f;
+  --honey: #c98a3f;
+  --cream: #f6efe0;
+  --cream-dim: #e3d8bf;
+  --ink: #241a12;
+  --sign-brown: #8a6a45;
+  --shadow: rgba(10, 15, 10, 0.55);
+  --scrim: rgba(8, 10, 8, 0.46); /* uniform wash so text stays legible anywhere on a screen, not just near the gradient edges */
+  --panel: rgba(18, 23, 17, 0.8); /* standard background for any block of text that isn't art */
+
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-sm: 9px;
+
+  /* type */
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Nunito", "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* the app shell owns scrolling internally; no document-level scroll to fight an embedding frame's own scroll */
+  background: var(--forest-deep);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 16px; /* explicit baseline — don't inherit the host page's default */
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  max-width: 480px;
+  margin: 0 auto;
+  position: relative;
+}
+
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+img { max-width: 100%; display: block; }
+
+/* ---------- App shell ---------- */
+
+#app {
+  position: absolute;
+  inset: 0;
+}
+
+.screen {
+  display: none;
+  position: absolute;
+  inset: 0;
+}
+
+.screen.active { display: block; }
+
+.screen-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.screen-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--scrim); /* flat uniform darken under the directional gradient below, so there's no undimmed zone once you scroll */
+}
+
+/* the single scroll container per screen — everything except the fixed background lives here */
+.screen-content {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding: 18px 18px 96px;
+}
+
+.home-quicklinks {
+  z-index: 1;
+}
+
+/* per-screen overlay gradients, layered on top of the flat --scrim set on ::after above */
+.bg-home::after { background-image: linear-gradient(to top, rgba(10,14,10,0.6) 0%, rgba(10,14,10,0.1) 45%, transparent 70%); }
+.bg-reading::after { background-image: linear-gradient(to bottom, rgba(10,14,10,0.35) 0%, transparent 30%); }
+.bg-gallery::after { background-image: linear-gradient(to bottom, rgba(10,14,10,0.55) 0%, rgba(10,14,10,0.15) 25%, transparent 55%); }
+.bg-journal::after { background-image: linear-gradient(to top, rgba(10,14,10,0.35) 0%, transparent 45%); }
+.bg-minigames::after { background-image: linear-gradient(to bottom, rgba(10,14,10,0.2) 0%, transparent 35%); }
+.bg-ai-chat::after { background-image: linear-gradient(to top, rgba(10,14,10,0.3) 0%, transparent 55%); }
+.bg-settings::after { background-color: rgba(8,10,8,0.78); }
+
+/* ---------- Top bar ---------- */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  min-height: 34px;
+}
+
+.back-btn {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(20,24,18,0.6);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.topbar h2 { font-size: 1.2rem; }
+
+/* ---------- Home ---------- */
+
+.home-hero {
+  text-align: center;
+  padding-top: 12vh;
+}
+
+.home-hero .display {
+  font-size: 2.1rem;
+  text-shadow: 0 2px 10px var(--shadow);
+}
+
+.home-hero p {
+  color: var(--cream-dim);
+  margin-bottom: 28px;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--toadstool-red);
+  color: var(--cream);
+  padding: 14px 30px;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+.btn-secondary {
+  display: inline-block;
+  background: rgba(246,239,224,0.12);
+  border: 1px solid rgba(246,239,224,0.4);
+  color: var(--cream);
+  padding: 11px 22px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+}
+
+.home-quicklinks {
+  position: absolute;
+  bottom: 24px;
+  left: 18px; right: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Bottom nav ---------- */
+
+.bottom-nav {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  display: flex;
+  background: rgba(14,18,13,0.94);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(246,239,224,0.12);
+  z-index: 50;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.bottom-nav button {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 10px 4px 8px;
+  font-size: 0.74rem;
+  color: var(--cream-dim);
+}
+
+.bottom-nav button .icon { font-size: 1.3rem; }
+.bottom-nav button.active { color: var(--honey); }
+
+/* ---------- Spread picker ---------- */
+/* A segmented-pill picker plus a single detail panel for whichever spread
+   is selected, instead of seven stacked cards — the picker and the detail
+   for one spread fit in view together without scrolling past them. */
+
+.spread-picker { display: flex; flex-direction: column; gap: 14px; }
+
+.spread-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.spread-pill {
+  background: rgba(246,239,224,0.08);
+  border: 1px solid rgba(246,239,224,0.25);
+  border-radius: 999px;
+  padding: 9px 16px;
+  font-size: 0.86rem;
+  color: var(--cream-dim);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.spread-pill.active {
+  background: var(--toadstool-red);
+  border-color: var(--toadstool-red);
+  color: var(--cream);
+}
+
+.spread-pill .lock { font-size: 0.78rem; }
+
+.spread-detail {
+  background: var(--panel);
+  border: 1px solid rgba(246,239,224,0.14);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.spread-detail-top { display: flex; justify-content: space-between; align-items: baseline; }
+.spread-detail h3 { font-size: 1.1rem; margin-bottom: 2px; }
+.spread-detail .desc { color: var(--cream-dim); font-size: 0.92rem; margin: 4px 0 8px; }
+.spread-detail .positions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(246,239,224,0.14);
+}
+
+/* each position on its own row, name + what it actually means — the old
+   version joined every position into one run-on line with the same " · "
+   already used inside several position names, which buried things like
+   "West" in a wall of text with no way to tell where one position ended
+   and the next began */
+.position-row { font-size: 0.85rem; line-height: 1.4; }
+.position-name { color: var(--honey); font-weight: 600; margin-bottom: 1px; }
+.position-meaning { color: var(--cream-dim); }
+.spread-detail-actions { display: flex; gap: 8px; align-items: center; justify-content: flex-end; margin-top: 4px; }
+.link-btn { font-size: 0.85rem; color: var(--honey); text-decoration: underline; background: none; }
+
+/* ---------- Draw result ---------- */
+
+.card-stage { text-align: center; margin-bottom: 8px; }
+
+.card-art-wrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  margin: 0 auto 10px;
+  /* deliberately smaller than the art's native size — this is a preview,
+     not the reading surface; the message below is the point, so the card
+     shouldn't need a scroll to get past it. Tap it for the full-size view. */
+  max-width: 172px;
+}
+
+.card-art-wrap img { width: 100%; display: block; }
+
+.card-zoom-hint {
+  /* top corner, not bottom — several cards bake a caption/signature into the
+     art's lower edge, and a bottom-right badge sat right on top of it */
+  position: absolute; top: 8px; right: 8px;
+  background: rgba(10,14,10,0.7);
+  border-radius: 999px;
+  padding: 5px 11px;
+  font-size: 0.74rem;
+}
+
+.card-progress { font-size: 0.85rem; color: var(--cream-dim); margin-bottom: 6px; }
+
+.position-explain {
+  font-size: 0.85rem;
+  color: var(--cream-dim);
+  font-style: italic;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.card-name { font-size: 1.2rem; margin-top: 6px; }
+
+/* the message, shown as real on-screen text under the art, not just baked into the image */
+.card-message-block {
+  background: rgba(138,106,69,0.22);
+  border: 1px solid rgba(201,138,63,0.5);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  margin: 14px 0;
+}
+
+.card-message-block .label {
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--honey);
+  margin-bottom: 4px;
+}
+
+.card-message-block .message-text {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+.card-interp {
+  background: var(--panel);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  color: var(--cream-dim);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+.action-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.action-row button {
+  flex: 1;
+  background: rgba(246,239,224,0.1);
+  border: 1px solid rgba(246,239,224,0.28);
+  border-radius: var(--radius-sm);
+  padding: 12px 6px;
+  font-size: 0.82rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.action-row button .icon { font-size: 1.25rem; }
+
+.action-row-single {
+  justify-content: center;
+}
+
+.action-row-single button {
+  flex: 0 1 220px;
+}
+
+/* tabs: Message vs Meaning, so only one panel's content occupies space at
+   a time instead of stacking both under the card every time */
+.draw-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.draw-tab {
+  flex: 1;
+  background: rgba(246,239,224,0.08);
+  border: 1px solid rgba(246,239,224,0.22);
+  border-radius: 999px;
+  padding: 8px 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cream-dim);
+}
+
+.draw-tab.active {
+  background: var(--honey);
+  border-color: var(--honey);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* each tab's label gets its own bright color, but the pill itself stays
+   the same plain neutral background as the base .draw-tab — a tinted
+   see-through fill behind the text read as muddy/busy, plain reads cleaner */
+.draw-tab[data-tab="message"]:not(.active) {
+  color: #4da3ff; /* bright blue */
+}
+
+.draw-tab[data-tab="meaning"]:not(.active) {
+  color: #4ade80; /* bright green */
+}
+
+.draw-tab-story {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  padding: 8px 14px;
+}
+
+.draw-tab-story:not(.active) {
+  color: #ffd166; /* bright yellow */
+}
+
+.draw-tab-panel { display: none; }
+.draw-tab-panel.active { display: block; }
+.draw-tab-panel .card-interp { margin-bottom: 0; }
+.draw-tab-panel .card-message-block { margin: 0; }
+
+.next-card-btn {
+  display: block;
+  margin: 18px auto 0;
+}
+
+/* ---------- Gallery ---------- */
+
+.gallery-intro {
+  background: var(--panel);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  color: var(--cream-dim);
+  font-size: 0.92rem;
+  margin-bottom: 14px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.gallery-tile {
+  position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background: rgba(255,255,255,0.05);
+}
+
+.gallery-tile img { width: 100%; height: 100%; object-fit: cover; }
+
+.gallery-tile .num-badge {
+  position: absolute; top: 4px; left: 4px;
+  background: rgba(10,14,10,0.7);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  padding: 2px 7px;
+}
+
+.gallery-tile.locked img { filter: grayscale(0.9) brightness(0.45); }
+.gallery-tile.locked .lock-badge {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+}
+
+/* ---------- Card detail / zoom modal ---------- */
+
+.modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(5,7,5,0.92);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modal-backdrop.active { display: flex; }
+
+.modal-backdrop img {
+  max-width: 100%;
+  max-height: 85vh;
+  border-radius: var(--radius-md);
+}
+
+.modal-close {
+  position: absolute; top: 20px; right: 20px;
+  font-size: 1.6rem;
+  background: rgba(255,255,255,0.1);
+  width: 40px; height: 40px;
+  border-radius: 50%;
+}
+
+/* ---------- Story Time ---------- */
+
+.story-page {
+  background: rgba(16,20,15,0.86);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  min-height: 42vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.story-page p {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: var(--cream);
+}
+
+.story-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.story-dots { display: flex; gap: 6px; }
+.story-dots span {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: rgba(246,239,224,0.3);
+}
+.story-dots span.active { background: var(--honey); }
+
+.story-end {
+  text-align: center;
+  margin-top: 16px;
+  color: var(--honey);
+  font-family: var(--font-display);
+}
+
+/* ---------- Journal ---------- */
+
+.journal-search-row { margin-bottom: 12px; }
+
+.journal-search-row input {
+  width: 100%;
+  background: rgba(246,239,224,0.08);
+  border: 1px solid rgba(246,239,224,0.24);
+  border-radius: 999px;
+  padding: 10px 16px;
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+}
+
+.journal-search-row input::placeholder { color: var(--cream-dim); }
+
+.journal-empty {
+  text-align: center;
+  color: var(--cream-dim);
+  margin-top: 10vh;
+  padding: 0 20px;
+}
+
+.journal-entry {
+  background: var(--panel);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+
+.journal-entry-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 2px;
+}
+
+.journal-entry-title {
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  color: var(--cream);
+  font-weight: 600;
+}
+
+.journal-entry .meta {
+  font-size: 0.78rem;
+  color: var(--honey);
+  margin-bottom: 4px;
+  white-space: nowrap;
+}
+
+.journal-entry .synthesis {
+  font-size: 0.92rem;
+  color: var(--cream-dim);
+  line-height: 1.5;
+  margin-bottom: 8px;
+  padding-left: 10px;
+  border-left: 2px solid rgba(246,239,224,0.22);
+}
+
+.journal-entry .comment { font-size: 1rem; color: var(--cream); font-style: italic; line-height: 1.5; }
+.journal-entry .comment .no-note { color: var(--cream-dim); font-style: normal; }
+
+.journal-detail { margin-top: 8px; }
+
+.journal-detail summary {
+  font-size: 0.82rem;
+  color: var(--honey);
+  cursor: pointer;
+  list-style: none;
+}
+.journal-detail summary::-webkit-details-marker { display: none; }
+.journal-detail summary::before { content: '▸ '; }
+.journal-detail[open] summary::before { content: '▾ '; }
+
+.journal-detail .synthesis {
+  margin: 6px 0 0;
+  padding-left: 10px;
+  border-left: 2px solid rgba(246,239,224,0.22);
+}
+
+.journal-transcript {
+  margin-top: 6px;
+  padding-left: 10px;
+  border-left: 2px solid rgba(246,239,224,0.22);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.transcript-line {
+  font-size: 0.86rem;
+  line-height: 1.4;
+  color: var(--cream-dim);
+}
+
+.transcript-line .who {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--honey);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.transcript-line.user .who { color: var(--toadstool-red); }
+
+.journal-save-sheet {
+  background: rgba(22,28,20,0.94);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-top: 14px;
+}
+
+.journal-save-sheet textarea,
+.journal-save-sheet .journal-title-input {
+  width: 100%;
+  background: rgba(246,239,224,0.1);
+  border: 1px solid rgba(246,239,224,0.28);
+  border-radius: var(--radius-sm);
+  color: var(--cream);
+  padding: 10px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+
+.journal-save-sheet textarea {
+  min-height: 70px;
+  margin: 8px 0 12px;
+  resize: vertical;
+}
+
+.journal-save-sheet .journal-title-input {
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+/* ---------- Mini-games hub ---------- */
+
+.games-grid { display: flex; flex-direction: column; gap: 12px; }
+
+.game-tile {
+  background: var(--panel);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+}
+
+.game-tile .emoji { font-size: 1.8rem; }
+.game-tile h3 { font-size: 1.02rem; margin-bottom: 2px; }
+.game-tile p { font-size: 0.85rem; color: var(--cream-dim); margin: 0; }
+.game-tile.disabled { opacity: 0.55; }
+.game-tile .soon-badge {
+  margin-left: auto;
+  font-size: 0.74rem;
+  background: rgba(246,239,224,0.18);
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* ---------- Mushling Match ---------- */
+
+.match-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 0.92rem;
+  color: var(--cream-dim);
+  background: var(--panel);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+}
+
+.match-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.match-tile {
+  aspect-ratio: 3/4;
+  border-radius: 10px;
+  background: var(--sign-brown);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+  border: 2px solid transparent;
+}
+
+.match-tile .tile-back {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--moss), var(--forest-mid));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem;
+}
+
+.match-tile .tile-face {
+  position: absolute; inset: 0;
+}
+
+.match-tile .tile-face img {
+  width: 100%; height: 100%; object-fit: cover;
+  /* crop toward the upper two-thirds, where each Mushling's face/body is —
+     the wooden sign caption at the bottom of the source art is the least
+     distinguishing part of the image at this thumbnail size */
+  object-position: center 25%;
+}
+
+.match-tile .tile-name {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to top, rgba(5,7,5,0.95) 40%, transparent);
+  color: var(--cream);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 16px 6px 7px;
+  line-height: 1.2;
+}
+
+.match-tile.matched { border-color: var(--honey); }
+.match-tile.matched .tile-face::after {
+  content: "✓";
+  position: absolute;
+  top: 6px; right: 6px;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--honey);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.match-win {
+  text-align: center;
+  margin-top: 18px;
+  background: var(--panel);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+/* ---------- Sage chat ---------- */
+
+.screen-content-chat {
+  display: flex;
+  flex-direction: column;
+  /* overrides .screen-content's own overflow-y:auto — with a flex:1 chat
+     log nested inside, that outer scroll never actually engaged (a flex
+     child's overflow doesn't grow an ancestor's scrollHeight once a
+     min-height:0 flex item sits between them), so a reply could render
+     taller than the screen with nothing able to scroll to reveal it.
+     #chat-log below is the one true scroll container instead. */
+  overflow: hidden;
+}
+
+.sage-gate {
+  background: var(--panel);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-top: 6vh;
+}
+
+.sage-gate p { color: var(--cream-dim); font-size: 0.95rem; line-height: 1.6; margin-bottom: 18px; }
+.sage-gate .display { color: var(--cream); margin-bottom: 10px; }
+
+.sage-chat-ui {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.sage-counter {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--honey);
+  margin-bottom: 10px;
+}
+
+.chat-log {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  min-height: 0; /* lets this flex child actually scroll instead of being pushed taller than its share of space */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding-bottom: 10px;
+}
+
+.chat-bubble {
+  max-width: 82%;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.chat-bubble.sage {
+  background: rgba(16,20,15,0.9);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+.chat-bubble.user {
+  background: var(--toadstool-red);
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.chat-bubble.thinking {
+  opacity: 0.65;
+  font-style: italic;
+}
+
+.chat-input-row {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0; /* a normal flex item below the scrolling #chat-log now, not an overlay — stays its own fixed height */
+  background: rgba(10,13,9,0.96);
+  backdrop-filter: blur(4px);
+  padding: 10px 0 2px;
+  margin: 0 -18px;
+  padding-left: 18px;
+  padding-right: 18px;
+  border-top: 1px solid rgba(246,239,224,0.12);
+}
+
+#sage-save-slot {
+  flex-shrink: 0; /* sits below the input row, not inside the scrolling log — talking to Sage stays the primary action */
+}
+
+#sage-save-slot .journal-save-sheet {
+  margin-top: 10px;
+}
+
+.chat-input-row input {
+  flex: 1;
+  background: rgba(20,24,18,0.85);
+  border: 1px solid rgba(246,239,224,0.3);
+  border-radius: 999px;
+  padding: 12px 16px;
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+
+.chat-input-row button {
+  background: var(--toadstool-red);
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ---------- Settings ---------- */
+
+.settings-block {
+  background: var(--panel);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.settings-block h3 { font-size: 1.05rem; }
+.settings-block p { font-size: 0.9rem; color: var(--cream-dim); line-height: 1.5; }
+.settings-block .fine { font-size: 0.78rem; color: var(--cream-dim); margin-top: 6px; }
+
+.toggle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+}
+
+.switch {
+  width: 44px; height: 26px;
+  background: rgba(246,239,224,0.2);
+  border-radius: 999px;
+  position: relative;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.switch.on { background: var(--moss); }
+
+.switch .knob {
+  width: 20px; height: 20px;
+  background: var(--cream);
+  border-radius: 50%;
+  position: absolute;
+  top: 3px; left: 3px;
+  transition: transform 0.2s;
+}
+
+.switch.on .knob { transform: translateX(18px); }
+
+.lock-pill {
+  display: inline-block;
+  font-size: 0.74rem;
+  background: rgba(180,72,47,0.35);
+  color: var(--cream);
+  padding: 2px 9px;
+  border-radius: 999px;
+  margin-left: 6px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 96px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(20,24,18,0.96);
+  border: 1px solid rgba(246,239,224,0.2);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+  z-index: 300;
+  max-width: 90%;
+  text-align: center;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
