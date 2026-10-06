@@ -99,11 +99,16 @@ document.addEventListener('click', (e) => {
 
 let selectedSpreadIdx = 0;
 
+// The three spreads available on the free tier, by name so reordering the
+// list in data.js can't silently change which ones are free.
+const FREE_SPREADS = ['Single Spore', 'Two Paths', 'Original Draw'];
+function isSpreadFree(s) { return FREE_SPREADS.includes(s.name); }
+
 function renderSpreadList() {
   const pills = document.getElementById('spread-pills');
   pills.innerHTML = '';
   MUSHLING_SPREADS.forEach((s, idx) => {
-    const free = idx < 3; // Single Spore, Two Paths, Original Draw
+    const free = isSpreadFree(s);
     const locked = !free && !state.unlocked;
     const btn = document.createElement('button');
     btn.className = 'spread-pill' + (idx === selectedSpreadIdx ? ' active' : '');
@@ -119,7 +124,7 @@ function renderSpreadList() {
 
 function renderSpreadDetail() {
   const s = MUSHLING_SPREADS[selectedSpreadIdx];
-  const free = selectedSpreadIdx < 3;
+  const free = isSpreadFree(s);
   const locked = !free && !state.unlocked;
   const wrap = document.getElementById('spread-detail');
   wrap.className = 'spread-detail';
