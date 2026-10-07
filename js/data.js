@@ -443,161 +443,175 @@ const MUSHLING_CARDS = [
   }
 ];
 
+// Spreads — each one has its own job, card count and imagery, so no two
+// read the same way: a day (1), a choice (2), a timeline (3), something
+// you're growing (4), an ending (5), a relationship (6), one question in
+// depth (7), and a whole-life survey (10). Position labels follow
+// "Image · Plain meaning"; positionMeanings holds just the explanation.
+// `id` is the stable key (free tier, journal, translations) — names can change.
 const MUSHLING_SPREADS = [
   {
-    "name": "Original Draw",
-    "cardCount": 3,
-    "positions": [
-      "What Was",
-      "What Is",
-      "What Guides You"
-    ],
-    "description": "A gentle reading of what was, what is, and what guides you.",
-    "longDescription": "A gentle three-card arc for understanding where you've been, where you actually are, and what's quietly steering you forward. Good as a general reading when nothing specific prompted the draw -- just a check-in on where things stand.",
-    "positionMeanings": [
-      "What Was: something from recently (or longer ago) that's still shaping how you're showing up right now.",
-      "What Is: an honest look at where things actually stand today, not where you wish they stood.",
-      "What Guides You: the instinct, value, or quiet pull that's steering you forward, whether or not you've been listening to it."
-    ]
-  },
-  {
-    "name": "Traditional Draw",
-    "cardCount": 7,
-    "positions": [
-      "The Root · Past",
-      "The Moss · Present",
-      "The Hidden Spore",
-      "The Heartwood",
-      "The Canopy · Mind",
-      "The Path Forward",
-      "The Harvest · Outcome"
-    ],
-    "description": "A comprehensive reading through root, moss, heartwood, canopy, and harvest.",
-    "longDescription": "The full classic Mushling reading -- seven cards covering past, present, what's hidden, what's at your core, what's on your mind, where you're headed, and what it all adds up to. The one to reach for when a question matters enough to sit with for a while.",
-    "positionMeanings": [
-      "The Root · Past: the history underneath this situation -- where it actually started.",
-      "The Moss · Present: what's true right now, on the surface, where you can see it.",
-      "The Hidden Spore: something not yet obvious -- a factor, a feeling, or a person you haven't fully accounted for.",
-      "The Heartwood: what matters most to you at the center of this, once everything else is stripped away.",
-      "The Canopy · Mind: what's occupying your thoughts about this, for better or worse.",
-      "The Path Forward: the next right-sized step, not the whole journey.",
-      "The Harvest · Outcome: where this is realistically heading if you keep going the way you're going."
-    ]
-  },
-  {
+    "id": "single-spore",
     "name": "Single Spore",
     "cardCount": 1,
     "positions": [
       "Today's Mushling"
     ],
-    "description": "A one-card pull for a quick check-in — what the day is asking you to notice.",
-    "longDescription": "The simplest spread in the deck -- pull one card and let it set the tone. Good for mornings, a quick pause between tasks, or any time you want a check-in without digging into anything deep.",
+    "description": "One card for the day — what today is asking you to notice.",
+    "longDescription": "The simplest spread in the deck. No question needed: pull one card and let it set the tone for the day. Good for mornings, a pause between tasks, or any moment you want company more than answers.",
     "positionMeanings": [
-      "Today's Mushling: the one thing worth carrying with you through the day -- a mood to notice, a reminder to lean on, or just today's small piece of company."
+      "The one thing worth carrying with you today — a mood to notice, a reminder to lean on, or a small companion for the hours ahead."
     ]
   },
   {
+    "id": "two-paths",
     "name": "Two Paths",
     "cardCount": 2,
     "positions": [
-      "This Path",
-      "That Path"
+      "The Left Fork · This Choice",
+      "The Right Fork · That Choice"
     ],
-    "description": "For when you're standing between two choices and want a clearer look at each one.",
-    "longDescription": "For when you're standing between two real options and want to see each one more clearly -- not which one is \"right,\" but what each path actually looks and feels like before you choose.",
+    "description": "For standing between two real options — an honest look down each road before you choose.",
+    "longDescription": "For when you're standing between two real options. Before you draw, decide which choice is the left fork and which is the right. The cards won't pick a winner; they show what walking each road would actually ask of you and give back, so the choice gets easier to feel.",
     "positionMeanings": [
-      "This Path: what this option is really offering you, underneath the obvious reasons you're considering it.",
-      "That Path: what the other option is really offering you -- read both cards side by side rather than picking a \"winner.\""
+      "Hold your first option in mind: what walking this road would really ask of you, and what it would quietly give back.",
+      "Hold your second option in mind: the same honest look down the other road. Read the two cards side by side, not as a contest."
     ]
   },
   {
+    "id": "original-draw",
+    "name": "The Forest Path",
+    "cardCount": 3,
+    "positions": [
+      "The Fallen Leaves · What Was",
+      "The Moss · What Is",
+      "The Firefly · What Guides You"
+    ],
+    "description": "The original Mushling reading — what was, what is, and what's guiding you on.",
+    "longDescription": "The original Mushling reading: a three-card line through time. Last season's leaves become this season's soil, the moss shows what's growing now, and a firefly lights the way through the dark. Reach for it when nothing specific prompted the draw and you simply want to know where you stand.",
+    "positionMeanings": [
+      "What came before and is still shaping you — the old leaves that became the ground you're standing on.",
+      "Where things honestly stand right now, without the story you've been telling about it.",
+      "The small light worth following from here — an instinct, a value, or a quiet pull you can trust."
+    ]
+  },
+  {
+    "id": "seed-to-bloom",
     "name": "Seed to Bloom",
     "cardCount": 4,
     "positions": [
-      "The Seed · Where It Begins",
-      "The Root · What It Needs",
-      "The Stem · What's In The Way",
-      "The Bloom · What It Becomes"
+      "The Seed · What You're Planting",
+      "The Soil · What It Needs",
+      "The Sprout · What's Growing",
+      "The Bloom · What It Can Become"
     ],
-    "description": "A growth reading for a goal, habit, or hope you're nursing along — from first idea to what it could become.",
-    "longDescription": "A growth-shaped spread for a goal, habit, hope, or anything you're nursing along over time. Walks the thing from its first spark through to what it might become -- useful right at the start of something, or partway through when you've lost sight of why you started.",
+    "description": "For a goal, habit, or hope you're tending — what it is, what it needs, and how it's already growing.",
+    "longDescription": "A tending spread for a goal, habit, project, or hope you're nursing along. It doesn't hunt for what's wrong; it asks what this thing really is, what helps it thrive, where it's already working, and what it could become in its own season. Good at the start of something, or halfway in when you've forgotten why you began.",
     "positionMeanings": [
-      "The Seed: what this thing actually is at its core, underneath any pressure or expectation you've piled onto it.",
-      "The Root: what it genuinely needs from you to keep growing -- not what you think it \"should\" need.",
-      "The Stem: the real obstacle in its way right now, which isn't always the obstacle you've been blaming.",
-      "The Bloom: what this could become if you keep tending it -- not a guarantee, just an honest possibility."
+      "What this really is at its core — the intention underneath the to-do list and the pressure.",
+      "The conditions it needs to thrive: the daily tending, the kind of attention, the room to grow.",
+      "Proof that it's already working — progress you may have walked right past.",
+      "What it could become if you keep tending it. Not a promise; an honest picture of its season."
     ]
   },
   {
+    "id": "the-clearing",
     "name": "The Clearing",
     "cardCount": 5,
     "positions": [
-      "The Ground You Stand On",
-      "What's Behind You",
-      "What's Ahead",
-      "A Friend Nearby",
-      "The Quiet Voice"
+      "The Fallen Tree · What's Ending",
+      "The Rings · What It Gave You",
+      "The Roots · What You Hold",
+      "The Light · What Space Is For",
+      "The First Green · What's Next"
     ],
-    "description": "A wider look at a current situation — where you are, what led here, what's coming, who's with you, and what your gut already knows.",
-    "longDescription": "A wider five-card look at a current situation from several angles at once -- where you are, what led here, what's coming, who's actually around to help, and what your own gut is already telling you. Good for a situation that feels tangled enough that one or three cards won't cover it.",
+    "description": "For endings and in-between times — what's falling away, what you keep, and what the new light makes room for.",
+    "longDescription": "When an old tree falls, sunlight reaches the forest floor for the first time in years, and things grow where nothing could before. This is the spread for endings, goodbyes, and in-between seasons: a job, a home, a relationship, an old version of yourself. It honors what's ending and shows what the open space is for.",
     "positionMeanings": [
-      "The Ground You Stand On: the honest state of things right now, without the story you've been telling about it.",
-      "What's Behind You: what brought you to this point, especially anything you're not ready to leave behind yet.",
-      "What's Ahead: what's coming if nothing changes -- not a prediction, just the current direction.",
-      "A Friend Nearby: support that's genuinely available to you right now, even if you haven't been using it.",
-      "The Quiet Voice: the thing you already suspect, underneath the noise of everyone else's opinions, including your own second-guessing."
+      "What is coming down, or already has — even if you're still propping it up.",
+      "What this chapter gave you that you get to keep, carried in you like the rings of a tree.",
+      "The part you haven't let go of yet, and what holding on is costing you.",
+      "What the open space makes room for — light that couldn't reach you before.",
+      "The first small thing that wants to grow here next."
     ]
   },
   {
-    "name": "The Whole Forest",
-    "cardCount": 10,
-    "positions": [
-      "The Burrow · What's Hidden",
-      "The Clearing · What's Visible",
-      "The Canopy Above · The Big Picture",
-      "The Undergrowth Below · The Root Of It",
-      "The North Wind · What's Coming",
-      "The South Wind · What's Passing",
-      "The East Light · New Beginnings",
-      "The West Shade · Endings",
-      "The Gathering · Who Surrounds You",
-      "The Morning After · Where This Leads"
-    ],
-    "description": "The full reading, for a big moment — a birthday, a new year, a major decision. Ten cards, the whole forest weighing in.",
-    "longDescription": "The biggest spread in the deck, for the biggest moments -- a birthday, a new year, a major decision, the start or end of a chapter. Ten cards is a lot to sit with at once; take your time, and don't feel like you need a tidy conclusion by the end.",
-    "positionMeanings": [
-      "The Burrow · What's Hidden: something underneath this moment that you haven't looked at directly yet.",
-      "The Clearing · What's Visible: what's plainly true and out in the open right now.",
-      "The Canopy Above · The Big Picture: how this moment fits into the larger shape of your life.",
-      "The Undergrowth Below · The Root Of It: the real cause underneath the surface issue.",
-      "The North Wind · What's Coming: a change that's on its way, whether or not you're ready.",
-      "The South Wind · What's Passing: something that's on its way out, and may be worth letting go of.",
-      "The East Light · New Beginnings: what's just starting, even quietly or without fanfare.",
-      "The West Shade · Endings: what's wrapping up, and whether you've actually let it.",
-      "The Gathering · Who Surrounds You: the people actually present in this chapter, for better or worse.",
-      "The Morning After · Where This Leads: the honest direction all of this seems to be pointing."
-    ]
-  },
-  {
+    "id": "mycelial-web",
     "name": "The Mycelial Web",
     "cardCount": 6,
     "positions": [
-      "The Spore · Where It Began",
-      "The Thread · What Connects You To It",
-      "The Nutrient · What Feeds It",
-      "The Blockage · What's In The Way",
-      "The Bloom · What's Emerging",
-      "The Spread · Where This Reaches"
+      "Your Cap · What You Bring",
+      "Their Cap · What They Bring",
+      "The Thread · What Joins You",
+      "The Knot · Where It Snags",
+      "The Flow · What Moves Between",
+      "The Feeding · What Nourishes"
     ],
-    "description": "A six-card reading for anything that's tangled into more than it looks — fed and blocked by roots you can't see from the surface.",
-    "longDescription": "Mushlings never grow alone -- under the forest floor, a web of mycelium connects every cap to everything around it. This six-card spread follows that same shape: where a situation actually started, what's quietly feeding or starving it, what's in its way, and how far its roots really reach. Good for anything that feels more tangled than a simple cause and effect.",
+    "description": "A reading for one connection — a partner, a friend, family, a coworker, or a whole community.",
+    "longDescription": "Mushlings never grow alone — under the forest floor, a web of mycelium joins every cap to every other, passing nourishment back and forth. This six-card spread looks at one connection in your life: what each of you brings, what truly joins you, where it tangles, what moves between you, and what would help it thrive. Hold one person, or one group, in mind as you draw.",
     "positionMeanings": [
-      "The Spore · Where It Began: the real starting point of this, which may be earlier or smaller than the moment you usually point to.",
-      "The Thread · What Connects You To It: why this still matters to you -- the actual thread tying you to it, not the obligation you tell people about.",
-      "The Nutrient · What Feeds It: what's genuinely sustaining this situation right now, for better or worse.",
-      "The Blockage · What's In The Way: the real obstacle slowing things down, which isn't always the one getting the blame.",
-      "The Bloom · What's Emerging: what's starting to show above the surface, even faintly.",
-      "The Spread · Where This Reaches: who or what else this touches beyond you -- the part of the web you don't always think about."
+      "What you're bringing to this connection right now — your mood, your hopes, your guard.",
+      "What they seem to be bringing, as best you can see it from where you stand.",
+      "The real thing that joins you, underneath habit and history.",
+      "Where it catches or tangles — the friction worth looking at gently.",
+      "What's being given and received between you, and whether it flows both ways.",
+      "What would nourish this connection from here — one thing you could offer, or ask for."
+    ]
+  },
+  {
+    "id": "traditional-draw",
+    "name": "The Heartwood",
+    "cardCount": 7,
+    "positions": [
+      "The Heartwood · The Core",
+      "The Bramble · What's Crossing It",
+      "Under the Leaves · Unsaid",
+      "The Treetops · Your Hopes",
+      "Your Footing · Your Stance",
+      "The Weather · Beyond Control",
+      "The Way Through · The Turn"
+    ],
+    "description": "The classic seven-card reading for one question that matters — every force around it, from the heart outward.",
+    "longDescription": "The deck's full classic reading, for one specific question you want to understand deeply. It starts at the heart of the matter and works outward: what's crossing it, what's gone unsaid, what you're hoping for, how you're standing, what's beyond your control, and the way through. Say your question out loud before you begin.",
+    "positionMeanings": [
+      "The heart of the matter — what this question is truly about once the noise is stripped away.",
+      "The challenge crossing your way right now, which may not be the one getting the blame.",
+      "Something unspoken or unnoticed — a feeling, a fact, or a fear sitting under the leaf litter.",
+      "What you're quietly hoping will happen, including the hopes you haven't admitted.",
+      "How you're meeting this right now — the stance you've taken, steady or slipping.",
+      "What isn't yours to control — other people, timing, circumstance: the weather you walk in.",
+      "The next turn in the path — where this goes if you meet it with what you now know."
+    ]
+  },
+  {
+    "id": "whole-forest",
+    "name": "The Whole Forest",
+    "cardCount": 10,
+    "positions": [
+      "The Sky · The Season You're In",
+      "The Hollow · Home & Rest",
+      "The Anthill · Work & Purpose",
+      "The Cluster · Love & Kinship",
+      "The Stem · Body & Energy",
+      "The Breeze · Mind & Mood",
+      "The Acorn Stash · Resources",
+      "The Puddle · Play & Joy",
+      "The Old Oak · Spirit & Wonder",
+      "The Lantern · Carry Forward"
+    ],
+    "description": "A ten-card walk through every part of your life, for big moments — a birthday, a new year, a turning point.",
+    "longDescription": "The biggest spread in the deck, for the biggest moments — a birthday, a new year, the start of a new chapter. Instead of one question, it walks the whole forest of your life: home, work, love, body, mind, resources, play, and spirit, framed by the theme of the season and a lantern to carry into it. Take your time; it's a lot to sit with at once.",
+    "positionMeanings": [
+      "The overall feel of the season you're in — the sky hanging over everything else.",
+      "Your home life, and how well you're resting.",
+      "Your work, and whether it still feels like yours.",
+      "The people you love and belong to — partners, family, chosen family, friends.",
+      "Your body and energy: how you're actually doing, not how you're pushing through.",
+      "Your thoughts and moods — what's been circling.",
+      "Money, time, and security — what you have stored up, and what feels scarce.",
+      "Fun, play, and lightness — the things you do just because.",
+      "Your sense of wonder, meaning, and belonging to something larger.",
+      "The one thing to carry with you into what comes next."
     ]
   }
 ];

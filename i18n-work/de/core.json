@@ -1,0 +1,285 @@
+{
+  "meta": {
+    "code": "de",
+    "name": "Deutsch",
+    "english": "German",
+    "dir": "ltr",
+    "guideName": "Glowcap"
+  },
+  "ui": {
+    "appName": "Das Mushling-Orakel",
+    "homeTagline": "49 kleine Gefährten vom Waldboden.",
+    "drawACard": "Eine Karte ziehen",
+    "navHome": "Start",
+    "navDraw": "Ziehen",
+    "navGallery": "Galerie",
+    "navJournal": "Tagebuch",
+    "navGames": "Spiele",
+    "navSage": "Glowcap",
+    "chooseSpread": "Wähle ein Legemuster",
+    "cardCount": {
+      "one": "{count} Karte",
+      "other": "{count} Karten"
+    },
+    "drawButton": "Ziehen",
+    "unlockToUse": "Freischalten →",
+    "drawDefaultLabel": "Heutiges Mushling",
+    "progress": "{spread} · Karte {n} von {total}",
+    "tapToEnlarge": "🔍 zum Vergrößern tippen",
+    "tabMessage": "Botschaft",
+    "tabMeaning": "Bedeutung",
+    "tabStory": "📖 Geschichte",
+    "nextCard": "Nächste Karte →",
+    "finishReading": "Lesung beenden",
+    "unknownCardName": "??? — ein Mushling, das du noch nicht getroffen hast",
+    "unknownCardMessage": "Schalte das vollständige Deck frei, um die Botschaft dieses Mushlings zu enthüllen.",
+    "lockedSee": "Schalte das vollständige Deck frei, um dieses Mushling zu sehen.",
+    "lockedStory": "Schalte das vollständige Deck frei, um diese Geschichte zu lesen.",
+    "lockedMeet": "Schalte das vollständige Deck frei, um dieses Mushling zu treffen.",
+    "storyTime": "Geschichtenzeit",
+    "storyBack": "‹ Zurück",
+    "storyNext": "Weiter ›",
+    "storyEnd": "🍄 Ende 🍄",
+    "storyMissing": "Die Geschichte dieses Mushlings wird gerade noch geschrieben.",
+    "galleryTitle": "Galerie",
+    "galleryIntro": "Neunundvierzig Mushlings. Lerne sie alle kennen oder lass dich von einem finden.",
+    "journalTitle": "Tagebuch",
+    "journalSearch": "🔍 Durchsuche dein Tagebuch…",
+    "journalEmptyTitle": "Noch nichts hier.",
+    "journalEmptyBody": "Deine erste gespeicherte Lesung wird dein Tagebuch beginnen.",
+    "journalNoMatch": "Keine Einträge stimmen mit „{query}“ überein.",
+    "journalDefaultTitle": "{spread}-Lesung",
+    "journalNoNote": "Keine Notiz hinzugefügt",
+    "journalSynthesis": "Glowcaps Synthese",
+    "journalConversation": {
+      "one": "Gesamte Unterhaltung ({count} Nachricht)",
+      "other": "Gesamte Unterhaltung ({count} Nachrichten)"
+    },
+    "whoYou": "Du",
+    "whoSage": "Glowcap",
+    "gamesTitle": "Minispiele",
+    "gameMatchTitle": "Mushling Match",
+    "gameMatchDesc": "Drehe Mushling-Porträts um und finde Paare.",
+    "gameQuizTitle": "Welches Mushling bist du?",
+    "gameQuizDesc": "Ein Persönlichkeitsquiz mit 7 Fragen.",
+    "gameGardenTitle": "Lass den Garten wachsen",
+    "gameGardenDesc": "Pflanze Samen, baue eine Serie auf.",
+    "gameHomeTitle": "Begleite Mushling nach Hause",
+    "gameHomeDesc": "Ein Schieberätsel-Labyrinth mit 10 Leveln.",
+    "gameFireflyTitle": "Glühwürmchen fangen",
+    "gameFireflyDesc": "Tippe auf Glühwürmchen, wenn sie am hellsten leuchten.",
+    "comingSoon": "Demnächst verfügbar",
+    "gameNotBuilt": "In diesem Prototyp noch nicht eingebaut — bisher ist nur Mushling Match spielbar.",
+    "matchLevel": "Level {level}",
+    "matchMoves": "Züge: {moves}",
+    "matchWin": "Level {level} gelöst! Züge: {moves}",
+    "matchNextLevel": "Nächstes Level →",
+    "sageTitle": "Glowcap",
+    "sageGateTitle": "Beende zuerst eine Lesung",
+    "sageGateBody": "Glowcap reflektiert über eine gesamte Lesung, nicht über eine einzelne isolierte Karte. Ziehe ein Legemuster und führe es zu Ende; Glowcap wird die Karten zu einer Synthese verweben und dann so lange weiter mit dir sprechen, wie du möchtest.",
+    "sageGateButton": "Eine Lesung machen",
+    "chatPlaceholder": "Sag Glowcap etwas…",
+    "sageThinking": "Nachdenken…",
+    "sageBusy": "Glowcap bekommt gerade viele Besucher — versuche es gleich noch einmal.",
+    "sageLost": "Glowcap hat den Faden verloren — versuche noch einmal zu fragen.",
+    "sageLimitFree": "Das war vorerst deine letzte kostenlose Unterhaltung mit Glowcap. Möchtest du weiter sprechen? Abonniere für 300 im Monat.",
+    "sageLimitPaid": "Du hast die Unterhaltungen mit Glowcap dieses Monats aufgebraucht. Sie erneuern sich zu Beginn des nächsten Monats.",
+    "counterFree": "Verbleibende kostenlose Unterhaltungen: {left} von {max}",
+    "counterPaid": "Verbleibende Unterhaltungen diesen Monat: {left} von {max}",
+    "synthesisTitle": "Glowcaps Synthese",
+    "synthesisWorking": "Glowcap liest das gesamte Legemuster…",
+    "synthesisUsedOne": "Eine Unterhaltung mit Glowcap verbraucht",
+    "synthesisNoneLeft": "Du hast keine Unterhaltungen mit Glowcap mehr übrig, daher gibt es diesmal keine Synthese. Deine Karten sind alle hier und du kannst die Lesung trotzdem speichern.",
+    "synthesisRetry": "Versuche die Synthese erneut",
+    "synthesisOfflineIntro": "So sprechen deine Karten miteinander:",
+    "synthesisOfflineCard": "{position} — {card}: „{message}“",
+    "synthesisOfflineOutro": "Lies sie als ein einziges Gespräch und nicht als getrennte Antworten. Zu welcher Karte kehrst du immer wieder zurück?",
+    "saveTitle": "Diese Lesung in deinem Tagebuch speichern?",
+    "saveTitlePlaceholder": "Gib diesem Eintrag einen Titel",
+    "saveNotePlaceholder": "Füge deine eigene Notiz hinzu, wenn du möchtest (optional)",
+    "saveButton": "Im Tagebuch speichern",
+    "saveDismiss": "Nicht jetzt",
+    "savedToast": "In deinem Tagebuch gespeichert.",
+    "settingsTitle": "Einstellungen",
+    "languageTitle": "Sprache",
+    "languageBody": "Karten, Geschichten, Legemuster und Glowcap werden alle diese Sprache sprechen.",
+    "languageLoading": "Wörter werden gesammelt…",
+    "languageFailed": "Diese Sprache konnte gerade nicht geladen werden. Es bleibt bei {language}.",
+    "languageChanged": "Spricht jetzt {language}.",
+    "unlockTitleLocked": "Lerne den Rest des Waldes kennen",
+    "unlockCopyLocked": "Du hast bisher 13 Mushlings kennengelernt. Es warten noch 36 weitere — plus jedes Legemuster, jede Geschichte, jedes Spiel. Schalte das ganze Deck einmal frei und behalte es für immer.",
+    "unlockTitleUnlocked": "Der ganze Wald gehört dir",
+    "unlockCopyUnlocked": "Alle 49 Mushlings, jedes Legemuster, jede Geschichte, jedes Spiel — freigeschaltet.",
+    "unlockButton": "Freischalten für $5",
+    "unlockedButton": "Freigeschaltet ✓",
+    "aiGuideTitle": "Mushling KI-Gefährte",
+    "aiGuideBody": "Bis zu 300 Unterhaltungen im Monat mit Glowcap, dem sehenden Auge des Orakels.",
+    "subscribeButton": "Starten für $5/Monat",
+    "aiGuideFine": "Wird monatlich zurückgesetzt. Ungenutzte Unterhaltungen werden nicht übertragen. Die Synthese jeder Lesung zählt als eine Unterhaltung.",
+    "demoTitle": "Demo: Vorschau der kostenlosen (gesperrten) Ansicht",
+    "demoBody": "Dieser Prototyp startet mit allen Freischaltungen, damit du die gesamte App sehen kannst. Schalte dies um, um zu sehen, was ein nicht-zahlender Besucher stattdessen sieht.",
+    "toastDemoUnlocked": "Demo: Zurück zur vollständig freigeschalteten App",
+    "toastDemoLocked": "Demo: Vorschau der kostenlosen (gesperrten) Ansicht — 5 von 5 Unterhaltungen mit Glowcap",
+    "toastUnlocked": "Freigeschaltet! Alle 49 Mushlings gehören dir.",
+    "toastSubscribed": "Abonniert (Demo) — 300 Unterhaltungen mit Glowcap diesen Monat.\n\n### PART 2 — SAGE'S OFFLINE REPLIES",
+    "prevCard": "← Zurück",
+    "sageOpen": "Hallo. Was beschäftigt dich heute?"
+  },
+  "sage": {
+    "topics": [
+      {
+        "key": "anxiety",
+        "words": [
+          "sorge",
+          "stress",
+          "ängstlich",
+          "überfordert",
+          "besorgt",
+          "angst",
+          "unruhe",
+          "druck",
+          "belastung",
+          "panik",
+          "nervös"
+        ],
+        "lines": [
+          "Das klingt nach viel Ballast, den du da trägst. Ist es eine bestimmte Sache oder eher ein allgemeines Hintergrundrauschen unter allem?",
+          "Solche Sorgen haben meist eine ganz bestimmte Gestalt, wenn man sie direkt ansieht. Was ist das schlimmste Szenario, das du dir vorstellst?",
+          "Wo spürst du das — eher in der Brust, im Magen oder im Kopf? Manchmal nimmt es der Sorge etwas von ihrer Macht, wenn man benennt, wo sie wohnt."
+        ]
+      },
+      {
+        "key": "work",
+        "words": [
+          "arbeit",
+          "job",
+          "beruf",
+          "chef",
+          "kollege",
+          "kollegin",
+          "büro",
+          "beförderung",
+          "kündigung",
+          "vorstellungsgespräch",
+          "karriere"
+        ],
+        "lines": [
+          "Arbeit neigt dazu, mehr Raum einzunehmen, als ihr zusteht. Geht es um die Arbeit selbst oder darum, wie sie gerade in den Rest deines Lebens passt?",
+          "Wie würde es aussehen, wenn das hier gut ausginge? Manchmal ist das klarer als das, wovor man Angst hat.",
+          "Hast du hier eine echte Wahl oder fühlt es sich eher so an, als würde etwas mit dir geschehen?"
+        ]
+      },
+      {
+        "key": "relationships",
+        "words": [
+          "beziehung",
+          "partner",
+          "partnerin",
+          "freund",
+          "freundin",
+          "ehemann",
+          "ehefrau",
+          "familie",
+          "mutter",
+          "vater",
+          "trennung",
+          "liebe"
+        ],
+        "lines": [
+          "Menschen sind das am schwersten vorherzusagende Wetter. Was wünschst du dir hier eigentlich wirklich, wenn du beiseite schiebst, was du glauben solltest zu wollen?",
+          "Ist das ein Muster, das du bei ihnen schon einmal gesehen hast, oder fühlt sich das nach etwas Neuem an?",
+          "Was ist der Teil davon, den du ihnen noch nicht direkt gesagt hast?"
+        ]
+      },
+      {
+        "key": "stuck",
+        "words": [
+          "entscheiden",
+          "entscheidung",
+          "wahl",
+          "feststecken",
+          "verwirrt",
+          "unsicher",
+          "weiß nicht",
+          "hin und her gerissen",
+          "unentschlossen"
+        ],
+        "lines": [
+          "Du musst das noch nicht alles durchschaut haben. Wie würde ein einziger kleiner, umkehrbarer Schritt aussehen, anstatt die ganze Entscheidung auf einmal zu treffen?",
+          "Manchmal bedeutet Feststecken einfach, dass beide Optionen eigentlich in Ordnung sind und das Unbehagen nur von der Wahl an sich kommt. Klingt das für dich zutreffend?",
+          "Wenn dir ein Freund genau diese Situation beschreiben würde, was würdest du ihm raten?"
+        ]
+      },
+      {
+        "key": "sadness",
+        "words": [
+          "traurig",
+          "trauer",
+          "verlust",
+          "verloren",
+          "vermissen",
+          "einsam",
+          "alleine",
+          "niedergeschlagen",
+          "weinen"
+        ],
+        "lines": [
+          "Das ist etwas Schweres, bei dem man verweilt. Du musst es nicht kleiner machen, als es ist.",
+          "Ist das etwas Kürzliches oder etwas, das dich schon eine Weile begleitet?",
+          "Ich bin froh, dass du das laut ausgesprochen hast, anstatt es still mit dir herumzutragen."
+        ]
+      },
+      {
+        "key": "good",
+        "words": [
+          "aufgeregt",
+          "glücklich",
+          "hoffnungsvoll",
+          "dankbar",
+          "stolz",
+          "tolle neuigkeiten",
+          "gute nachrichten",
+          "erleichtert"
+        ],
+        "lines": [
+          "Das ist ein gutes Gefühl, in dem man einen Moment verweilen kann, bevor man zum Nächsten übergeht.",
+          "Was genau hat dich so berührt? Es lohnt sich, das zu bemerken.",
+          "Schön — halte daran fest."
+        ]
+      },
+      {
+        "key": "greeting",
+        "words": [
+          "hallo",
+          "hi",
+          "ey",
+          "was geht",
+          "guten tag"
+        ],
+        "lines": [
+          "Hallo. Was liegt dir auf dem Herzen?",
+          "Hallo du. Was führt dich heute hierher?"
+        ]
+      },
+      {
+        "key": "thanks",
+        "words": [
+          "danke",
+          "dankeschön",
+          "schätze das",
+          "vielen dank"
+        ],
+        "lines": [
+          "Sehr gerne. Dafür bin ich da.",
+          "Jederzeit. Gibt es noch etwas, bei dem du verweilen möchtest, oder fühlt es sich vollständig an?"
+        ]
+      }
+    ],
+    "fallback": [
+      "Erzähle mehr darüber — was liegt darunter?",
+      "Darüber lohnt es sich nachzudenken. Fühlt es sich eher wie eine Frage oder wie eine Entscheidung an?",
+      "Ich verstehe. Was ist der Teil davon, den du noch nicht laut ausgesprochen hast?",
+      "Was sagt dein Bauchgefühl, bevor du anfängst, es abzuwägen?\n\n### PART 3 — THE EIGHT SPREADS"
+    ]
+  }
+}

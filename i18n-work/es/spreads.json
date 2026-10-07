@@ -1,0 +1,150 @@
+{
+  "single-spore": {
+    "name": "Espora Única",
+    "description": "Una carta para el día: lo que el día de hoy te pide que notes.",
+    "longDescription": "La tirada más sencilla de la baraja. No hace falta pregunta: saca una carta y deja que marque el tono del día. Es ideal para las mañanas, una pausa entre tareas o cualquier momento en el que quieras compañía en lugar de respuestas.",
+    "positions": [
+      "El Mushling de hoy"
+    ],
+    "positionMeanings": [
+      "Lo único que vale la pena llevar contigo hoy: un estado de ánimo que notar, un recordatorio en el que apoyarse o un pequeño compañero para las horas venideras."
+    ]
+  },
+  "two-paths": {
+    "name": "Dos Caminos",
+    "description": "Para cuando estás entre dos opciones reales: una mirada honesta a cada camino antes de elegir.",
+    "longDescription": "Para cuando estás entre dos opciones reales. Antes de sacar las cartas, decide qué opción es el desvío izquierdo y cuál el derecho. Las cartas no elegirán un ganador; muestran lo que caminar por cada senda te pediría realmente y lo que te devolvería, para que la elección sea más fácil de sentir.",
+    "positions": [
+      "Desvío Izquierdo · Esta Opción",
+      "Desvío Derecho · Esa Opción"
+    ],
+    "positionMeanings": [
+      "Mantén tu primera opción en mente: lo que caminar por este camino te pediría de verdad y lo que te devolvería en silencio.",
+      "Mantén tu segunda opción en mente: la misma mirada honesta al otro camino. Lee las dos cartas una al lado de la otra, no como una competencia."
+    ]
+  },
+  "original-draw": {
+    "name": "El Sendero del Bosque",
+    "description": "La lectura original de Mushling: lo que fue, lo que es y lo que te guía.",
+    "longDescription": "La lectura original de Mushling: una línea de tres cartas a través del tiempo. Las hojas de la temporada pasada se convierten en la tierra de esta temporada, el musgo muestra lo que está creciendo ahora y una luciérnaga ilumina el camino en la oscuridad. Acude a ella cuando nada específico haya motivado la tirada y simplemente quieras saber dónde estás parado.",
+    "positions": [
+      "Las Hojas Caídas · Lo Que Fue",
+      "El Musgo · Lo Que Es",
+      "La Luciérnaga · Lo Que Te Guía"
+    ],
+    "positionMeanings": [
+      "Lo que vino antes y aún te está dando forma: las viejas hojas que se convirtieron en el suelo sobre el que estás pisando.",
+      "Dónde están las cosas honestamente ahora mismo, sin la historia que te has estado contando al respecto.",
+      "La pequeña luz que vale la pena seguir desde aquí: un instinto, un valor o una llamada silenciosa en la que puedes confiar."
+    ]
+  },
+  "seed-to-bloom": {
+    "name": "De la Semilla al Fruto",
+    "description": "Para una meta, hábito o esperanza que estás cultivando: qué es, qué necesita y cómo está creciendo ya.",
+    "longDescription": "Una tirada de cuidado para una meta, hábito, proyecto o esperanza que estás alimentando poco a poco. No busca lo que anda mal; pregunta qué es realmente esta cosa, qué la ayuda a prosperar, dónde ya está funcionando y en qué podría convertirse en su propia estación. Es buena al principio de algo o a mitad de camino cuando has olvidado por qué empezaste.",
+    "positions": [
+      "La Semilla · Lo Que Plantas",
+      "La Tierra · Lo Que Necesita",
+      "El Brote · Lo Que Ya Crece",
+      "La Floración · Lo Que Puede Ser"
+    ],
+    "positionMeanings": [
+      "Qué es esto realmente en su núcleo: la intención detrás de la lista de pendientes y la presión.",
+      "Las condiciones que necesita para prosperar: el cuidado diario, el tipo de atención, el espacio para crecer.",
+      "La prueba de que ya está funcionando: un progreso por el que quizás pasaste de largo.",
+      "En qué podría convertirse si sigues cuidándolo. No es una promesa; es una imagen honesta de su estación."
+    ]
+  },
+  "the-clearing": {
+    "name": "El Claro",
+    "description": "Para finales y tiempos de transición: lo que se desvanece, lo que conservas y el espacio que la nueva luz abre.",
+    "longDescription": "Cuando un árbol viejo cae, la luz del sol llega al suelo del bosque por primera vez en años y las cosas crecen donde antes nada podía hacerlo. Esta es la tirada para los finales, las despedidas y las estaciones intermedias: un trabajo, un hogar, una relación, una versión vieja de ti mismo. Honra lo que termina y muestra para qué sirve el espacio abierto.",
+    "positions": [
+      "El Árbol Caído · Lo Que Termina",
+      "Los Anillos · Lo Que Te Dio",
+      "Las Raíces · Lo Que Retienes",
+      "La Luz · Lo Que Abre Espacio",
+      "El Primer Verde · Lo Que Sigue"
+    ],
+    "positionMeanings": [
+      "Lo que se está cayendo o ya lo ha hecho, incluso si todavía lo estás sosteniendo.",
+      "Lo que este capítulo te dio y te llevas contigo, cargado en tu interior como los anillos de un árbol.",
+      "La parte que todavía no has dejado ir y lo que te cuesta aferrarte a ella.",
+      "Para qué abre espacio el lugar despejado: luz que antes no podía alcanzarte.",
+      "La primera pequeña cosa que quiere crecer aquí a continuación."
+    ]
+  },
+  "mycelial-web": {
+    "name": "La Red Micelial",
+    "description": "Una lectura para una conexión: una pareja, un amigo, la familia, un compañero de trabajo o toda una comunidad.",
+    "longDescription": "Los Mushlings nunca crecen solos; bajo el suelo del bosque, una red de micelio une cada sombrero con los demás, pasando nutrición de un lado a otro. Esta tirada de seis cartas observa una conexión en tu vida: lo que cada uno aporta, lo que realmente los une, dónde se enreda, qué se mueve entre ustedes y qué ayudaría a que prospere. Mantén a una persona o a un grupo en mente mientras sacas las cartas.",
+    "positions": [
+      "Tu Sombrero · Lo Que Aportas",
+      "Su Sombrero · Lo Que Aportan",
+      "El Hilo · Lo Que Los Une",
+      "El Nudo · Dónde se Atora",
+      "El Flujo · Lo Que Circula",
+      "La Nutrición · Lo que lo Nutriría"
+    ],
+    "positionMeanings": [
+      "Lo que estás aportando a esta conexión ahora mismo: tu estado de ánimo, tus esperanzas, tus defensas.",
+      "Lo que parecen estar aportando, según alcanzas a ver desde donde estás.",
+      "Lo verdadero que los une, por debajo de los hábitos y la historia.",
+      "Dónde se traba o se enreda: la fricción que vale la pena mirar con suavidad.",
+      "Lo que se da y se recibe entre ustedes, y si fluye en ambas direcciones.",
+      "Qué nutriría esta conexión a partir de aquí: una cosa que podrías ofrecer o pedir."
+    ]
+  },
+  "traditional-draw": {
+    "name": "El Corazón del Árbol",
+    "description": "La clásica lectura de siete cartas para una pregunta importante: cada fuerza a su alrededor, desde el corazón hacia afuera.",
+    "longDescription": "La lectura clásica completa de la baraja, para una pregunta específica que quieres entender profundamente. Comienza en el corazón del asunto y se expande hacia afuera: lo que lo cruza, lo que no se ha dicho, lo que esperas, cómo estás plantado, lo que está fuera de tu control y el camino a seguir. Di tu pregunta en voz alta antes de comenzar.",
+    "positions": [
+      "El Corazón · De Qué Trata",
+      "La Zarza · Qué lo Está Cruzando",
+      "Bajo las Hojas · Lo No Dicho",
+      "Las Copas · Lo Que Esperas",
+      "Tu Postura · Cómo Lo Afrontas",
+      "El Clima · Fuera de Tu Control",
+      "El Camino · El Giro"
+    ],
+    "positionMeanings": [
+      "El centro del asunto: de qué trata verdaderamente esta pregunta una vez que se disipa el ruido.",
+      "El reto que cruza tu camino ahora mismo, que quizás no sea el que se está llevando la culpa.",
+      "Algo no dicho o desapercibido: un sentimiento, un hecho o un miedo que yace bajo la hojarasca.",
+      "Lo que en silencio esperas que suceda, incluidas las esperanzas que no has admitido.",
+      "Cómo estás afrontando esto ahora mismo: la postura que has tomado, firme o tambaleante.",
+      "Lo que no te corresponde controlar: otras personas, el tiempo, las circunstancias; el clima por el que caminas.",
+      "El siguiente giro en el sendero: hacia dónde va esto si lo afrontas con lo que ahora sabes."
+    ]
+  },
+  "whole-forest": {
+    "name": "Todo el Bosque",
+    "description": "Un paseo de diez cartas por cada parte de tu vida, para grandes momentos: un cumpleaños, un año nuevo, un punto de inflexión.",
+    "longDescription": "La tirada más grande de la baraja, para los momentos más importantes: un cumpleaños, un año nuevo, el comienzo de un nuevo capítulo. En lugar de una sola pregunta, recorre todo el bosque de tu vida: hogar, trabajo, amor, cuerpo, mente, recursos, juego y espíritu, enmarcados por el tema de la estación y un farol para llevar hacia adelante. Tómate tu tiempo; es mucho para procesar de golpe.",
+    "positions": [
+      "El Cielo · Tu Etapa Actual",
+      "El Hueco · Hogar y Descanso",
+      "El Hormiguero · Trabajo",
+      "El Racimo · Amor y Parentesco",
+      "El Tallo · Cuerpo y Energía",
+      "La Brisa · Mente y Ánimo",
+      "Las Bellotas · Recursos",
+      "El Charco · Juego y Alegría",
+      "El Roble Viejo · Espíritu",
+      "El Farol · Qué Llevar Contigo"
+    ],
+    "positionMeanings": [
+      "El ambiente general de la etapa en la que estás: el cielo cerniéndose sobre todo lo demás.",
+      "Tu vida en el hogar y qué tan bien estás descansando.",
+      "Tu trabajo y si todavía se siente como tuyo.",
+      "Las personas a las que amas y a las que perteneces: pareja, familia, familia elegida, amigos.",
+      "Tu cuerpo y tu energía: cómo estás realmente, no cómo estás aguantando a fuerza de empujar.",
+      "Tus pensamientos y estados de ánimo: lo que ha estado dando vueltas.",
+      "Dinero, tiempo y seguridad: lo que tienes almacenado y lo que se siente escaso.",
+      "Diversión, juego y ligereza: las cosas que haces simplemente porque sí.",
+      "Tu sentido de asombro, significado y pertenencia a algo más grande.",
+      "Lo único que debes llevar contigo hacia lo que viene."
+    ]
+  }
+}

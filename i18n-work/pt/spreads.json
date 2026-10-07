@@ -1,0 +1,150 @@
+{
+  "single-spore": {
+    "name": "Esporo Único",
+    "description": "Uma carta para o dia — o que hoje pede que você perceba.",
+    "longDescription": "A tiragem mais simples do baralho. Não precisa de pergunta: tire uma carta e deixe que ela dê o tom do dia. Boa para as manhãs, para uma pausa entre tarefas ou para qualquer momento em que você quer mais companhia do que respostas.",
+    "positions": [
+      "O Mushling de hoje"
+    ],
+    "positionMeanings": [
+      "A única coisa que vale levar com você hoje — um humor para notar, um lembrete em que se apoiar ou uma pequena companhia para as horas que vêm."
+    ]
+  },
+  "two-paths": {
+    "name": "Dois Caminhos",
+    "description": "Para quando você está entre duas opções reais — um olhar honesto para cada estrada antes de escolher.",
+    "longDescription": "Para quando você está entre duas opções reais. Antes de tirar as cartas, decida qual escolha é a bifurcação da esquerda e qual é a da direita. As cartas não escolhem um vencedor; elas mostram o que percorrer cada estrada realmente pediria de você e o que devolveria, para que a escolha fique mais fácil de sentir.",
+    "positions": [
+      "A bifurcação da esquerda · Esta escolha",
+      "A bifurcação da direita · Aquela escolha"
+    ],
+    "positionMeanings": [
+      "Tenha em mente a sua primeira opção: o que seguir por esta estrada pediria de verdade e o que ela devolveria em silêncio.",
+      "Tenha em mente a sua segunda opção: o mesmo olhar honesto pela outra estrada. Leia as duas cartas lado a lado, e não como uma disputa."
+    ]
+  },
+  "original-draw": {
+    "name": "A Trilha da Floresta",
+    "description": "A leitura original dos Mushlings — o que foi, o que é e o que guia você daqui para a frente.",
+    "longDescription": "A leitura original dos Mushlings: uma linha de três cartas através do tempo. As folhas da estação passada viram o solo desta, o musgo mostra o que cresce agora, e um vaga-lume ilumina o caminho pela escuridão. Recorra a ela quando nada em especial motivou a tiragem e você só quer saber onde está.",
+    "positions": [
+      "As Folhas Caídas · O que foi",
+      "O Musgo · O que é",
+      "O Vaga-lume · O que guia você"
+    ],
+    "positionMeanings": [
+      "O que veio antes e ainda molda você — as folhas velhas que se tornaram o chão onde você pisa.",
+      "Onde as coisas realmente estão agora, sem a história que você vem contando sobre elas.",
+      "A pequena luz que vale seguir daqui em diante — um instinto, um valor ou um chamado silencioso em que você pode confiar."
+    ]
+  },
+  "seed-to-bloom": {
+    "name": "Da Semente à Flor",
+    "description": "Para uma meta, um hábito ou uma esperança que você cultiva — o que é, do que precisa e como já está crescendo.",
+    "longDescription": "Uma tiragem de cultivo para uma meta, um hábito, um projeto ou uma esperança que você está cuidando aos poucos. Ela não sai à caça do que está errado; pergunta o que essa coisa realmente é, o que a ajuda a florescer, onde ela já está funcionando e no que pode se tornar na sua própria estação. Boa no começo de algo, ou no meio do caminho, quando você esqueceu por que começou.",
+    "positions": [
+      "A Semente · O que você planta",
+      "O Solo · Do que precisa",
+      "O Broto · O que está crescendo",
+      "A Flor · No que pode se tornar"
+    ],
+    "positionMeanings": [
+      "O que isso realmente é, no fundo — a intenção por baixo da lista de tarefas e da pressão.",
+      "As condições de que precisa para florescer: o cuidado diário, o tipo de atenção, o espaço para crescer.",
+      "A prova de que já está funcionando — um progresso por onde você talvez tenha passado direto.",
+      "No que pode se tornar se você continuar cuidando. Não é uma promessa; é um retrato honesto da sua estação."
+    ]
+  },
+  "the-clearing": {
+    "name": "A Clareira",
+    "description": "Para finais e tempos de passagem — o que está caindo, o que você guarda e para o que a luz nova abre espaço.",
+    "longDescription": "Quando uma árvore antiga cai, a luz do sol chega ao chão da floresta pela primeira vez em anos, e nasce o que antes não podia. Esta é a tiragem para finais, despedidas e estações de passagem: um emprego, uma casa, um relacionamento, uma versão antiga de você. Ela honra o que está acabando e mostra para que serve o espaço aberto.",
+    "positions": [
+      "A Árvore Caída · O que está acabando",
+      "Os Anéis · O que ela deu a você",
+      "As Raízes · O que você segura",
+      "A Luz · Para que serve o espaço",
+      "O Primeiro Verde · O que vem a seguir"
+    ],
+    "positionMeanings": [
+      "O que está desabando, ou já desabou — mesmo que você ainda esteja escorando.",
+      "O que este capítulo deu a você e que você pode guardar, levado dentro de você como os anéis de uma árvore.",
+      "A parte que você ainda não soltou, e o que se agarrar a ela está custando.",
+      "Para o que o espaço aberto abre lugar — uma luz que antes não alcançava você.",
+      "A primeira coisa pequena que quer crescer aqui."
+    ]
+  },
+  "mycelial-web": {
+    "name": "A Teia do Micélio",
+    "description": "Uma leitura para uma conexão — um parceiro ou parceira, um amigo, a família, um colega de trabalho ou uma comunidade inteira.",
+    "longDescription": "Mushlings nunca crescem sozinhos — sob o chão da floresta, uma teia de micélio liga cada chapéu a todos os outros, passando alimento de lá para cá. Esta tiragem de seis cartas olha para uma conexão da sua vida: o que cada um traz, o que realmente une vocês, onde ela se embaraça, o que circula entre vocês e o que ajudaria a conexão a florescer. Pense em uma pessoa, ou em um grupo, enquanto tira as cartas.",
+    "positions": [
+      "O Seu Chapéu · O que você traz",
+      "O Chapéu da Outra Parte · O que ela traz",
+      "O Fio · O que une vocês",
+      "O Nó · Onde enrosca",
+      "O Fluxo · O que circula entre vocês",
+      "O Alimento · O que nutre"
+    ],
+    "positionMeanings": [
+      "O que você está levando a esta conexão agora — seu humor, suas esperanças, suas defesas.",
+      "O que a outra parte parece trazer, até onde você consegue enxergar de onde está.",
+      "O que de fato une vocês, por baixo do hábito e da história.",
+      "Onde ela prende ou se embaraça — o atrito que vale olhar com delicadeza.",
+      "O que está sendo dado e recebido entre vocês, e se corre nos dois sentidos.",
+      "O que nutriria esta conexão daqui em diante — uma coisa que você poderia oferecer, ou pedir."
+    ]
+  },
+  "traditional-draw": {
+    "name": "O Cerne",
+    "description": "A leitura clássica de sete cartas para uma pergunta que importa — todas as forças ao redor dela, do coração para fora.",
+    "longDescription": "A leitura clássica completa do baralho, para uma pergunta específica que você quer compreender a fundo. Ela começa no coração da questão e avança para fora: o que a atravessa, o que ficou por dizer, o que você espera, como você está posicionado, o que está além do seu controle e o caminho de passagem. Diga a pergunta em voz alta antes de começar.",
+    "positions": [
+      "O Cerne · O centro",
+      "O Espinheiro · O que atravessa",
+      "Sob as Folhas · O não dito",
+      "As Copas · Suas esperanças",
+      "Onde Você Pisa · Sua postura",
+      "O Tempo · Além do controle",
+      "O Caminho Adiante · A virada"
+    ],
+    "positionMeanings": [
+      "O coração da questão — sobre o que esta pergunta realmente é, depois que o ruído é retirado.",
+      "O desafio que cruza o seu caminho agora, e que pode não ser aquele que leva a culpa.",
+      "Algo não dito ou despercebido — um sentimento, um fato ou um medo escondido sob a serapilheira.",
+      "O que você espera em silêncio que aconteça, inclusive as esperanças que ainda não admitiu.",
+      "Como você está encarando isto agora — a postura que assumiu, firme ou escorregando.",
+      "O que não é seu para controlar — outras pessoas, o momento, as circunstâncias: o tempo em que você caminha.",
+      "A próxima curva do caminho — para onde isto vai se você a encarar com o que sabe agora."
+    ]
+  },
+  "whole-forest": {
+    "name": "A Floresta Inteira",
+    "description": "Uma caminhada de dez cartas por todas as partes da sua vida, para grandes momentos — um aniversário, um ano novo, uma virada.",
+    "longDescription": "A maior tiragem do baralho, para os maiores momentos — um aniversário, um ano novo, o começo de um novo capítulo. Em vez de uma pergunta, ela percorre a floresta inteira da sua vida: casa, trabalho, amor, corpo, mente, recursos, brincadeira e espírito, emoldurados pelo tema da estação e por uma lanterna para levar adiante. Vá com calma; é muita coisa para receber de uma vez.",
+    "positions": [
+      "O Céu · A estação em que você está",
+      "A Toca · Lar e descanso",
+      "O Formigueiro · Trabalho e propósito",
+      "O Aglomerado · Amor e laços",
+      "O Caule · Corpo e energia",
+      "A Brisa · Mente e humor",
+      "O Estoque de Bolotas · Recursos",
+      "A Poça · Brincadeira e alegria",
+      "O Velho Carvalho · Espírito e encanto",
+      "A Lanterna · O que levar adiante"
+    ],
+    "positionMeanings": [
+      "A sensação geral da estação em que você está — o céu que paira sobre todo o resto.",
+      "A sua vida em casa, e o quanto você tem descansado.",
+      "O seu trabalho, e se ele ainda parece seu.",
+      "As pessoas que você ama e a que pertence — parceiros, família, família escolhida, amigos.",
+      "O seu corpo e a sua energia: como você realmente está, e não como vem aguentando.",
+      "Seus pensamentos e humores — o que tem andado em círculos.",
+      "Dinheiro, tempo e segurança — o que você tem guardado, e o que parece escasso.",
+      "Diversão, brincadeira e leveza — as coisas que você faz só porque sim.",
+      "Seu senso de encanto, de sentido e de pertencer a algo maior.",
+      "A única coisa para levar com você para o que vem a seguir."
+    ]
+  }
+}

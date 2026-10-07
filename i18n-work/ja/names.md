@@ -1,0 +1,61 @@
+# Japanese (ja) renderings — The Mushling Oracle
+
+## Fixed terms
+- The Mushling Oracle → マッシュリング・オラクル
+- Mushling / Mushlings → マッシュリング (no plural marking; 「マッシュリングたち」 where a plural feel is needed)
+- Sage (guide, and the Mushling of card 4) → セージ
+- spread → スプレッド
+- reading → リーディング
+- synthesis (Sage's) → まとめ（セージのまとめ）
+- journal → 日記
+- gallery → ギャラリー
+- unlock → ロック解除
+- Full Deck → フルデッキ
+- conversation (Sage) → 会話（〜回）
+- dear reader → 読んでいるあなた / あなた
+- human → 人間
+
+## Personal names (katakana, all chunks)
+- Pippin → ピピン
+- Pip → ピップ
+- Pippa → ピッパ
+- Berry → ベリー
+- Fern → ファーン
+- Sage → セージ
+- Mossy → モッシー
+- Milo → マイロ
+- Barnaby → バーナビー
+- Barnacle (snail) → バーナクル
+- Lumina → ルミナ
+- Spark (firefly) → スパーク
+- Clover → クローバー
+- Bramble → ブランブル
+- Willow → ウィロー
+- Marigold → マリーゴールド
+- Maestro Finch → マエストロ・フィンチ（短く：フィンチ）
+- Rowan → ローワン
+- Elder Moss → モス長老（「長老」だけでも可）
+- Great Oak → 大樫（おおがし）の木
+- Hazel → ヘーゼル
+- Zephyr → ゼファー
+- Flint → フリント
+- Lyra → ライラ
+- Gideon → ギデオン
+- Wren → レン
+- Juniper → ジュニパー
+- Sable → セーブル
+- Sienna → シエナ
+- Ash → アッシュ
+- Fennel → フェンネル
+- Robin → ロビン
+- Coral → コーラル
+- Wisp → ウィスプ
+- Sorrel → ソレル
+- Cedar → シダー
+- Alder → アルダー
+- Sparrow → スパロウ
+- Opal → オパール
+- Fig → フィグ
+- Thistle → シスル
+- Heath → ヒース
+- Marlowe → マーロウ

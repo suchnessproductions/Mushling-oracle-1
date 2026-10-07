@@ -2,7 +2,7 @@
 // Static front-end: no server of its own, no real payments. Sage talks to
 // real Claude through the published artifact's `sample` capability (see the
 // "sage chat" section below) rather than a backend holding an API key.
-// State persists only in memory + a little localStorage (journal) for this demo.
+// State persists only in memory + a little localStorage (journal, language).
 
 const state = {
   // Prototype default: everything unlocked, so whoever is playing this to
@@ -10,12 +10,84 @@ const state = {
   // to find the demo toggle. Flip the Settings toggle to preview what a
   // non-paying visitor actually sees.
   unlocked: true,
-  reading: null,             // { spreadName, cardNumbers:[...], index:0 }
-  lastFinishedReading: null, // { spreadName, positions, cardNumbers:[...] } — set when a reading is finished; gates Sage
+  lang: 'en',
+  reading: null,             // { spreadId, cardNumbers:[...], index:0 }  (spreadId 'gallery' = a Gallery look-up)
+  lastFinishedReading: null, // { spreadId, cardNumbers:[...] } — set when a reading is finished; gates Sage
   sageFreeLeft: 5,
   sageUnlockLeft: 300, // matches the real subscribed-tier cap (300/month) — the demo shouldn't run out mid-session
   journal: loadJournal(),
 };
+
+// ---------- language ----------
+// English lives in strings.js (UI) and data.js (cards, spreads). Every other
+// language is one pack in js/i18n/<code>.js, loaded on demand into
+// window.MUSHLING_I18N[code] = { meta, ui, sage, spreads, cards }. Anything a
+// pack doesn't have falls back to English, so a half-finished pack degrades
+// to mixed text rather than breaking.
+
+window.MUSHLING_I18N = window.MUSHLING_I18N || {};
+const LANG_KEY = 'mushlingLang';
+
+function langInfo(code) { return MUSHLING_LANGUAGES.find(l => l.code === code) || MUSHLING_LANGUAGES[0]; }
+function readyLanguages() { return MUSHLING_LANGUAGES.filter(l => l.ready); }
+function pack() { return state.lang === 'en' ? null : window.MUSHLING_I18N[state.lang] || null; }
+
+function loadPack(code) {
+  return new Promise((resolve, reject) => {
+    if (code === 'en' || window.MUSHLING_I18N[code]) return resolve();
+    const s = document.createElement('script');
+    s.src = `js/i18n/${code}.js`;
+    s.onload = () => (window.MUSHLING_I18N[code] ? resolve() : reject(new Error('empty pack')));
+    s.onerror = () => reject(new Error('load failed'));
+    document.head.appendChild(s);
+  });
+}
+
+// UI text: t('progress', {spread, n, total}). Plural entries are objects keyed
+// by Intl.PluralRules category and are chosen with vars.count.
+function t(key, vars) {
+  vars = vars || {};
+  const p = pack();
+  let v = p && p.ui && p.ui[key] !== undefined ? p.ui[key] : MUSHLING_UI_EN[key];
+  if (v === undefined) return key;
+  if (v && typeof v === 'object') {
+    let cat = 'other';
+    try { cat = new Intl.PluralRules(state.lang).select(Number(vars.count)); } catch (e) { /* keep other */ }
+    v = v[cat] !== undefined ? v[cat] : v.other;
+  }
+  return String(v).replace(/\{(\w+)\}/g, (m, k) => (vars[k] !== undefined ? vars[k] : m));
+}
+
+function cardText(card, field) {
+  const p = pack();
+  const c = p && p.cards && p.cards[card.number];
+  return (c && c[field]) || card[field];
+}
+function spreadText(spread, field) {
+  const p = pack();
+  const s = p && p.spreads && p.spreads[spread.id];
+  return (s && s[field]) || spread[field];
+}
+function spreadPositions(spread) { return spreadText(spread, 'positions'); }
+function spreadMeanings(spread) { return spreadText(spread, 'positionMeanings'); }
+
+function positionLabel(spread, index) {
+  const list = spreadPositions(spread);
+  return shortPosition((list && list[index]) || '');
+}
+// "The Moss · What Is" -> "The Moss": only the name part is shown; the meaning lives in the explanation text
+function shortPosition(label) { return String(label).split(' · ')[0]; }
+
+function applyStaticText() {
+  document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
+}
+
+function dateLocale() { return state.lang; }
+
+function escapeHtml(s) {
+  return String(s == null ? '' : s).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+}
 
 // ---------- helpers ----------
 
@@ -23,20 +95,8 @@ function cardByNumber(n) {
   return MUSHLING_CARDS.find(c => c.number === n);
 }
 
-function spreadByName(name) {
-  return MUSHLING_SPREADS.find(s => s.name === name);
-}
-
-// positionMeanings are stored as "Label: explanation." strings (the label
-// repeats the position name, sometimes with a " · subtitle" on top of it)
-// — this pulls out just the explanation half for display next to the
-// already-shown label, instead of repeating the whole thing.
-function positionExplanation(spread, index) {
-  if (!spread || !spread.positionMeanings) return '';
-  const raw = spread.positionMeanings[index];
-  if (!raw) return '';
-  const splitAt = raw.indexOf(': ');
-  return splitAt === -1 ? raw : raw.slice(splitAt + 2);
+function spreadById(id) {
+  return MUSHLING_SPREADS.find(s => s.id === id);
 }
 
 function isRevealed(card) {
@@ -67,11 +127,11 @@ function saveJournalEntry(entry) {
 }
 
 function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
   clearTimeout(showToast._t);
-  showToast._t = setTimeout(() => t.classList.remove('show'), 2200);
+  showToast._t = setTimeout(() => el.classList.remove('show'), 2200);
 }
 
 // ---------- navigation ----------
@@ -88,6 +148,7 @@ function switchScreen(id) {
   if (id === 'screen-gallery') renderGallery();
   if (id === 'screen-journal') renderJournal();
   if (id === 'screen-sage') renderSageScreen();
+  if (id === 'screen-settings') renderLanguagePicker();
 }
 
 document.addEventListener('click', (e) => {
@@ -99,20 +160,21 @@ document.addEventListener('click', (e) => {
 
 let selectedSpreadIdx = 0;
 
-// The three spreads available on the free tier, by name so reordering the
-// list in data.js can't silently change which ones are free.
-const FREE_SPREADS = ['Single Spore', 'Two Paths', 'Original Draw'];
-function isSpreadFree(s) { return FREE_SPREADS.includes(s.name); }
+// The three spreads available on the free tier, by id so reordering or
+// renaming in data.js can't silently change which ones are free.
+const FREE_SPREADS = ['single-spore', 'two-paths', 'original-draw'];
+function isSpreadFree(s) { return FREE_SPREADS.includes(s.id); }
 
 function renderSpreadList() {
   const pills = document.getElementById('spread-pills');
   pills.innerHTML = '';
   MUSHLING_SPREADS.forEach((s, idx) => {
-    const free = isSpreadFree(s);
-    const locked = !free && !state.unlocked;
+    const locked = !isSpreadFree(s) && !state.unlocked;
     const btn = document.createElement('button');
-    btn.className = 'spread-pill' + (idx === selectedSpreadIdx ? ' active' : '');
-    btn.innerHTML = `${s.name}${locked ? ' <span class="lock">🔒</span>' : ''}`;
+    btn.className = 'spread-pill' + (idx === selectedSpreadIdx ? ' active' : '') + (locked ? ' locked' : '');
+    // name on the left, a fixed-width chip on the right (card count, or a lock)
+    // so every pill lines up the same way whatever the name's length or language
+    btn.innerHTML = `<span class="pill-name">${escapeHtml(spreadText(s, 'name'))}</span><span class="pill-chip">${locked ? '🔒' : s.cardCount}</span>`;
     btn.addEventListener('click', () => {
       selectedSpreadIdx = idx;
       renderSpreadList();
@@ -124,31 +186,29 @@ function renderSpreadList() {
 
 function renderSpreadDetail() {
   const s = MUSHLING_SPREADS[selectedSpreadIdx];
-  const free = isSpreadFree(s);
-  const locked = !free && !state.unlocked;
+  const locked = !isSpreadFree(s) && !state.unlocked;
   const wrap = document.getElementById('spread-detail');
   wrap.className = 'spread-detail';
-  // one description, not a short line plus a "Learn more" toggle for a
-  // longer one — the longer version reads better on its own, so that's
-  // the one shown
+  const positions = spreadPositions(s);
+  const meanings = spreadMeanings(s);
   wrap.innerHTML = `
     <div class="spread-detail-top">
-      <h3>${s.name}${locked ? ' 🔒' : ''}</h3>
-      <span class="spread-count">${s.cardCount} card${s.cardCount > 1 ? 's' : ''}</span>
+      <h3>${escapeHtml(spreadText(s, 'name'))}${locked ? ' 🔒' : ''}</h3>
+      <span class="spread-count">${escapeHtml(t('cardCount', { count: s.cardCount }))}</span>
     </div>
-    <p class="desc">${s.longDescription || s.description}</p>
+    <p class="desc">${escapeHtml(spreadText(s, 'longDescription') || spreadText(s, 'description'))}</p>
     <div class="positions">
-      ${s.positions.map((p, i) => `
+      ${positions.map((p, i) => `
         <div class="position-row">
-          <div class="position-name">${p}</div>
-          <div class="position-meaning">${positionExplanation(s, i)}</div>
+          <div class="position-name">${escapeHtml(shortPosition(p))}</div>
+          <div class="position-meaning">${escapeHtml(meanings[i] || '')}</div>
         </div>
       `).join('')}
     </div>
     <div class="spread-detail-actions">
       ${locked
-        ? `<button class="link-btn" data-nav="screen-settings">Unlock to use →</button>`
-        : `<button class="btn-primary" data-draw style="padding:8px 18px;font-size:0.85rem">Draw</button>`}
+        ? `<button class="link-btn" data-nav="screen-settings">${escapeHtml(t('unlockToUse'))}</button>`
+        : `<button class="btn-primary" data-draw style="padding:8px 18px;font-size:0.85rem">${escapeHtml(t('drawButton'))}</button>`}
     </div>
   `;
   const drawBtn = wrap.querySelector('[data-draw]');
@@ -162,7 +222,7 @@ function startReading(spread) {
   // locked mystery card", which isn't a real reading
   const pool = state.unlocked ? MUSHLING_CARDS : MUSHLING_CARDS.filter(c => c.isFree);
   const numbers = sample(pool.map(c => c.number), spread.cardCount);
-  state.reading = { spreadName: spread.name, positions: spread.positions, cardNumbers: numbers, index: 0 };
+  state.reading = { spreadId: spread.id, cardNumbers: numbers, index: 0 };
   // starting a fresh reading re-gates Sage until THIS one is finished —
   // otherwise Sage stayed permanently unlocked after the first-ever finish
   // and kept surfacing an old, unrelated reading's synthesis/conversation
@@ -180,37 +240,35 @@ function renderDrawResult() {
   const n = r.cardNumbers[r.index];
   const card = cardByNumber(n);
   const revealed = isRevealed(card);
+  const spread = spreadById(r.spreadId);
+  const isGalleryLookup = r.spreadId === 'gallery';
 
   document.getElementById('draw-position-label').textContent =
-    r.positions && r.positions[r.index] ? r.positions[r.index] : card.name;
-  document.getElementById('draw-progress').textContent =
-    r.cardNumbers.length > 1 ? `${r.spreadName} · Card ${r.index + 1} of ${r.cardNumbers.length}` : r.spreadName;
+    spread ? positionLabel(spread, r.index) : cardText(card, 'name');
 
   // the position label alone ("The West Shade · Endings") isn't enough to
   // go on for the less self-explanatory spreads — spell out what this
   // position is actually asking, right under the label, every time
-  const spread = spreadByName(r.spreadName);
-  document.getElementById('draw-position-explain').textContent = spread ? positionExplanation(spread, r.index) : '';
+  document.getElementById('draw-position-explain').textContent = spread ? (spreadMeanings(spread)[r.index] || '') : '';
 
   const img = document.getElementById('draw-card-img');
   img.src = card.img;
-  img.alt = card.name;
+  img.alt = cardText(card, 'name');
   img.style.filter = revealed ? '' : 'grayscale(0.9) brightness(0.35) blur(2px)';
 
-  document.getElementById('draw-card-name').textContent = revealed ? card.name : '??? — a Mushling you haven\'t met yet';
-  document.getElementById('draw-card-message').textContent = revealed
-    ? card.message
-    : 'Unlock the Full Deck to reveal this Mushling\'s message.';
-  document.getElementById('draw-card-interp').textContent = revealed ? card.interpretation : '';
+  document.getElementById('draw-card-name').textContent = revealed ? cardText(card, 'name') : t('unknownCardName');
+  document.getElementById('draw-card-message').textContent = revealed ? cardText(card, 'message') : t('unknownCardMessage');
+  document.getElementById('draw-card-interp').textContent = revealed ? cardText(card, 'interpretation') : '';
 
   const nextBtn = document.getElementById('draw-next-btn');
   const finishBtn = document.getElementById('draw-finish-btn');
   const hasNext = r.index < r.cardNumbers.length - 1;
   // a Gallery look-up isn't a reading — there's nothing to finish or
   // advance through, so neither button belongs here
-  const isGalleryLookup = r.spreadName === 'Gallery';
   nextBtn.style.display = (!isGalleryLookup && hasNext) ? 'block' : 'none';
   finishBtn.style.display = (!isGalleryLookup && !hasNext) ? 'block' : 'none';
+  document.getElementById('draw-prev-btn').style.display = (!isGalleryLookup && r.index > 0) ? 'block' : 'none';
+  document.getElementById('draw-nav-row').classList.toggle('has-prev', !isGalleryLookup && r.index > 0);
 
   // stash current card number on the action row for story/sage/journal handlers
   document.getElementById('screen-draw-result').dataset.currentCard = n;
@@ -220,7 +278,7 @@ function renderDrawResult() {
 }
 
 function setDrawTab(name) {
-  document.querySelectorAll('.draw-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+  document.querySelectorAll('.draw-tab').forEach(tab => tab.classList.toggle('active', tab.dataset.tab === name));
   document.querySelectorAll('.draw-tab-panel').forEach(p => p.classList.toggle('active', p.dataset.panel === name));
 }
 
@@ -228,7 +286,7 @@ document.getElementById('draw-tabs').addEventListener('click', (e) => {
   const btn = e.target.closest('.draw-tab');
   if (btn && btn.dataset.tab) setDrawTab(btn.dataset.tab);
   // the Story pill has data-action="story" instead of data-tab — its own
-  // click listener (bound where Story Time used to live) handles navigation
+  // click listener (below) handles navigation
 });
 
 document.getElementById('draw-next-btn').addEventListener('click', () => {
@@ -236,14 +294,16 @@ document.getElementById('draw-next-btn').addEventListener('click', () => {
   renderDrawResult();
 });
 
+document.getElementById('draw-prev-btn').addEventListener('click', () => {
+  if (state.reading.index > 0) { state.reading.index--; renderDrawResult(); }
+});
+
 document.getElementById('draw-finish-btn').addEventListener('click', () => {
-  // finishing a reading is what unlocks Sage, and it's a fresh reading to
-  // reflect on — reset so the next visit to Sage synthesizes THIS one.
-  // Sage reads the synthesis first; the save-to-journal offer (with a
-  // personal-notes field) comes after that, inside the Sage screen itself.
+  // finishing a reading is what unlocks Sage. Sage opens with a synthesis of
+  // the whole spread (it counts as one Sage conversation); the save-to-journal
+  // offer sits under the chat and carries the synthesis along.
   state.lastFinishedReading = {
-    spreadName: state.reading.spreadName,
-    positions: state.reading.positions,
+    spreadId: state.reading.spreadId,
     cardNumbers: state.reading.cardNumbers.slice(),
   };
   resetSageConversation();
@@ -253,14 +313,14 @@ document.getElementById('draw-finish-btn').addEventListener('click', () => {
 document.getElementById('draw-art-wrap').addEventListener('click', () => {
   const n = Number(document.getElementById('screen-draw-result').dataset.currentCard);
   const card = cardByNumber(n);
-  if (!isRevealed(card)) { showToast('Unlock the Full Deck to see this Mushling.'); return; }
-  openZoom(card.img, card.name);
+  if (!isRevealed(card)) { showToast(t('lockedSee')); return; }
+  openZoom(card.img, cardText(card, 'name'));
 });
 
 document.querySelector('[data-action="story"]').addEventListener('click', () => {
   const n = Number(document.getElementById('screen-draw-result').dataset.currentCard);
   const card = cardByNumber(n);
-  if (!isRevealed(card)) { showToast('Unlock the Full Deck to read this story.'); return; }
+  if (!isRevealed(card)) { showToast(t('lockedStory')); return; }
   openStory(card);
 });
 
@@ -281,9 +341,13 @@ document.getElementById('zoom-modal').addEventListener('click', (e) => {
 
 let storyPages = [];
 let storyIndex = 0;
+let storyCard = null;
 
+// Splits a story into pages at sentence ends. The sentence pattern covers the
+// full stops used by Latin, Cyrillic, Japanese and Chinese text (. ! ? … 。！？),
+// optionally followed by a closing quote or bracket.
 function paginateStory(text) {
-  const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+  const sentences = text.match(/[^.!?…。！？]+[.!?…。！？]+["'”’»」』)\]]*\s*|[^.!?…。！？]+$/g) || [text];
   const pages = [];
   let cur = '';
   sentences.forEach(s => {
@@ -298,9 +362,10 @@ function paginateStory(text) {
 }
 
 function openStory(card) {
-  storyPages = paginateStory(card.story || 'This Mushling\'s story is still being written.');
+  storyCard = card;
+  storyPages = paginateStory(cardText(card, 'story') || t('storyMissing'));
   storyIndex = 0;
-  document.getElementById('story-title').textContent = card.name;
+  document.getElementById('story-title').textContent = cardText(card, 'name');
   switchScreen('screen-story');
   renderStoryPage();
 }
@@ -333,13 +398,13 @@ function renderGallery() {
     const tile = document.createElement('div');
     tile.className = 'gallery-tile' + (revealed ? '' : ' locked');
     tile.innerHTML = `
-      <img src="${card.img}" alt="${card.name}">
+      <img src="${card.img}" alt="${escapeHtml(cardText(card, 'name'))}">
       <span class="num-badge">${String(card.number).padStart(2, '0')}</span>
       ${revealed ? '' : '<div class="lock-badge">🔒</div>'}
     `;
     tile.addEventListener('click', () => {
-      if (!revealed) { showToast('Unlock the Full Deck to meet this Mushling.'); return; }
-      state.reading = { spreadName: 'Gallery', positions: [card.name], cardNumbers: [card.number], index: 0 };
+      if (!revealed) { showToast(t('lockedMeet')); return; }
+      state.reading = { spreadId: 'gallery', cardNumbers: [card.number], index: 0 };
       switchScreen('screen-draw-result');
       renderDrawResult();
     });
@@ -349,11 +414,20 @@ function renderGallery() {
 
 // ---------- journal ----------
 
+// entries saved before spreads had ids carry only an English spreadName
+function entrySpread(entry) {
+  return (entry.spreadId && spreadById(entry.spreadId)) || MUSHLING_SPREADS.find(s => s.name === entry.spreadName) || null;
+}
+function entrySpreadName(entry) {
+  const s = entrySpread(entry);
+  return s ? spreadText(s, 'name') : (entry.spreadName || '');
+}
+
 function filterJournal(query) {
   if (!query) return state.journal;
   const q = query.toLowerCase();
   return state.journal.filter(entry => {
-    const haystack = [entry.title, entry.comment, entry.synthesis, entry.spreadName]
+    const haystack = [entry.title, entry.comment, entry.synthesis, entrySpreadName(entry), entry.spreadName]
       .filter(Boolean).join(' ').toLowerCase();
     return haystack.includes(q);
   });
@@ -367,8 +441,8 @@ function renderJournal() {
   if (!state.journal.length) {
     if (searchRow) searchRow.style.display = 'none';
     wrap.innerHTML = `<div class="journal-empty">
-      <p class="display" style="font-size:1.3rem">Nothing here yet.</p>
-      <p>Your first saved reading will start your journal.</p>
+      <p class="display" style="font-size:1.3rem">${escapeHtml(t('journalEmptyTitle'))}</p>
+      <p>${escapeHtml(t('journalEmptyBody'))}</p>
     </div>`;
     return;
   }
@@ -377,7 +451,7 @@ function renderJournal() {
   const filtered = filterJournal(query);
   if (!filtered.length) {
     wrap.innerHTML = `<div class="journal-empty">
-      <p class="display" style="font-size:1.1rem">No entries match "${query}".</p>
+      <p class="display" style="font-size:1.1rem">${escapeHtml(t('journalNoMatch', { query }))}</p>
     </div>`;
     return;
   }
@@ -387,26 +461,27 @@ function renderJournal() {
   // content but not what you're scanning for, so they fold away behind
   // <details> instead of all getting "plastered" onto the card at once
   wrap.innerHTML = filtered.map(entry => {
-    const date = new Date(entry.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
-    const title = entry.title || `${entry.spreadName} reading`;
-    const conversation = entry.transcript && entry.transcript.length > 1 ? entry.transcript : null;
+    const date = new Date(entry.date).toLocaleDateString(dateLocale(), { month: 'short', day: 'numeric', year: 'numeric' });
+    const spreadName = entrySpreadName(entry);
+    const title = entry.title || t('journalDefaultTitle', { spread: spreadName });
+    const conversation = entry.transcript && entry.transcript.length > 0 ? entry.transcript : null;
     return `<div class="journal-entry">
       <div class="journal-entry-top">
-        <div class="journal-entry-title">${title}</div>
-        <div class="meta">${date}</div>
+        <div class="journal-entry-title">${escapeHtml(title)}</div>
+        <div class="meta">${escapeHtml(date)}</div>
       </div>
-      <div class="meta">${entry.spreadName}</div>
-      <div class="comment">${entry.comment ? `"${entry.comment}"` : '<span class="no-note">No note added</span>'}</div>
+      <div class="meta">${escapeHtml(spreadName)}</div>
+      <div class="comment">${entry.comment ? `“${escapeHtml(entry.comment)}”` : `<span class="no-note">${escapeHtml(t('journalNoNote'))}</span>`}</div>
       ${entry.synthesis ? `
         <details class="journal-detail">
-          <summary>Sage's take</summary>
-          <div class="synthesis">${entry.synthesis}</div>
+          <summary>${escapeHtml(t('journalSynthesis'))}</summary>
+          <div class="synthesis">${escapeHtml(entry.synthesis)}</div>
         </details>` : ''}
       ${conversation ? `
         <details class="journal-detail">
-          <summary>Full conversation (${conversation.length} messages)</summary>
+          <summary>${escapeHtml(t('journalConversation', { count: conversation.length }))}</summary>
           <div class="journal-transcript">
-            ${conversation.map(t => `<div class="transcript-line ${t.who}"><span class="who">${t.who === 'user' ? 'You' : 'Sage'}</span>${t.text}</div>`).join('')}
+            ${conversation.map(m => `<div class="transcript-line ${m.who === 'user' ? 'user' : 'sage'}"><span class="who">${escapeHtml(m.who === 'user' ? t('whoYou') : t('whoSage'))}</span>${escapeHtml(m.text)}</div>`).join('')}
           </div>
         </details>` : ''}
     </div>`;
@@ -425,7 +500,7 @@ document.getElementById('journal-search').addEventListener('input', renderJourna
 // sensible rather than breaking outright.
 
 let claudeSample = null; // resolved async below; stays null = use the offline fallback
-(async () => {
+const claudeReady = (async () => {
   try {
     if (window.claude && typeof window.claude.use === 'function') {
       claudeSample = await window.claude.use('sample');
@@ -433,38 +508,54 @@ let claudeSample = null; // resolved async below; stays null = use the offline f
   } catch (e) { /* leave null */ }
 })();
 
-const SAGE_INSTRUCTIONS = "You are Sage, the resident guide of The Mushling Oracle — a whimsical oracle-card app about small forest creatures called Mushlings. You speak warmly and briefly, like someone who has spent a long time quietly living in these woods: gentle, a little wry, never clinical or therapist-sounding. Ask at most one real question per reply. Keep replies to 2-4 sentences unless asked for more. Never mention that you're an AI, a model, or a prompt, and never break character.";
+const SAGE_BASE = "You are Glowcap, the Seer: a Mushling whose cap glows softly, and the resident guide of The Mushling Oracle — a whimsical oracle-card app about small forest creatures called Mushlings. You speak warmly and briefly, like someone who has spent a long time quietly living in these woods: gentle, a little wry, never clinical or therapist-sounding. Ask at most one real question per reply. Keep replies to 2-4 sentences unless asked for more. Never mention that you're an AI, a model, or a prompt, and never break character.";
+
+// Sage answers in whichever language the reader chose in Settings
+function sageInstructions() {
+  if (state.lang === 'en') return SAGE_BASE;
+  const L = langInfo(state.lang);
+  const p = pack();
+  const guide = p && p.meta && p.meta.guideName; // the guide's name in this language ("Sabio" in Spanish)
+  return `${SAGE_BASE} Always reply in ${L.english} (${L.name}), whatever language the person writes in, unless they ask you to switch.${guide ? ` In ${L.english} your name is ${guide}.` : ''}`;
+}
+
+const SYNTHESIS_REQUEST = "Their reading is complete. Give them your synthesis of the whole reading — not a card-by-card recap. Name the thread that runs through the cards, say how the positions speak to each other (where two cards echo each other or pull against each other, say so), and offer the one thing this spread most seems to want them to notice. Close with a single gentle question. Write about 150 to 220 words in two or three short paragraphs, speaking to them directly as \"you\". No headings, no bullet points.";
 
 let sageTurns = []; // the running {role, content} conversation this page keeps — sample() itself remembers nothing between calls
-let chatTranscript = []; // clean {who, text} record of what's actually shown on screen — no system-prompt
-                          // scaffolding mixed in like sageTurns has — kept so the whole conversation can be
-                          // saved to the journal if they talked to Sage before saving
+let chatTranscript = []; // clean {who, text} record of the follow-up conversation shown on screen (the synthesis is kept
+                          // separately) — saved to the journal with the entry
+let synthesis = { started: false, running: false, text: '' };
 
 function resetSageConversation() {
   sageTurns = [];
   chatTranscript = [];
+  synthesis = { started: false, running: false, text: '' };
   const log = document.getElementById('chat-log');
   if (log) log.innerHTML = '';
+  const strip = document.getElementById('sage-reading');
+  if (strip) strip.innerHTML = '';
   removeSageSaveSheet();
 }
 
 function readingContext() {
   const r = state.lastFinishedReading;
   if (!r) return '';
+  const spread = spreadById(r.spreadId);
   const lines = r.cardNumbers.map((n, i) => {
     const c = cardByNumber(n);
-    const pos = (r.positions && r.positions[i]) || `Card ${i + 1}`;
-    return `- ${pos}: "${c.name}" — "${c.message}" (${c.interpretation})`;
+    const pos = (spread && positionLabel(spread, i)) || `Card ${i + 1}`;
+    const meaning = spread && spreadMeanings(spread)[i];
+    return `- ${pos}${meaning ? ` (${meaning})` : ''}: "${cardText(c, 'name')}" — "${cardText(c, 'message')}" (${cardText(c, 'interpretation')})`;
   });
-  return `They just completed a "${r.spreadName}" reading:\n${lines.join('\n')}`;
+  return `They just completed a "${spread ? spreadText(spread, 'name') : ''}" reading:\n${lines.join('\n')}`;
 }
 
 async function callSage(userText) {
-  const leading = sageTurns.length === 0 ? SAGE_INSTRUCTIONS + '\n\n' + readingContext() + '\n\n' : '';
+  const leading = sageTurns.length === 0 ? sageInstructions() + '\n\n' + readingContext() + '\n\n' : '';
   const content = leading + userText;
 
   sageTurns.push({ role: 'user', content });
-  const bubble = pushSageLine('Thinking…');
+  const bubble = pushSageLine(t('sageThinking'));
   bubble.classList.add('thinking');
 
   try {
@@ -488,22 +579,149 @@ async function callSage(userText) {
       bubble.textContent = sageReplyFor(userText);
       syncTranscriptEntry(bubble);
     } else if (e && e.code === 'rate_limited') {
-      bubble.textContent = "Sage's getting a lot of visitors right now — try again in a moment.";
+      bubble.textContent = t('sageBusy');
       syncTranscriptEntry(bubble);
     } else if (e && e.code === 'cancelled') {
       removeTranscriptEntry(bubble);
       bubble.remove();
     } else {
-      bubble.textContent = (e && e.text) || "Sage lost their train of thought there — try asking again.";
+      bubble.textContent = t('sageLost');
       syncTranscriptEntry(bubble);
     }
   }
 }
 
+// ---------- reading strip + synthesis ----------
+// Finishing a reading opens Sage with a synthesis of the whole spread, written
+// by real Claude when it's reachable. It counts as ONE Sage conversation —
+// charged only once a real answer arrives, so a failed attempt or the offline
+// fallback never costs anything. The follow-up chat continues from it.
+
+function counterKey() { return state.unlocked ? 'sageUnlockLeft' : 'sageFreeLeft'; }
+function counterMax() { return state.unlocked ? 300 : 5; }
+
+function renderReadingStrip() {
+  const strip = document.getElementById('sage-reading');
+  const r = state.lastFinishedReading;
+  if (!strip || !r) return;
+  const spread = spreadById(r.spreadId);
+  strip.innerHTML = r.cardNumbers.map((n, i) => {
+    const c = cardByNumber(n);
+    const revealed = isRevealed(c);
+    const label = spread ? shortPosition(positionLabel(spread, i)) : '';
+    return `<div class="strip-card">
+      <img src="${c.img}" alt="${escapeHtml(cardText(c, 'name'))}"${revealed ? '' : ' style="filter:grayscale(0.9) brightness(0.4)"'}>
+      <div class="strip-pos">${escapeHtml(label)}</div>
+    </div>`;
+  }).join('');
+}
+
+function offlineSynthesis() {
+  const r = state.lastFinishedReading;
+  const spread = spreadById(r.spreadId);
+  const lines = r.cardNumbers.map((n, i) => {
+    const c = cardByNumber(n);
+    return t('synthesisOfflineCard', {
+      position: (spread && positionLabel(spread, i)) || '',
+      card: cardText(c, 'name'),
+      message: cardText(c, 'message'),
+    });
+  });
+  return [t('synthesisOfflineIntro'), ...lines, t('synthesisOfflineOutro')].join('\n\n');
+}
+
+function makeSynthesisCard() {
+  const log = document.getElementById('chat-log');
+  const card = document.createElement('div');
+  card.className = 'synthesis-card';
+  card.innerHTML = `<div class="synthesis-title"></div><div class="synthesis-body"></div><div class="synthesis-foot"></div>`;
+  card.querySelector('.synthesis-title').textContent = '🍄 ' + t('synthesisTitle');
+  log.appendChild(card);
+  return {
+    card,
+    body: card.querySelector('.synthesis-body'),
+    foot: card.querySelector('.synthesis-foot'),
+  };
+}
+
+async function runSynthesis() {
+  const r = state.lastFinishedReading;
+  if (!r || synthesis.running) return;
+  synthesis.started = true;
+  synthesis.running = true;
+
+  const log = document.getElementById('chat-log');
+  log.querySelectorAll('.synthesis-card').forEach(el => el.remove());
+  const ui = makeSynthesisCard();
+
+  await claudeReady;
+
+  const key = counterKey();
+  if (state[key] <= 0) {
+    ui.body.textContent = t('synthesisNoneLeft');
+    synthesis.running = false;
+    return;
+  }
+
+  if (!claudeSample) {
+    // no real Claude from here: a simple weave of the cards' own messages, free of charge
+    synthesis.text = offlineSynthesis();
+    ui.body.textContent = synthesis.text;
+    synthesis.running = false;
+    return;
+  }
+
+  ui.body.textContent = t('synthesisWorking');
+  ui.body.classList.add('thinking');
+  const turns = [{ role: 'user', content: sageInstructions() + '\n\n' + readingContext() + '\n\n' + SYNTHESIS_REQUEST }];
+  try {
+    const { text } = await claudeSample(turns, {
+      cache: false,
+      onText: ({ text: live }) => {
+        ui.body.classList.remove('thinking');
+        ui.body.textContent = live;
+        scrollChatToBottom();
+      },
+    });
+    ui.body.classList.remove('thinking');
+    ui.body.textContent = text;
+    synthesis.text = text;
+    // the follow-up chat picks up from here, with the synthesis in its memory
+    sageTurns = [turns[0], { role: 'assistant', content: text }];
+    state[key] = Math.max(0, state[key] - 1);
+    renderSageCounter();
+    ui.foot.textContent = t('synthesisUsedOne');
+  } catch (e) {
+    ui.body.classList.remove('thinking');
+    const permanent = ['not_granted', 'sampling_disabled', 'not_declared', 'capability_disabled', 'capability_removed'];
+    if (permanent.includes(e && e.code)) {
+      claudeSample = null;
+      synthesis.text = offlineSynthesis();
+      ui.body.textContent = synthesis.text;
+    } else if (e && e.code === 'cancelled') {
+      ui.card.remove();
+    } else {
+      ui.body.textContent = e && e.code === 'rate_limited' ? t('sageBusy') : t('sageLost');
+      const retry = document.createElement('button');
+      retry.className = 'link-btn';
+      retry.textContent = t('synthesisRetry');
+      retry.addEventListener('click', () => { synthesis.running = false; runSynthesis(); });
+      ui.foot.appendChild(retry);
+    }
+  } finally {
+    synthesis.running = false;
+  }
+}
+
 // ---------- save-to-journal ----------
-// A finished reading always lands on a blank Sage screen — no auto-generated
-// opener eating into the conversation limit — with the save offer visible
-// right away. Talking to Sage first is optional; saving isn't gated on it.
+// The save offer sits under the chat from the moment a reading is finished —
+// talking to Sage first is optional, and saving isn't gated on it.
+
+// the reading is over: forget it, and Glowcap's page goes back to open conversation
+function endSageSession() {
+  state.lastFinishedReading = null;
+  resetSageConversation();
+}
 
 function removeSageSaveSheet() {
   const slot = document.getElementById('sage-save-slot');
@@ -511,8 +729,9 @@ function removeSageSaveSheet() {
 }
 
 function defaultJournalTitle(r) {
-  const dateLabel = new Date().toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
-  return `${r.spreadName} — ${dateLabel}`;
+  const spread = spreadById(r.spreadId);
+  const dateLabel = new Date().toLocaleDateString(dateLocale(), { month: 'short', day: 'numeric' });
+  return `${spread ? spreadText(spread, 'name') : ''} — ${dateLabel}`;
 }
 
 function ensureSaveOfferVisible() {
@@ -523,12 +742,12 @@ function ensureSaveOfferVisible() {
   sheet.className = 'journal-save-sheet';
   sheet.id = 'sage-save-sheet';
   sheet.innerHTML = `
-    <div style="font-size:0.9rem;margin-bottom:4px">Save this reading to your journal?</div>
-    <input type="text" class="journal-title-input" placeholder="Title this entry" value="${defaultJournalTitle(r)}">
-    <textarea placeholder="Add your own note, if you want (optional)"></textarea>
+    <div style="font-size:0.9rem;margin-bottom:4px">${escapeHtml(t('saveTitle'))}</div>
+    <input type="text" class="journal-title-input" placeholder="${escapeHtml(t('saveTitlePlaceholder'))}" value="${escapeHtml(defaultJournalTitle(r))}">
+    <textarea placeholder="${escapeHtml(t('saveNotePlaceholder'))}"></textarea>
     <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
-      <button class="btn-primary" style="padding:10px 20px;font-size:0.9rem">Save to Journal</button>
-      <button class="link-btn" id="sage-save-dismiss">Not now</button>
+      <button class="btn-primary" style="padding:10px 20px;font-size:0.9rem">${escapeHtml(t('saveButton'))}</button>
+      <button class="link-btn" id="sage-save-dismiss">${escapeHtml(t('saveDismiss'))}</button>
     </div>
   `;
   // lives below the chat input, not inside the scrolling log — talking to
@@ -538,132 +757,62 @@ function ensureSaveOfferVisible() {
   sheet.querySelector('button.btn-primary').addEventListener('click', () => {
     const title = sheet.querySelector('.journal-title-input').value.trim() || defaultJournalTitle(r);
     const comment = sheet.querySelector('textarea').value.trim();
-    // saved as of right now — if they talked to Sage first, that whole
-    // conversation comes along with the save
+    const spread = spreadById(r.spreadId);
+    // saved as of right now — the synthesis, plus anything said to Sage after it
     saveJournalEntry({
       date: new Date().toISOString(),
       title,
-      spreadName: r.spreadName,
+      spreadId: r.spreadId,
+      spreadName: spread ? spread.name : '',
       cardNumbers: r.cardNumbers.slice(),
       comment,
+      synthesis: synthesis.text || '',
       transcript: chatTranscript.slice(),
     });
-    showToast('Saved to your journal.');
-    sheet.remove();
+    showToast(t('savedToast'));
+    endSageSession();
     switchScreen('screen-home');
   });
   sheet.querySelector('#sage-save-dismiss').addEventListener('click', () => {
-    sheet.remove();
+    endSageSession();
     switchScreen('screen-home');
   });
 }
 
 function renderSageScreen() {
-  const gate = document.getElementById('sage-gate');
-  const chatUI = document.getElementById('sage-chat-ui');
+  // Glowcap is always open for conversation; a finished reading just adds the
+  // synthesis and the save offer on top
+  document.getElementById('sage-gate').style.display = 'none';
+  document.getElementById('sage-chat-ui').style.display = 'flex';
+  renderSageCounter();
   if (!state.lastFinishedReading) {
-    gate.style.display = 'block';
-    chatUI.style.display = 'none';
+    // no reading in play: open talk, with a short greeting on an empty page
+    if (chatTranscript.length === 0) pushSageLine(t('sageOpen'));
     return;
   }
-  gate.style.display = 'none';
-  chatUI.style.display = 'flex';
-  renderSageCounter();
-  // blank slate every time — no auto-generated opener; Sage only speaks once
-  // they actually say something
+  renderReadingStrip();
   ensureSaveOfferVisible();
+  // first visit after finishing a reading: Glowcap opens with the synthesis
+  if (!synthesis.started) runSynthesis();
 }
 
 // Offline fallback — lightweight keyword reflection, used only when the
 // `sample` capability is unavailable. Not a real conversation; just keeps
-// the chat on-topic rather than silent or random.
-
-const SAGE_TOPICS = [
-  {
-    key: 'anxiety',
-    words: ['anxious', 'anxiety', 'stress', 'stressed', 'worried', 'worry', 'nervous', 'overwhelmed', 'panic', 'scared', 'afraid'],
-    lines: [
-      "That sounds like a lot to be carrying. Is it one thing in particular, or more of a general hum underneath everything?",
-      "Worry like that usually has a specific shape if you look at it directly. What's the actual worst case you're picturing?",
-      "Where do you feel that — more in your chest, your stomach, your head? Sometimes naming where it lives takes a bit of its power away.",
-    ],
-  },
-  {
-    key: 'work',
-    words: ['job', 'work', 'career', 'boss', 'coworker', 'co-worker', 'office', 'promotion', 'fired', 'quit', 'interview'],
-    lines: [
-      "Work has a way of taking up more room than it should. Is this about the job itself, or how it fits into the rest of your life right now?",
-      "What would it look like if this went well? Sometimes that's clearer than what you're afraid of.",
-      "Is this something you have real choice in, or does it mostly feel like something happening to you?",
-    ],
-  },
-  {
-    key: 'relationships',
-    words: ['relationship', 'partner', 'boyfriend', 'girlfriend', 'husband', 'wife', 'friend', 'family', 'mom', 'dad', 'breakup', 'love', 'marriage'],
-    lines: [
-      "People are the hardest weather to forecast. What do you actually want to happen here, if you set aside what you think you're supposed to want?",
-      "Is this a pattern you've seen before with them, or does this feel like something new?",
-      "What's the part of this you haven't said to them directly yet?",
-    ],
-  },
-  {
-    key: 'stuck',
-    words: ['decide', 'decision', 'choice', 'stuck', 'confused', 'unsure', "don't know", 'dont know', 'torn', 'undecided'],
-    lines: [
-      "You don't have to have it figured out yet. What would one small, reversible step look like, instead of the whole decision at once?",
-      "Sometimes being stuck means both options are actually fine, and the discomfort is just about choosing at all. Does that sound true here?",
-      "If a friend described this exact situation to you, what would you tell them?",
-    ],
-  },
-  {
-    key: 'sadness',
-    words: ['sad', 'grief', 'loss', 'lost', 'miss', 'lonely', 'alone', 'down', 'crying', 'cry'],
-    lines: [
-      "That's a heavy one to sit with. You don't need to make it smaller than it is.",
-      "Is this something recent, or something that's been with you a while?",
-      "I'm glad you said that out loud instead of carrying it quietly.",
-    ],
-  },
-  {
-    key: 'good',
-    words: ['excited', 'happy', 'hopeful', 'grateful', 'proud', 'great news', 'good news', 'relieved'],
-    lines: [
-      "That's a good feeling to sit in for a second before moving on to what's next.",
-      "What made that land, specifically? It's worth noticing.",
-      "Good — hold onto that one.",
-    ],
-  },
-  {
-    key: 'greeting',
-    words: ['hi', 'hello', 'hey', "what's up", 'whats up'],
-    lines: [
-      "Hello. What's on your mind?",
-      "Hey there. What brought you here today?",
-    ],
-  },
-  {
-    key: 'thanks',
-    words: ['thank', 'thanks', 'appreciate'],
-    lines: [
-      "Of course. That's what I'm here for.",
-      "Anytime. Was there more you wanted to sit with, or does that feel complete?",
-    ],
-  },
-];
-
-const SAGE_FALLBACK = [
-  "Say more about that — what's underneath it?",
-  "That's worth sitting with. Does it feel more like a question or a decision?",
-  "I hear that. What's the part of this you haven't said out loud yet?",
-  "What does your gut say, before you start reasoning it out?",
-];
+// the chat on-topic rather than silent or random. Uses the active
+// language's keywords and lines when its pack has them.
 
 let lastSageReply = '';
 
+function sageOfflineData() {
+  const p = pack();
+  return (p && p.sage && p.sage.topics && p.sage.fallback) ? p.sage : MUSHLING_SAGE_EN;
+}
+
 function sageReplyFor(text) {
+  const data = sageOfflineData();
   const lower = text.toLowerCase();
-  const topic = SAGE_TOPICS.find(t => t.words.some(w => lower.includes(w)));
-  const pool = topic ? topic.lines : SAGE_FALLBACK;
+  const topic = data.topics.find(tp => tp.words.some(w => lower.includes(w)));
+  const pool = topic ? topic.lines : data.fallback;
   const choices = pool.filter(l => l !== lastSageReply);
   const reply = (choices.length ? choices : pool)[Math.floor(Math.random() * (choices.length ? choices.length : pool.length))];
   lastSageReply = reply;
@@ -672,11 +821,8 @@ function sageReplyFor(text) {
 
 function renderSageCounter() {
   const el = document.getElementById('sage-counter');
-  if (state.unlocked) {
-    el.textContent = `${state.sageUnlockLeft} of 300 conversations left`;
-  } else {
-    el.textContent = `${state.sageFreeLeft} of 5 free conversations left`;
-  }
+  const vars = { left: state[counterKey()], max: counterMax() };
+  el.textContent = state.unlocked ? t('counterPaid', vars) : t('counterFree', vars);
 }
 
 function scrollChatToBottom() {
@@ -693,8 +839,7 @@ function pushBubble(text, who) {
   scrollChatToBottom();
   // record a clean, display-only copy of the conversation as it happens —
   // this (not sageTurns, which carries hidden system-prompt text on its
-  // first entry) is what gets offered up when someone wants to save the
-  // whole conversation, not just Sage's opening synthesis
+  // first entry) is what gets saved with the journal entry
   const entry = { who, text };
   chatTranscript.push(entry);
   b._transcriptEntry = entry;
@@ -730,20 +875,20 @@ function sendChat() {
   const text = input.value.trim();
   if (!text) return;
 
-  const counterKey = state.unlocked ? 'sageUnlockLeft' : 'sageFreeLeft';
-  if (state[counterKey] <= 0) {
-    pushSageLine("That's your last free chat with Sage for now — want to keep talking? Subscribe for 300 messages a month.");
+  const key = counterKey();
+  if (state[key] <= 0) {
+    pushSageLine(state.unlocked ? t('sageLimitPaid') : t('sageLimitFree'));
     return;
   }
 
   pushBubble(text, 'user');
   input.value = '';
-  state[counterKey]--;
+  state[key]--;
   renderSageCounter();
 
   const afterReply = () => {
-    if (state[counterKey] === 0) {
-      pushSageLine("That's your last free chat with Sage for now — want to keep talking? Subscribe for 300 messages a month.");
+    if (state[key] === 0) {
+      pushSageLine(state.unlocked ? t('sageLimitPaid') : t('sageLimitFree'));
     }
   };
 
@@ -759,30 +904,75 @@ function sendChat() {
 
 // ---------- settings ----------
 
+function renderLanguagePicker() {
+  const wrap = document.getElementById('lang-pills');
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  readyLanguages().forEach(L => {
+    const btn = document.createElement('button');
+    btn.className = 'lang-pill' + (L.code === state.lang ? ' active' : '');
+    btn.textContent = L.name;
+    btn.lang = L.code;
+    btn.addEventListener('click', () => setLanguage(L.code));
+    wrap.appendChild(btn);
+  });
+}
+
+// re-draws whichever screen is showing, so a language or unlock change shows up immediately
+function rerenderActiveScreen() {
+  const active = document.querySelector('.screen.active');
+  if (!active) return;
+  if (active.id === 'screen-reading') renderSpreadList();
+  if (active.id === 'screen-gallery') renderGallery();
+  if (active.id === 'screen-journal') renderJournal();
+  if (active.id === 'screen-draw-result' && state.reading) renderDrawResult();
+  if (active.id === 'screen-story' && storyCard) {
+    const page = storyIndex;
+    openStory(storyCard);
+    storyIndex = Math.min(page, storyPages.length - 1);
+    renderStoryPage();
+  }
+  if (active.id === 'screen-sage' && state.lastFinishedReading) { renderReadingStrip(); renderSageCounter(); }
+  if (active.id === 'screen-match' && typeof refreshMatchLabels === 'function') refreshMatchLabels();
+}
+
+function applyLanguage() {
+  document.documentElement.lang = state.lang;
+  document.documentElement.dir = langInfo(state.lang).dir || 'ltr';
+  applyStaticText();
+  renderLanguagePicker();
+  syncUnlockUI();
+  const chatInput = document.getElementById('chat-input');
+  if (chatInput) chatInput.placeholder = t('chatPlaceholder');
+}
+
+async function setLanguage(code) {
+  if (code === state.lang) return;
+  const previous = state.lang;
+  showToast(t('languageLoading'));
+  try {
+    await loadPack(code);
+  } catch (e) {
+    showToast(t('languageFailed', { language: langInfo(previous).name }));
+    return;
+  }
+  state.lang = code;
+  try { localStorage.setItem(LANG_KEY, code); } catch (e) { /* not remembered, still works */ }
+  applyLanguage();
+  showToast(t('languageChanged', { language: langInfo(code).name }));
+}
+
 function syncUnlockUI() {
   // the toggle previews the LOCKED/free-tier view, so it reads "on" when we're
   // showing that restricted state — i.e. the inverse of state.unlocked
   document.getElementById('demo-toggle').classList.toggle('on', !state.unlocked);
-  document.getElementById('btn-unlock-deck').textContent = state.unlocked ? 'Unlocked ✓' : 'Unlock for $5';
+  document.getElementById('btn-unlock-deck').textContent = state.unlocked ? t('unlockedButton') : t('unlockButton');
   document.getElementById('btn-unlock-deck').disabled = state.unlocked;
 
-  const title = document.getElementById('unlock-settings-title');
-  const copy = document.getElementById('unlock-settings-copy');
-  if (state.unlocked) {
-    title.textContent = 'The whole forest is yours';
-    copy.textContent = 'All 49 Mushlings, every spread, every story, every game — unlocked.';
-  } else {
-    title.textContent = 'Meet the rest of the forest';
-    copy.textContent = "You've met 13 Mushlings so far. There are 36 more waiting — plus every spread, every story, every game. Unlock the whole deck once, keep it forever.";
-  }
+  document.getElementById('unlock-settings-title').textContent = state.unlocked ? t('unlockTitleUnlocked') : t('unlockTitleLocked');
+  document.getElementById('unlock-settings-copy').textContent = state.unlocked ? t('unlockCopyUnlocked') : t('unlockCopyLocked');
 
-  // re-render whatever screen is currently showing so locked/unlocked state is reflected immediately
-  const active = document.querySelector('.screen.active');
-  if (active) {
-    if (active.id === 'screen-reading') renderSpreadList();
-    if (active.id === 'screen-gallery') renderGallery();
-    if (active.id === 'screen-draw-result' && state.reading) renderDrawResult();
-  }
+  rerenderActiveScreen();
 }
 
 document.getElementById('demo-toggle').addEventListener('click', () => {
@@ -795,18 +985,18 @@ document.getElementById('demo-toggle').addEventListener('click', () => {
     renderSageCounter();
   }
   syncUnlockUI();
-  showToast(state.unlocked ? 'Demo: back to the full unlocked app' : 'Demo: now previewing the free-tier (locked) view — 5 of 5 Sage conversations');
+  showToast(state.unlocked ? t('toastDemoUnlocked') : t('toastDemoLocked'));
 });
 
 document.getElementById('btn-unlock-deck').addEventListener('click', () => {
   state.unlocked = true;
   syncUnlockUI();
-  showToast('Unlocked! All 49 Mushlings are yours.');
+  showToast(t('toastUnlocked'));
 });
 
 document.getElementById('btn-subscribe').addEventListener('click', () => {
   state.sageUnlockLeft = 300; // prototype stand-in for the real monthly cap
-  showToast('Subscribed (demo) — 300 Sage conversations this month.');
+  showToast(t('toastSubscribed'));
 });
 
 // ---------- mini-games hub ----------
@@ -816,10 +1006,20 @@ document.getElementById('btn-subscribe').addEventListener('click', () => {
 // not as "not built yet". Give it an explicit answer instead of silence.
 document.querySelectorAll('.game-tile.disabled').forEach(el => {
   el.addEventListener('click', () => {
-    showToast("Not built in this prototype — only Mushling Match is playable so far.");
+    showToast(t('gameNotBuilt'));
   });
 });
 
 // ---------- boot ----------
 
-syncUnlockUI();
+(async function boot() {
+  let wanted = 'en';
+  try { wanted = localStorage.getItem(LANG_KEY) || ''; } catch (e) { wanted = ''; }
+  if (!wanted) {
+    const nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
+    wanted = readyLanguages().some(l => l.code === nav) ? nav : 'en';
+  }
+  if (!readyLanguages().some(l => l.code === wanted)) wanted = 'en';
+  try { await loadPack(wanted); state.lang = wanted; } catch (e) { state.lang = 'en'; }
+  applyLanguage();
+})();

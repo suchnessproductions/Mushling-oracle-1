@@ -1,0 +1,53 @@
+# Italian (it) — name renderings
+
+## Fixed terms
+- The Mushling Oracle → L'Oracolo dei Mushling
+- Mushling / Mushlings → il Mushling / i Mushling (invariable plural, like most Italian loanwords). Female characters: una Mushling / la Mushling. Gender-neutral characters ("they"): phrasing avoids gendered agreement.
+- Sage (guide and card 4) → Sage (guide's gender kept unmarked in Italian, as in English "their")
+- spread → stesa (standard Italian tarot term); reading → lettura; deck → mazzo; draw → pescare
+- forest floor → sottobosco
+- dear reader → caro lettore / cara lettrice avoided; use "tu che leggi" or direct address to keep the reader's gender unmarked
+- Reader's gender: never marked (rephrase away gendered adjectives/participles for "tu")
+- Quotes: «caporali»
+
+## Personal names (all kept as written — Latin-script rule; no wordplay translations, so card 49's roll call stays consistent)
+- Pippin (1, m)
+- Berry (2)
+- Fern (3, m) — sits by a "felce"; name kept
+- Sage (4, m)
+- Mossy (5, m)
+- Milo (6, m)
+- Barnaby (7, 12, 21, m); his snail friend Barnacle (7)
+- Lumina (8, f); firefly Spark (8, m)
+- Clover (9, 17, 24, f)
+- Bramble (10, 23, m)
+- Pip (11, 25, m)
+- Willow (13, f)
+- Marigold (14, f)
+- Maestro Finch (15) — "Maestro" already Italian, kept
+- Rowan (16, 30, m)
+- Elder Moss → l'Anziano Moss (19) — title translated, name kept
+- Hazel (20)
+- Pippa (22, f)
+- Zephyr (26, m)
+- Flint (27, m)
+- Lyra (28, f)
+- Gideon (29, m)
+- Wren (31, f)
+- Juniper (32, f)
+- Sable (33, they)
+- Sienna (34, f)
+- Ash (35)
+- Fennel (36, f)
+- Robin (37)
+- Coral (38, f)
+- Wisp (39, they)
+- Sorrel (40)
+- Cedar (41, m)
+- Alder (42)
+- Sparrow (43)
+- Opal (44)
+- Fig (45, they)
+- Thistle (46)
+- Heath (47)
+- Marlowe (48)

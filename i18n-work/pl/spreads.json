@@ -1,0 +1,150 @@
+{
+  "single-spore": {
+    "name": "Jeden zarodnik",
+    "description": "Jedna karta na dzień — to, na co dzisiejszy dzień prosi cię zwrócić uwagę.",
+    "longDescription": "Najprostszy rozkład w talii. Nie trzeba żadnego pytania: wyciągnij jedną kartę i pozwól jej nadać ton całemu dniu. Dobry na poranek, na chwilę przerwy między zadaniami albo na każdy moment, w którym bardziej potrzebujesz towarzystwa niż odpowiedzi.",
+    "positions": [
+      "Mushling na dziś"
+    ],
+    "positionMeanings": [
+      "Jedna rzecz, którą warto dziś mieć przy sobie — nastrój do zauważenia, przypomnienie, na którym można się oprzeć, albo mały towarzysz na nadchodzące godziny."
+    ]
+  },
+  "two-paths": {
+    "name": "Dwie ścieżki",
+    "description": "Gdy stoisz między dwiema prawdziwymi możliwościami — szczere spojrzenie na każdą z dróg, zanim wybierzesz.",
+    "longDescription": "Na chwile, gdy stoisz między dwiema prawdziwymi możliwościami. Zanim wylosujesz karty, zdecyduj, który wybór będzie lewą odnogą drogi, a który prawą. Karty nie wskażą zwycięzcy; pokażą, czego naprawdę wymagałaby od ciebie każda z dróg i co by ci w zamian dała — tak, żeby łatwiej było poczuć, co wybrać.",
+    "positions": [
+      "Lewa odnoga · Ten wybór",
+      "Prawa odnoga · Tamten wybór"
+    ],
+    "positionMeanings": [
+      "Pomyśl o pierwszej możliwości: czego naprawdę wymagałaby od ciebie ta droga i co po cichu by ci w zamian dała.",
+      "Pomyśl o drugiej możliwości: to samo szczere spojrzenie, tylko na drugą drogę. Czytaj obie karty obok siebie, a nie jak zawody."
+    ]
+  },
+  "original-draw": {
+    "name": "Pierwotny rozkład",
+    "description": "Pierwotny odczyt Mushlingów — co było, co jest i co prowadzi cię dalej.",
+    "longDescription": "Pierwotny odczyt Mushlingów: trzy karty ułożone w linię biegnącą przez czas. Liście z zeszłej pory roku stają się glebą obecnej, mech pokazuje, co rośnie teraz, a świetlik oświetla drogę w ciemności. Sięgnij po niego, gdy nic konkretnego nie skłoniło cię do losowania, a po prostu chcesz wiedzieć, gdzie stoisz.",
+    "positions": [
+      "Opadłe liście · Co było",
+      "Mech · Co jest",
+      "Świetlik · Co cię prowadzi"
+    ],
+    "positionMeanings": [
+      "To, co było wcześniej i wciąż cię kształtuje — stare liście, które stały się gruntem, na którym stoisz.",
+      "Jak sprawy naprawdę wyglądają w tej chwili — bez historii, którą sobie o nich opowiadasz.",
+      "Małe światło, za którym warto stąd iść — przeczucie, wartość albo ciche przyciąganie, któremu możesz zaufać."
+    ]
+  },
+  "seed-to-bloom": {
+    "name": "Od nasionka do kwiatu",
+    "description": "Dla celu, nawyku albo nadziei, o które dbasz — czym są, czego potrzebują i jak już rosną.",
+    "longDescription": "Rozkład o pielęgnowaniu — dla celu, nawyku, projektu albo nadziei, którym cierpliwie pomagasz rosnąć. Nie szuka tego, co jest nie tak; pyta, czym ta rzecz naprawdę jest, co pomaga jej rozkwitać, gdzie już działa i czym może się stać w swojej porze. Dobry na początku czegoś albo w połowie drogi, gdy umknęło ci już, po co to wszystko się zaczęło.",
+    "positions": [
+      "Nasionko · Co sadzisz",
+      "Gleba · Czego to potrzebuje",
+      "Kiełek · Co już rośnie",
+      "Kwiat · Czym to może się stać"
+    ],
+    "positionMeanings": [
+      "Czym to jest w samym sercu — intencja ukryta pod listą zadań i pod presją.",
+      "Warunki, których to potrzebuje, by rozkwitnąć: codzienna troska, odpowiedni rodzaj uwagi, miejsce na wzrost.",
+      "Dowód, że to już działa — postęp, który mógł ci po prostu umknąć.",
+      "Czym to może się stać, jeśli dalej będziesz o to dbać. To nie obietnica; to szczery obraz jego pory."
+    ]
+  },
+  "the-clearing": {
+    "name": "Polana",
+    "description": "Na zakończenia i czasy pomiędzy — co odpada, co zostaje z tobą i na co nowe światło robi miejsce.",
+    "longDescription": "Kiedy pada stare drzewo, słońce po raz pierwszy od lat sięga leśnej ściółki, a rzeczy zaczynają rosnąć tam, gdzie wcześniej nic nie mogło. To rozkład na zakończenia, pożegnania i pory pomiędzy: pracę, dom, związek, dawną wersję ciebie. Oddaje cześć temu, co się kończy, i pokazuje, czemu służy otwarta przestrzeń.",
+    "positions": [
+      "Powalone drzewo · Co się kończy",
+      "Słoje · Co ci to dało",
+      "Splątane korzenie · Czego wciąż się trzymasz",
+      "Wpadające światło · Na co przestrzeń robi miejsce",
+      "Pierwsza zieleń · Co wyrośnie dalej"
+    ],
+    "positionMeanings": [
+      "To, co upada albo już upadło — nawet jeśli wciąż to podpierasz.",
+      "To, co dał ci ten rozdział i co możesz zatrzymać, noszone w tobie jak słoje drzewa.",
+      "Część, której jeszcze nie puszczasz, i to, ile kosztuje cię trzymanie się jej.",
+      "Na co otwarta przestrzeń robi miejsce — światło, które wcześniej nie mogło do ciebie dotrzeć.",
+      "Pierwsza mała rzecz, która chce tu teraz wyrosnąć."
+    ]
+  },
+  "mycelial-web": {
+    "name": "Sieć grzybni",
+    "description": "Odczyt dla jednej więzi — z partnerem, przyjacielem, rodziną, kimś z pracy albo całą społecznością.",
+    "longDescription": "Mushlingi nigdy nie rosną w pojedynkę — pod leśną ściółką sieć grzybni łączy każdy kapelusz z każdym innym i przekazuje pożywienie tam i z powrotem. Ten rozkład z sześciu kart przygląda się jednej więzi w twoim życiu: co każde z was wnosi, co naprawdę was łączy, gdzie coś się plącze, co krąży między wami i co pomogłoby tej więzi rozkwitnąć. Losując, myśl o jednej osobie albo o jednej grupie.",
+    "positions": [
+      "Twój kapelusz · Co wnosisz",
+      "Drugi kapelusz · Co wnosi druga strona",
+      "Nić · Co was łączy",
+      "Supeł · Gdzie się zaczepia",
+      "Przepływ · Co krąży między wami",
+      "Pokarm · Co by ją odżywiło"
+    ],
+    "positionMeanings": [
+      "Co wnosisz do tej więzi w tej chwili — swój nastrój, swoje nadzieje, swoją czujność.",
+      "Co zdaje się wnosić druga strona — na tyle, na ile widać to z miejsca, w którym stoisz.",
+      "Prawdziwa rzecz, która was łączy, ukryta pod przyzwyczajeniem i wspólną historią.",
+      "Miejsce, w którym coś się zaczepia albo plącze — tarcie, któremu warto przyjrzeć się łagodnie.",
+      "Co jest dawane i przyjmowane między wami — i czy płynie w obie strony.",
+      "Co odżywiłoby tę więź od teraz — jedna rzecz, którą możesz ofiarować albo o którą możesz poprosić."
+    ]
+  },
+  "traditional-draw": {
+    "name": "Tradycyjny rozkład",
+    "description": "Klasyczny odczyt z siedmiu kart dla jednego ważnego pytania — wszystkie siły wokół niego, od samego serca na zewnątrz.",
+    "longDescription": "Pełny, klasyczny odczyt tej talii — dla jednego konkretnego pytania, które chcesz głęboko zrozumieć. Zaczyna od sedna sprawy i idzie na zewnątrz: co staje jej w poprzek, co zostało niewypowiedziane, na co masz nadzieję, jak stoisz, co jest poza twoją kontrolą i którędy wiedzie droga. Zanim zaczniesz, wypowiedz swoje pytanie na głos.",
+    "positions": [
+      "Serce drzewa · O co naprawdę chodzi",
+      "Jeżyny · Co staje w poprzek",
+      "Pod liśćmi · Co nie zostało powiedziane",
+      "Korony drzew · Na co masz nadzieję",
+      "Grunt pod stopami · Jak się z tym mierzysz",
+      "Pogoda · Co nie zależy od ciebie",
+      "Przejście · Gdzie to skręca"
+    ],
+    "positionMeanings": [
+      "Sedno sprawy — o co w tym pytaniu naprawdę chodzi, kiedy odsunąć cały szum.",
+      "Wyzwanie, które właśnie przecina ci drogę — i które wcale nie musi być tym, na które zrzucasz winę.",
+      "Coś niewypowiedzianego albo niezauważonego — uczucie, fakt czy lęk, który kryje się pod warstwą opadłych liści.",
+      "Na co po cichu liczysz, łącznie z nadziejami, do których jeszcze się nie przyznajesz.",
+      "Jak mierzysz się z tym teraz — postawa, którą przyjmujesz, pewna albo chwiejna.",
+      "To, czego nie da się kontrolować — inni ludzie, czas, okoliczności: pogoda, w której idziesz.",
+      "Kolejny zakręt ścieżki — dokąd to prowadzi, jeśli wyjdziesz temu naprzeciw z tym, co teraz już wiesz."
+    ]
+  },
+  "whole-forest": {
+    "name": "Cały las",
+    "description": "Wędrówka z dziesięcioma kartami przez każdą część twojego życia, na wielkie chwile — urodziny, nowy rok, punkt zwrotny.",
+    "longDescription": "Największy rozkład w talii, na największe chwile — urodziny, nowy rok, początek nowego rozdziału. Zamiast jednego pytania przemierza cały las twojego życia: dom, pracę, miłość, ciało, umysł, zasoby, zabawę i ducha, a ramę tworzą dla nich motyw tej pory i latarnia, którą zabierzesz ze sobą dalej. Nie spiesz się; to sporo jak na jeden raz.",
+    "positions": [
+      "Niebo · Motyw tego rozdziału",
+      "Dziupla · Dom i odpoczynek",
+      "Mrowisko · Praca i cel",
+      "Kępka · Miłość i bliscy",
+      "Trzonek · Ciało i energia",
+      "Wietrzyk · Umysł i nastrój",
+      "Zapas żołędzi · Zasoby i bezpieczeństwo",
+      "Kałuża · Zabawa i radość",
+      "Stary dąb · Duch i zachwyt",
+      "Latarnia · Co zabrać ze sobą"
+    ],
+    "positionMeanings": [
+      "Ogólny kształt tego rozdziału — niebo, które rozpościera się nad wszystkim innym.",
+      "Twoje życie domowe i to, jak dobrze odpoczywasz.",
+      "Twoja praca i to, czy wciąż czujesz, że jest naprawdę twoja.",
+      "Ludzie, których kochasz i do których należysz — partnerzy, rodzina, rodzina z wyboru, przyjaciele.",
+      "Twoje ciało i energia: jak się naprawdę masz, a nie jak zaciskasz zęby i przesz dalej.",
+      "Twoje myśli i nastroje — to, co ostatnio krąży ci po głowie.",
+      "Pieniądze, czas i bezpieczeństwo — co masz odłożone i czego wydaje się za mało.",
+      "Frajda, zabawa i lekkość — rzeczy, które robisz ot tak, po prostu.",
+      "Twoje poczucie zachwytu, sensu i przynależności do czegoś większego.",
+      "Jedna rzecz, którą zabierzesz ze sobą w ten nowy rozdział."
+    ]
+  }
+}

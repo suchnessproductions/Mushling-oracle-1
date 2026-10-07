@@ -1,0 +1,150 @@
+{
+  "single-spore": {
+    "name": "Einzelne Spore",
+    "description": "Eine Karte für den Tag — was der heutige Tag dich bemerken lässt.",
+    "longDescription": "Das einfachste Legemuster im Deck. Keine Frage nötig: Ziehe eine Karte und lass sie den Ton für den Tag angeben. Gut für den Morgen, eine Pause zwischen Aufgaben oder jeden Moment, in dem du eher Gesellschaft als Antworten suchst.",
+    "positions": [
+      "Heutiges Mushling"
+    ],
+    "positionMeanings": [
+      "Die eine Sache, die es wert ist, heute mitgenommen zu werden — eine Stimmung zum Bemerken, eine Erinnerung zum Anlehnen oder ein kleiner Begleiter für die kommenden Stunden."
+    ]
+  },
+  "two-paths": {
+    "name": "Zwei Pfade",
+    "description": "Wenn du zwischen zwei echten Optionen stehst — ein ehrlicher Blick auf jeden Weg, bevor du wählst.",
+    "longDescription": "Wenn du zwischen zwei echten Optionen stehst. Bevor du ziehst, entscheide, welche Wahl die linke Abzweigung und welche die rechte ist. Die Karten wählen keinen Gewinner; sie zeigen, was das Beschreiten jedes Weges dir tatsächlich abverlangen und zurückgeben würde, damit die Entscheidung leichter spürbar wird.",
+    "positions": [
+      "Linke Abzweigung · Diese Wahl",
+      "Rechte Abzweigung · Jene Wahl"
+    ],
+    "positionMeanings": [
+      "Halte deine erste Option im Sinn: Was das Beschreiten dieses Weges dir wirklich abverlangen würde und was es dir still zurückgeben würde.",
+      "Halte deine zweite Option im Sinn: Derselbe ehrliche Blick auf den anderen Weg. Lies die zwei Karten nebeneinander, nicht als Wettbewerb."
+    ]
+  },
+  "original-draw": {
+    "name": "Der Waldpfad",
+    "description": "Die ursprüngliche Mushling-Lesung — was war, was ist und was dich weiterleitet.",
+    "longDescription": "Die ursprüngliche Mushling-Lesung: Eine Drei-Karten-Linie durch die Zeit. Die Blätter der letzten Jahreszeit werden zur Erde dieser Jahreszeit, das Moos zeigt, was jetzt wächst, und ein Glühwürmchen erhellt den Weg durch die Dunkelheit. Greife danach, wenn kein bestimmter Anlass zur Ziehung führt und du einfach wissen willst, wo du stehst.",
+    "positions": [
+      "Die gefallenen Blätter · Was war",
+      "Das Moos · Was ist",
+      "Das Glühwürmchen · Dein Licht"
+    ],
+    "positionMeanings": [
+      "Was zuvor kam und dich noch immer prägt — die alten Blätter, die zum Boden wurden, auf dem du stehst.",
+      "Wo die Dinge gerade ehrlich stehen, ohne die Geschichte, die du dir darüber erzählt hast.",
+      "Das kleine Licht, dem es sich von hier aus zu folgen lohnt — ein Instinkt, ein Wert oder ein leises Ziehen, dem du vertrauen kannst."
+    ]
+  },
+  "seed-to-bloom": {
+    "name": "Vom Samen zur Blüte",
+    "description": "Für ein Ziel, eine Gewohnheit oder eine Hoffnung, die du pflegst — was es ist, was es braucht und wie es bereits wächst.",
+    "longDescription": "Ein Pflege-Legemuster für ein Ziel, eine Gewohnheit, ein Projekt oder eine Hoffnung, die du aufziehst. Es sucht nicht nach Fehlern; es fragt, was diese Sache wirklich ist, was ihr beim Gedeihen hilft, wo sie bereits wirkt und was sie in ihrer eigenen Jahreszeit werden könnte. Gut am Anfang von etwas oder mittendrin, wenn du vergessen hast, warum du angefangen hast.",
+    "positions": [
+      "Der Samen · Was du pflanzt",
+      "Die Erde · Was es braucht",
+      "Der Keim · Was bereits wächst",
+      "Die Blüte · Was daraus wird"
+    ],
+    "positionMeanings": [
+      "Was dies in seinem Kern wirklich ist — die Absicht unter der To-do-Liste und dem Druck.",
+      "Die Bedingungen, die es zum Gedeihen braucht: Die tägliche Pflege, die Art der Aufmerkstsamkeit, der Raum zum Wachsen.",
+      "Der Beweis, dass es bereits wirkt — Fortschritt, an dem du vielleicht direkt vorbeigegangen bist.",
+      "Was daraus werden könnte, wenn du es weiter pflegst. Kein Versprechen; ein ehrliches Bild dessen, was möglich ist."
+    ]
+  },
+  "the-clearing": {
+    "name": "Die Lichtung",
+    "description": "Für Enden und Übergangszeiten — was abfällt, was du behältst und wofür Raum entsteht.",
+    "longDescription": "Wenn ein alter Baum fällt, erreicht das Sonnenlicht zum ersten Mal seit Jahrzehnten den Waldboden. Dieses Legemuster ist für Abschiede, Übergänge und Zeiten, in denen sich etwas zu Ende neigt. Es hilft dir zu sehen, was wirklich geht, was dieses Kapitel dir gegeben hat und was der neue freie Raum wachsen lassen möchte.",
+    "positions": [
+      "Der gefallene Baum · Was endet",
+      "Die Jahresringe · Was es dir gab",
+      "Die Wurzeln · Was du hältst",
+      "Das Licht · Was Raum bekommt",
+      "Das erste Grün · Was folgt"
+    ],
+    "positionMeanings": [
+      "Was zu Ende geht oder bereits geendet hat — selbst wenn du es immer noch stützt.",
+      "Was dieses Kapitel dir gegeben hat und was du behalten darfst, in dir getragen wie die Jahresringe eines Baumes.",
+      "Der Teil, den du noch nicht losgelassen hast, und was dich das Festhalten kostet.",
+      "Wofür der offene Raum Platz macht — Licht, das dich vorher nicht erreichen konnte.",
+      "Die erste kleine Sache, die hier als Nächstes wachsen möchte."
+    ]
+  },
+  "mycelial-web": {
+    "name": "Das Myzel-Netzwerk",
+    "description": "Eine Lesung für eine Verbindung — Partner, Freund, Familie, Kollege oder eine ganze Gruppe.",
+    "longDescription": "Mushlings wachsen nie allein — unter dem Waldboden verbindet ein Myzel-Netzwerk jeden Pilz mit allen anderen. Dieses Legemuster betrachtet eine bestimmte Beziehung in deinem Leben. Es sucht nicht nach Schuldigen; es kartiert das unsichtbare Gewebe zwischen euch beiden.",
+    "positions": [
+      "Dein Hut · Was du einbringst",
+      "Ihr Hut · Was sie einbringen",
+      "Der Faden · Was euch verbindet",
+      "Der Knoten · Wo es hakt",
+      "Der Fluss · Was fließt",
+      "Die Nahrung · Was nährt"
+    ],
+    "positionMeanings": [
+      "Was du gerade in diese Verbindung einbringst — deine Stimmung, deine Hoffnungen, deine blinden Flecken.",
+      "Was die andere Person einzubringen scheint, so gut du es von deinem Standpunkt aus sehen kannst.",
+      "Das echte Band, das euch verbindet, unterhalb von Gewohnheit und Geschichte.",
+      "Wo es hakt oder sich verfängt — die Reibung, auf die man behutsam blicken sollte.",
+      "Was zwischen euch gegeben und empfangen wird und ob es in beide Richtungen fließt.",
+      "Was diese Verbindung von hier aus nähren würde — eine Sache, die du anbieten oder um die du bitten könntest."
+    ]
+  },
+  "traditional-draw": {
+    "name": "Das Kernholz",
+    "description": "Die klassische Sieben-Karten-Lesung für eine wichtige Frage — alle Kräfte um sie herum.",
+    "longDescription": "Die große klassische Lesung des Decks für eine spezifische Frage, die du verstehen möchtest. Das Sieben-Karten-Muster beleuchtet den Kern des Themas, die Hindernisse auf deinem Weg, Ungesagtes unter der Oberfläche, deine Hoffnungen, deine eigene Haltung, äußere Einflüsse und wohin der Weg führt.",
+    "positions": [
+      "Das Kernholz · Worum es geht",
+      "Das Gestrüpp · Was quer liegt",
+      "Unter dem Laub · Ungesagtes",
+      "Die Kronen · Worauf du hoffst",
+      "Dein Stand · Wie du begegnest",
+      "Das Wetter · Unverfügbares",
+      "Der Weg hindurch · Die Wende"
+    ],
+    "positionMeanings": [
+      "Der Kern der Sache — worum es bei dieser Frage wirklich geht, sobald der Lärm nachlässt.",
+      "Die Herausforderung, die deinen Weg gerade kreuzt, und die vielleicht nicht diejenige ist, die am lautesten Aufmerksamkeit fordert.",
+      "Etwas Ungesagtes oder Unbemerktes — ein Gefühl, eine Tatsache oder eine Angst unter den Blättern.",
+      "Worauf du still hoffst, einschließlich der Hoffnungen, die du dir selbst noch nicht eingestanden hast.",
+      "Wie du dem gerade begegnest — die Haltung, die du eingenommen hast, fest oder ins Rutschen geraten.",
+      "Was nicht in deiner Macht liegt — andere Menschen, Timing, Umstände: Das Wetter, das du durchschreitest.",
+      "Die nächste Wendung auf dem Pfad — wohin dies führt, wenn du dem mit dem begegnest, was du nun weißt."
+    ]
+  },
+  "whole-forest": {
+    "name": "Der gesamte Wald",
+    "description": "Ein Zehn-Karten-Spaziergang durch jeden Bereich deines Lebens für große Momente — Geburtstag, Neujahr, Übergänge.",
+    "longDescription": "Das größte Legemuster im Deck für die größten Momente — einen Geburtstag, ein neues Jahr, eine große Veränderung. Zehn Karten bilden ein vollständiges Porträt deines Lebens: Dein Zuhause, deine Arbeit, deine Beziehungen, dein Körper, dein Geist, deine Sicherheit, deine Freude, dein Staunen und worauf du dich konzentrieren solltest.",
+    "positions": [
+      "Der Himmel · Deine Zeit",
+      "Die Höhle · Zuhause & Ruhe",
+      "Der Ameisenhügel · Arbeit",
+      "Die Gruppe · Liebe & Bindung",
+      "Der Stängel · Körper & Energie",
+      "Die Brise · Geist & Stimmung",
+      "Der Eichelvorrat · Ressourcen",
+      "Die Pfütze · Spiel & Freude",
+      "Die alte Eiche · Geist & Staunen",
+      "Die Laterne · Was du mitträgst"
+    ],
+    "positionMeanings": [
+      "Die Grundstimmung der Zeit, in der du gerade stehst — der Himmel, der über allem anderen hängt.",
+      "Dein häusliches Leben und wie gut du dich ausruhst.",
+      "Deine Arbeit und ob sie sich noch nach deiner eigenen anfühlt.",
+      "Die Menschen, die du liebst und zu denen du gehörst — Partner, Familie, gewählte Familie, Freunde.",
+      "Dein Körper und deine Energie: Wie es dir wirklich geht, nicht wie du dich durchkämpfst.",
+      "Deine Gedanken und Stimmungen — was in deinem Kopf kreist.",
+      "Geld, Zeit und Sicherheit — was du angesammelt hast und was sich knapp anfühlt.",
+      "Spaß, Spiel und Leichtigkeit — die Dinge, die du einfach so tust.",
+      "Dein Gefühl für Staunen, Sinn und die Zugehörigkeit zu etwas Größerem.",
+      "Die eine Sache, die du mit in das nehmen solltest, was als Nächstes kommt."
+    ]
+  }
+}

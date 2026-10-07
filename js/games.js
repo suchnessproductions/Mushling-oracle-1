@@ -32,10 +32,19 @@ function startMatchLevel(levelIndex) {
   match.moves = 0;
   match.locked = false;
 
-  document.getElementById('match-level-label').textContent = `Level ${cfg.level}`;
-  document.getElementById('match-moves-label').textContent = 'Moves: 0';
+  refreshMatchLabels();
   document.getElementById('match-win').style.display = 'none';
   renderMatchGrid(cfg.cols);
+}
+
+// level / moves labels, re-drawn on a language change too
+function refreshMatchLabels() {
+  const cfg = MATCH_LEVELS[match.levelIndex];
+  document.getElementById('match-level-label').textContent = t('matchLevel', { level: cfg.level });
+  document.getElementById('match-moves-label').textContent = t('matchMoves', { moves: match.moves });
+  if (document.getElementById('match-win').style.display !== 'none') {
+    document.getElementById('match-win-text').textContent = t('matchWin', { level: cfg.level, moves: match.moves });
+  }
 }
 
 function renderMatchGrid(cols) {
@@ -58,12 +67,12 @@ function flipMatchTile(i) {
 
   const el = document.querySelector(`#match-grid [data-index="${i}"]`);
   const card = cardByNumber(tile.cardNumber);
-  el.innerHTML = `<div class="tile-face"><img src="${card.img}" alt="${card.name}"><div class="tile-name">${card.name}</div></div>`;
+  el.innerHTML = `<div class="tile-face"><img src="${card.img}" alt="${cardText(card, 'name')}"><div class="tile-name">${cardText(card, 'name')}</div></div>`;
   match.flipped.push(i);
 
   if (match.flipped.length === 2) {
     match.moves++;
-    document.getElementById('match-moves-label').textContent = `Moves: ${match.moves}`;
+    refreshMatchLabels();
     const [a, b] = match.flipped;
     if (match.tiles[a].cardNumber === match.tiles[b].cardNumber) {
       match.tiles[a].matched = true;
@@ -88,9 +97,8 @@ function flipMatchTile(i) {
 function checkMatchWin() {
   if (match.tiles.every(t => t.matched)) {
     const cfg = MATCH_LEVELS[match.levelIndex];
-    document.getElementById('match-win-text').textContent =
-      `Level ${cfg.level} solved in ${match.moves} moves!`;
     document.getElementById('match-win').style.display = 'block';
+    document.getElementById('match-win-text').textContent = t('matchWin', { level: cfg.level, moves: match.moves });
   }
 }
 

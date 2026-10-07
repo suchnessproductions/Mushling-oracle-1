@@ -1,0 +1,309 @@
+{
+  "meta": {
+    "code": "it",
+    "name": "Italiano",
+    "english": "Italian",
+    "dir": "ltr"
+  },
+  "ui": {
+    "appName": "L'Oracolo dei Mushling",
+    "homeTagline": "49 piccole guide dal sottobosco.",
+    "drawACard": "Pesca una carta",
+    "navHome": "Home",
+    "navDraw": "Pesca",
+    "navGallery": "Galleria",
+    "navJournal": "Diario",
+    "navGames": "Giochi",
+    "navSage": "Sage",
+    "chooseSpread": "Scegli una stesa",
+    "cardCount": {
+      "one": "{count} carta",
+      "many": "{count} carte",
+      "other": "{count} carte"
+    },
+    "drawButton": "Pesca",
+    "unlockToUse": "Sblocca per usarla →",
+    "drawDefaultLabel": "Il Mushling di oggi",
+    "progress": "{spread} · Carta {n} di {total}",
+    "tapToEnlarge": "🔍 tocca per ingrandire",
+    "tabMessage": "Messaggio",
+    "tabMeaning": "Significato",
+    "tabStory": "📖 Storia",
+    "nextCard": "Carta successiva →",
+    "finishReading": "Concludi la lettura",
+    "unknownCardName": "??? — un Mushling che non hai ancora incontrato",
+    "unknownCardMessage": "Sblocca il mazzo completo per scoprire il messaggio di questo Mushling.",
+    "lockedSee": "Sblocca il mazzo completo per vedere questo Mushling.",
+    "lockedStory": "Sblocca il mazzo completo per leggere questa storia.",
+    "lockedMeet": "Sblocca il mazzo completo per conoscere questo Mushling.",
+    "storyTime": "L'ora della storia",
+    "storyBack": "‹ Indietro",
+    "storyNext": "Avanti ›",
+    "storyEnd": "🍄 Fine 🍄",
+    "storyMissing": "Stiamo ancora scrivendo la storia di questo Mushling.",
+    "galleryTitle": "Galleria",
+    "galleryIntro": "Quarantanove Mushling. Conoscili tutti, o lascia che sia uno di loro a trovare te.",
+    "journalTitle": "Diario",
+    "journalSearch": "🔍 Cerca nel tuo diario…",
+    "journalEmptyTitle": "Qui non c'è ancora niente.",
+    "journalEmptyBody": "La prima lettura che salverai darà inizio al tuo diario.",
+    "journalNoMatch": "Nessuna voce corrisponde a «{query}».",
+    "journalDefaultTitle": "Lettura: {spread}",
+    "journalNoNote": "Nessuna nota",
+    "journalSynthesis": "La sintesi di Sage",
+    "journalConversation": {
+      "one": "Conversazione completa ({count} messaggio)",
+      "many": "Conversazione completa ({count} messaggi)",
+      "other": "Conversazione completa ({count} messaggi)"
+    },
+    "whoYou": "Tu",
+    "whoSage": "Sage",
+    "gamesTitle": "Minigiochi",
+    "gameMatchTitle": "Coppie di Mushling",
+    "gameMatchDesc": "Gira le carte e trova le coppie di ritratti.",
+    "gameQuizTitle": "Che Mushling sei?",
+    "gameQuizDesc": "Un quiz sulla personalità in 7 domande.",
+    "gameGardenTitle": "Fai crescere il giardino",
+    "gameGardenDesc": "Pianta semi, non spezzare la serie.",
+    "gameHomeTitle": "Riporta a casa il Mushling",
+    "gameHomeDesc": "Un labirinto a tessere scorrevoli, 10 livelli.",
+    "gameFireflyTitle": "Acchiappa le lucciole",
+    "gameFireflyDesc": "Tocca le lucciole quando brillano di più.",
+    "comingSoon": "Prossimamente",
+    "gameNotBuilt": "Non ancora disponibile in questo prototipo: per ora si può giocare solo a Coppie di Mushling.",
+    "matchLevel": "Livello {level}",
+    "matchMoves": "Mosse: {moves}",
+    "matchWin": "Livello {level} completato! Mosse: {moves}",
+    "matchNextLevel": "Livello successivo →",
+    "sageTitle": "Sage",
+    "sageGateTitle": "Prima completa una lettura",
+    "sageGateBody": "Sage riflette su una lettura intera, non su una carta presa da sola. Scegli una stesa e arriva fino in fondo: Sage intreccerà le carte in una sintesi, e poi potrete continuare a parlare finché vorrai.",
+    "sageGateButton": "Fai una lettura",
+    "chatPlaceholder": "Scrivi qualcosa a Sage…",
+    "sageThinking": "Sta pensando…",
+    "sageBusy": "In questo momento Sage ha un sacco di visite: riprova tra poco.",
+    "sageLost": "Sage ha perso il filo del discorso: prova a chiedere di nuovo.",
+    "sageLimitFree": "Per ora, questa era la tua ultima conversazione gratuita con Sage. Vuoi continuare a parlare? Abbonati per averne 300 al mese.",
+    "sageLimitPaid": "Hai usato tutte le conversazioni con Sage di questo mese. Si rinnovano all'inizio del mese prossimo.",
+    "counterFree": "Conversazioni gratuite rimaste: {left} su {max}",
+    "counterPaid": "Conversazioni rimaste questo mese: {left} su {max}",
+    "synthesisTitle": "La sintesi di Sage",
+    "synthesisWorking": "Sage sta leggendo tutta la stesa…",
+    "synthesisUsedOne": "Hai usato una conversazione con Sage",
+    "synthesisNoneLeft": "Hai esaurito le conversazioni con Sage, quindi questa volta niente sintesi. Le tue carte sono tutte qui, e puoi comunque salvare la lettura.",
+    "synthesisRetry": "Riprova la sintesi",
+    "synthesisOfflineIntro": "Ecco come parlano insieme le tue carte:",
+    "synthesisOfflineCard": "{position} — {card}: «{message}»",
+    "synthesisOfflineOutro": "Leggile come un'unica conversazione, non come risposte separate. Qual è la carta a cui continui a tornare?",
+    "saveTitle": "Vuoi salvare questa lettura nel tuo diario?",
+    "saveTitlePlaceholder": "Dai un titolo a questa voce",
+    "saveNotePlaceholder": "Aggiungi una tua nota, se vuoi (facoltativo)",
+    "saveButton": "Salva nel diario",
+    "saveDismiss": "Non ora",
+    "savedToast": "Salvata nel tuo diario.",
+    "settingsTitle": "Impostazioni",
+    "languageTitle": "Lingua",
+    "languageBody": "Carte, storie, stese e Sage parleranno tutti in questa lingua.",
+    "languageLoading": "Raccolgo le parole…",
+    "languageFailed": "Non è stato possibile caricare quella lingua. Per ora restiamo in {language}.",
+    "languageChanged": "Ora parliamo {language}.",
+    "unlockTitleLocked": "Conosci il resto della foresta",
+    "unlockCopyLocked": "Finora hai conosciuto 13 Mushling. Altri 36 ti stanno aspettando, e con loro tutte le stese, tutte le storie, tutti i giochi. Sblocca il mazzo intero una volta sola, e sarà tuo per sempre.",
+    "unlockTitleUnlocked": "Tutta la foresta è tua",
+    "unlockCopyUnlocked": "Tutti i 49 Mushling, tutte le stese, tutte le storie, tutti i giochi: sbloccati.",
+    "unlockButton": "Sblocca per $5",
+    "unlockedButton": "Sbloccato ✓",
+    "aiGuideTitle": "Guida IA dei Mushling",
+    "aiGuideBody": "Fino a 300 conversazioni al mese con Sage, la guida di casa dell'Oracolo.",
+    "subscribeButton": "Inizia a $5/mese",
+    "aiGuideFine": "Si azzera ogni mese. Le conversazioni non usate non passano al mese successivo. La sintesi di ogni lettura conta come una conversazione.",
+    "demoTitle": "Demo: anteprima della versione gratuita (bloccata)",
+    "demoBody": "Questo prototipo si apre con tutto sbloccato, così puoi vedere l'app completa. Attiva questa opzione per vedere invece cosa vede chi non ha pagato.",
+    "toastDemoUnlocked": "Demo: di nuovo l'app completa e sbloccata",
+    "toastDemoLocked": "Demo: ora stai vedendo l'anteprima della versione gratuita (bloccata) — 5 conversazioni con Sage su 5",
+    "toastUnlocked": "Sbloccato! Tutti i 49 Mushling sono tuoi.",
+    "toastSubscribed": "Abbonamento attivato (demo) — 300 conversazioni con Sage questo mese."
+  },
+  "sage": {
+    "topics": [
+      {
+        "key": "anxiety",
+        "words": [
+          "ansia",
+          "ansios",
+          "stress",
+          "preoccup",
+          "nervos",
+          "agitat",
+          "panico",
+          "paura",
+          "spaventat",
+          "terrorizzat",
+          "sopraffatt",
+          "angosci",
+          "non ce la faccio"
+        ],
+        "lines": [
+          "Sembra un bel peso da portare. È una cosa in particolare, o più un ronzio di fondo sotto a tutto il resto?",
+          "Una preoccupazione così, di solito, ha una forma precisa, se la guardi dritto in faccia. Qual è davvero lo scenario peggiore che stai immaginando?",
+          "Dove la senti, questa cosa: più nel petto, nello stomaco, nella testa? A volte dare un nome al posto in cui abita le toglie un po' della sua forza."
+        ]
+      },
+      {
+        "key": "work",
+        "words": [
+          "lavor",
+          "carriera",
+          "capo",
+          "collega",
+          "colleghi",
+          "ufficio",
+          "promozione",
+          "licenzia",
+          "dimission",
+          "colloquio",
+          "stipendio",
+          "azienda"
+        ],
+        "lines": [
+          "Il lavoro ha il vizio di prendersi più spazio del dovuto. Si tratta del lavoro in sé, o di come si incastra con il resto della tua vita in questo momento?",
+          "Come sarebbe, se andasse bene? A volte è più chiaro di quello di cui hai paura.",
+          "È una cosa su cui hai davvero potere di scelta, o ti sembra soprattutto qualcosa che ti sta capitando?"
+        ]
+      },
+      {
+        "key": "relationships",
+        "words": [
+          "relazione",
+          "partner",
+          "fidanzat",
+          "ragazzo",
+          "ragazza",
+          "marito",
+          "moglie",
+          "amic",
+          "famiglia",
+          "mamma",
+          "papà",
+          "rottura",
+          "amore",
+          "matrimonio"
+        ],
+        "lines": [
+          "Le persone sono il tempo più difficile da prevedere. Che cosa vorresti davvero che succedesse, se metti da parte quello che pensi di dover volere?",
+          "È uno schema che hai già visto con questa persona, o ti sembra qualcosa di nuovo?",
+          "Qual è la parte di tutto questo che non hai ancora detto apertamente all'altra persona?"
+        ]
+      },
+      {
+        "key": "stuck",
+        "words": [
+          "decid",
+          "decision",
+          "scelt",
+          "scegli",
+          "bloccat",
+          "confus",
+          "incert",
+          "indecis",
+          "non so cosa",
+          "non so se",
+          "non so che",
+          "non lo so",
+          "diviso tra",
+          "divisa tra"
+        ],
+        "lines": [
+          "Non devi avere già tutto chiaro. Come sarebbe un passo piccolo, e reversibile, invece dell'intera decisione in un colpo solo?",
+          "A volte sentirsi bloccati significa che entrambe le strade vanno bene, e il disagio sta solo nel dover scegliere. Ti suona vero, in questo caso?",
+          "Se un amico ti descrivesse esattamente questa situazione, che cosa gli diresti?"
+        ]
+      },
+      {
+        "key": "sadness",
+        "words": [
+          "triste",
+          "malinconi",
+          "lutto",
+          "perdita",
+          "ho perso",
+          "mi manca",
+          "solitudine",
+          "mi sento solo",
+          "mi sento sola",
+          "giù di morale",
+          "abbattut",
+          "depress",
+          "piang"
+        ],
+        "lines": [
+          "È un peso grande da tenere. Non serve farlo sembrare più piccolo di quello che è.",
+          "È una cosa recente, o qualcosa che ti porti dietro da un po'?",
+          "Mi fa piacere che tu l'abbia detto ad alta voce, invece di portartelo dentro in silenzio."
+        ]
+      },
+      {
+        "key": "good",
+        "words": [
+          "felice",
+          "entusiast",
+          "emozionat",
+          "speranz",
+          "fiducios",
+          "grato",
+          "grata",
+          "gratitudine",
+          "orgoglios",
+          "bella notizia",
+          "buona notizia",
+          "belle notizie",
+          "buone notizie",
+          "sollevat"
+        ],
+        "lines": [
+          "È una bella sensazione: vale la pena restarci dentro un attimo, prima di passare alla prossima cosa.",
+          "Che cosa, di preciso, ha fatto la differenza? Vale la pena accorgersene.",
+          "Bene: questa tienila stretta."
+        ]
+      },
+      {
+        "key": "greeting",
+        "words": [
+          "ciao",
+          "salve",
+          "ehi",
+          "hey",
+          "buongiorno",
+          "buonasera",
+          "come va",
+          "come stai"
+        ],
+        "lines": [
+          "Ciao. Cosa ti passa per la testa?",
+          "Ehi, ciao. Cosa ti ha portato qui oggi?"
+        ]
+      },
+      {
+        "key": "thanks",
+        "words": [
+          "grazie",
+          "ringrazi",
+          "apprezz",
+          "gentilissim",
+          "troppo gentile",
+          "sei gentile"
+        ],
+        "lines": [
+          "Ma figurati. Sono qui per questo.",
+          "Quando vuoi. C'è altro su cui vuoi soffermarti, o ti sembra a posto così?"
+        ]
+      }
+    ],
+    "fallback": [
+      "Dimmi di più: cosa c'è sotto?",
+      "Vale la pena fermarsi su questo. Ti sembra più una domanda o una decisione?",
+      "Ti ascolto. Qual è la parte di tutto questo che non hai ancora detto ad alta voce?",
+      "Cosa dice il tuo istinto, prima che tu cominci a ragionarci sopra?"
+    ]
+  }
+}

@@ -1,0 +1,317 @@
+{
+  "meta": {
+    "code": "pt",
+    "name": "Português",
+    "english": "Portuguese (Brazilian)",
+    "dir": "ltr",
+    "guideName": "Glowcap"
+  },
+  "ui": {
+    "appName": "O Oráculo Mushling",
+    "homeTagline": "49 pequenos guias do chão da floresta.",
+    "drawACard": "Tirar uma carta",
+    "navHome": "Início",
+    "navDraw": "Tirar",
+    "navGallery": "Galeria",
+    "navJournal": "Diário",
+    "navGames": "Jogos",
+    "navSage": "Glowcap",
+    "chooseSpread": "Escolha uma tiragem",
+    "cardCount": {
+      "one": "{count} carta",
+      "many": "{count} cartas",
+      "other": "{count} cartas"
+    },
+    "drawButton": "Tirar",
+    "unlockToUse": "Desbloqueie para usar →",
+    "drawDefaultLabel": "O Mushling de hoje",
+    "progress": "{spread} · Carta {n} de {total}",
+    "tapToEnlarge": "🔍 toque para ampliar",
+    "tabMessage": "Mensagem",
+    "tabMeaning": "Significado",
+    "tabStory": "📖 História",
+    "nextCard": "Próxima carta →",
+    "prevCard": "← Anterior",
+    "finishReading": "Concluir leitura",
+    "unknownCardName": "??? — um Mushling que você ainda não conheceu",
+    "unknownCardMessage": "Desbloqueie o baralho completo para revelar a mensagem deste Mushling.",
+    "lockedSee": "Desbloqueie o baralho completo para ver este Mushling.",
+    "lockedStory": "Desbloqueie o baralho completo para ler esta história.",
+    "lockedMeet": "Desbloqueie o baralho completo para conhecer este Mushling.",
+    "storyTime": "Hora da história",
+    "storyBack": "‹ Voltar",
+    "storyNext": "Próxima ›",
+    "storyEnd": "🍄 Fim 🍄",
+    "storyMissing": "A história deste Mushling ainda está sendo escrita.",
+    "galleryTitle": "Galeria",
+    "galleryIntro": "Quarenta e nove Mushlings. Conheça todos, ou deixe que um deles encontre você.",
+    "journalTitle": "Diário",
+    "journalSearch": "🔍 Buscar no diário…",
+    "journalEmptyTitle": "Nada por aqui ainda.",
+    "journalEmptyBody": "Sua primeira leitura salva vai começar o seu diário.",
+    "journalNoMatch": "Nenhuma entrada corresponde a “{query}”.",
+    "journalDefaultTitle": "Leitura: {spread}",
+    "journalNoNote": "Sem anotação",
+    "journalSynthesis": "Síntese de Glowcap",
+    "journalConversation": {
+      "one": "Conversa completa ({count} mensagem)",
+      "many": "Conversa completa ({count} mensagens)",
+      "other": "Conversa completa ({count} mensagens)"
+    },
+    "whoYou": "Você",
+    "whoSage": "Glowcap",
+    "gamesTitle": "Minijogos",
+    "gameMatchTitle": "Par de Mushlings",
+    "gameMatchDesc": "Vire e junte os pares de retratos de Mushlings.",
+    "gameQuizTitle": "Qual Mushling é você?",
+    "gameQuizDesc": "Um teste de personalidade com 7 perguntas.",
+    "gameGardenTitle": "Cultive o jardim",
+    "gameGardenDesc": "Plante sementes e mantenha a sequência.",
+    "gameHomeTitle": "Leve o Mushling para casa",
+    "gameHomeDesc": "Um labirinto de deslizar, com 10 níveis.",
+    "gameFireflyTitle": "Pega-vaga-lume",
+    "gameFireflyDesc": "Toque nos vaga-lumes no auge do brilho.",
+    "comingSoon": "Em breve",
+    "gameNotBuilt": "Ainda não existe neste protótipo — por enquanto, só o Par de Mushlings pode ser jogado.",
+    "matchLevel": "Nível {level}",
+    "matchMoves": "Jogadas: {moves}",
+    "matchWin": "Nível {level} resolvido! Jogadas: {moves}",
+    "matchNextLevel": "Próximo nível →",
+    "sageTitle": "Glowcap",
+    "sageGateTitle": "Conclua uma leitura primeiro",
+    "sageGateBody": "Glowcap reflete sobre uma leitura inteira, não sobre uma carta isolada. Tire uma tiragem e vá até o fim; Glowcap vai entrelaçar as cartas numa síntese e depois continuar a conversa pelo tempo que você quiser.",
+    "sageGateButton": "Fazer uma leitura",
+    "chatPlaceholder": "Diga algo a Glowcap…",
+    "sageThinking": "Pensando…",
+    "sageBusy": "Glowcap está recebendo muitas visitas agora — tente de novo daqui a pouco.",
+    "sageLost": "Glowcap se perdeu nos próprios pensamentos por um instante — tente perguntar de novo.",
+    "sageLimitFree": "Essa foi a sua última conversa grátis com Glowcap por enquanto. Quer continuar? Assine e tenha 300 conversas por mês.",
+    "sageLimitPaid": "As conversas com Glowcap deste mês acabaram. Elas voltam no início do mês que vem.",
+    "counterFree": "Conversas grátis restantes: {left} de {max}",
+    "counterPaid": "Conversas restantes neste mês: {left} de {max}",
+    "synthesisTitle": "Síntese de Glowcap",
+    "synthesisWorking": "Glowcap está lendo a tiragem inteira…",
+    "synthesisUsedOne": "Uma conversa com Glowcap foi usada",
+    "synthesisNoneLeft": "Suas conversas com Glowcap acabaram, então não há síntese desta vez. As cartas estão todas aqui, e você ainda pode salvar a leitura.",
+    "synthesisRetry": "Tentar a síntese de novo",
+    "synthesisOfflineIntro": "Veja como as suas cartas falam juntas:",
+    "synthesisOfflineCard": "{position} — {card}: “{message}”",
+    "synthesisOfflineOutro": "Leia as cartas como uma só conversa, e não como respostas separadas. A qual delas você não para de voltar?",
+    "saveTitle": "Salvar esta leitura no diário?",
+    "saveTitlePlaceholder": "Dê um título a esta entrada",
+    "saveNotePlaceholder": "Escreva uma anotação, se quiser (opcional)",
+    "saveButton": "Salvar no diário",
+    "saveDismiss": "Agora não",
+    "savedToast": "Salvo no seu diário.",
+    "settingsTitle": "Ajustes",
+    "languageTitle": "Idioma",
+    "languageBody": "As cartas, as histórias, as tiragens e Glowcap vão falar este idioma.",
+    "languageLoading": "Juntando as palavras…",
+    "languageFailed": "Não foi possível carregar esse idioma agora. Continuando em {language}.",
+    "languageChanged": "Agora em {language}.",
+    "unlockTitleLocked": "Conheça o resto da floresta",
+    "unlockCopyLocked": "Até agora você conheceu 13 Mushlings. Há mais 36 esperando — além de todas as tiragens, todas as histórias e todos os jogos. Desbloqueie o baralho completo uma vez e fique com ele para sempre.",
+    "unlockTitleUnlocked": "A floresta inteira é sua",
+    "unlockCopyUnlocked": "Todos os 49 Mushlings, todas as tiragens, todas as histórias e todos os jogos — desbloqueados.",
+    "unlockButton": "Desbloquear por $5",
+    "unlockedButton": "Desbloqueado ✓",
+    "aiGuideTitle": "Guia de IA Mushling",
+    "aiGuideBody": "Até 300 conversas por mês com Glowcap, o olhar atento do Oráculo.",
+    "subscribeButton": "Começar por $5/mês",
+    "aiGuideFine": "Renova todo mês. As conversas não usadas não acumulam. A síntese de cada leitura conta como uma conversa.",
+    "demoTitle": "Demo: ver a versão grátis (bloqueada)",
+    "demoBody": "Este protótipo abre com tudo desbloqueado para você ver o app completo. Ative esta opção para ver o que uma pessoa sem assinatura enxerga.",
+    "toastDemoUnlocked": "Demo: de volta ao app totalmente desbloqueado",
+    "toastDemoLocked": "Demo: vendo agora a versão grátis (bloqueada) — 5 de 5 conversas com Glowcap",
+    "toastUnlocked": "Desbloqueado! Os 49 Mushlings são seus.",
+    "toastSubscribed": "Assinatura feita (demo) — 300 conversas com Glowcap neste mês.",
+    "sageOpen": "Oi! O que está passando pela sua cabeça hoje?"
+  },
+  "sage": {
+    "topics": [
+      {
+        "key": "anxiety",
+        "words": [
+          "ansio",
+          "ansied",
+          "estress",
+          "preocup",
+          "nervos",
+          "sobrecarreg",
+          "pânico",
+          "panico",
+          "assustad",
+          "medo",
+          "aflit",
+          "angúst",
+          "angust"
+        ],
+        "lines": [
+          "Parece muita coisa para carregar. É algo específico, ou mais um zumbido de fundo por baixo de tudo?",
+          "Uma preocupação assim costuma ter um formato bem definido quando a gente olha de frente. Qual é o pior cenário que você está imaginando?",
+          "Onde você sente isso: mais no peito, na barriga, na cabeça? Às vezes dar nome ao lugar onde mora tira um pouco da força."
+        ]
+      },
+      {
+        "key": "work",
+        "words": [
+          "emprego",
+          "trabalh",
+          "carreira",
+          "chefe",
+          "colega de trabalho",
+          "escritório",
+          "escritorio",
+          "promoção",
+          "promocao",
+          "demitid",
+          "demiss",
+          "pedir demissão",
+          "entrevista",
+          "reunião"
+        ],
+        "lines": [
+          "O trabalho tem um jeito de ocupar mais espaço do que deveria. É sobre o emprego em si, ou sobre como ele se encaixa no resto da sua vida agora?",
+          "Como seria se isso desse certo? Às vezes isso fica mais claro do que aquilo que você teme.",
+          "Você tem escolha de verdade nisso, ou a sensação é mais de que está acontecendo com você?"
+        ]
+      },
+      {
+        "key": "relationships",
+        "words": [
+          "relacionamento",
+          "namor",
+          "parceir",
+          "marido",
+          "espos",
+          "amig",
+          "famíli",
+          "famili",
+          "mãe",
+          "pai",
+          "término",
+          "terminei",
+          "amor",
+          "casamento"
+        ],
+        "lines": [
+          "Gente é o clima mais difícil de prever. O que você realmente quer que aconteça aqui, deixando de lado o que acha que deveria querer?",
+          "Esse é um padrão que você já viu antes com essa pessoa, ou parece algo novo?",
+          "Qual é a parte disso que você ainda não disse diretamente a ela?"
+        ]
+      },
+      {
+        "key": "stuck",
+        "words": [
+          "decidir",
+          "decisão",
+          "decisao",
+          "escolh",
+          "travad",
+          "empacad",
+          "confus",
+          "inseguran",
+          "não sei",
+          "nao sei",
+          "dividid",
+          "indecis",
+          "dúvida",
+          "duvida"
+        ],
+        "lines": [
+          "Você não precisa ter tudo resolvido ainda. Como seria um passo pequeno e reversível, em vez da decisão inteira de uma vez?",
+          "Às vezes estar travado significa que as duas opções são boas, e o incômodo é só o de ter que escolher. Isso faz sentido aqui?",
+          "Se alguém querido descrevesse essa mesma situação para você, o que você diria?"
+        ]
+      },
+      {
+        "key": "sadness",
+        "words": [
+          "triste",
+          "tristeza",
+          "luto",
+          "perda",
+          "perdi",
+          "saudade",
+          "solidão",
+          "solidao",
+          "sozinh",
+          "deprimi",
+          "pra baixo",
+          "chorand",
+          "chorar",
+          "choro"
+        ],
+        "lines": [
+          "Esse é pesado para ficar por perto. Você não precisa fazer disso algo menor do que é.",
+          "Isso é recente, ou já anda com você faz tempo?",
+          "Ainda bem que você disse isso em voz alta, em vez de carregar em silêncio."
+        ]
+      },
+      {
+        "key": "good",
+        "words": [
+          "animad",
+          "empolga",
+          "feliz",
+          "esperança",
+          "esperanca",
+          "esperanços",
+          "grat",
+          "orgulh",
+          "boa notícia",
+          "boa noticia",
+          "aliviad",
+          "alívio",
+          "alivio"
+        ],
+        "lines": [
+          "É um sentimento bom para ficar um instante, antes de passar para o que vem depois.",
+          "O que fez isso cair tão bem, exatamente? Vale reparar.",
+          "Que bom. Guarde esse com carinho."
+        ]
+      },
+      {
+        "key": "greeting",
+        "words": [
+          "oi",
+          "olá",
+          "ola",
+          "e aí",
+          "e ai",
+          "eai",
+          "opa",
+          "bom dia",
+          "boa tarde",
+          "boa noite"
+        ],
+        "lines": [
+          "Oi! O que está passando pela sua cabeça?",
+          "E aí! O que trouxe você até aqui hoje?"
+        ]
+      },
+      {
+        "key": "thanks",
+        "words": [
+          "obrigad",
+          "valeu",
+          "agradeç",
+          "agradec",
+          "grato",
+          "gratidão",
+          "brigad"
+        ],
+        "lines": [
+          "Imagina. Estou aqui para isso.",
+          "Sempre que precisar. Tem mais alguma coisa para ficar um pouco com ela, ou já está completo?"
+        ]
+      }
+    ],
+    "fallback": [
+      "Conte mais sobre isso — o que existe por baixo?",
+      "Isso merece um tempo. Parece mais uma pergunta ou uma decisão?",
+      "Entendi. Qual é a parte disso que você ainda não disse em voz alta?",
+      "O que o seu instinto diz, antes de você começar a racionalizar?"
+    ]
+  }
+}

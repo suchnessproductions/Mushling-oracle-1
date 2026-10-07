@@ -1,0 +1,306 @@
+{
+  "meta": {
+    "code": "zh",
+    "name": "简体中文",
+    "english": "Chinese (Simplified)",
+    "dir": "ltr"
+  },
+  "ui": {
+    "appName": "小菇灵神谕卡",
+    "homeTagline": "49 位小小向导，从森林的泥土里走来。",
+    "drawACard": "抽一张牌",
+    "navHome": "首页",
+    "navDraw": "抽牌",
+    "navGallery": "图鉴",
+    "navJournal": "日记",
+    "navGames": "游戏",
+    "navSage": "赛吉",
+    "chooseSpread": "选择牌阵",
+    "cardCount": {
+      "other": "{count} 张牌"
+    },
+    "drawButton": "抽牌",
+    "unlockToUse": "解锁后可用 →",
+    "drawDefaultLabel": "今日小菇灵",
+    "progress": "{spread} · 第 {n} 张，共 {total} 张",
+    "tapToEnlarge": "🔍 点击放大",
+    "tabMessage": "寄语",
+    "tabMeaning": "释义",
+    "tabStory": "📖 故事",
+    "nextCard": "下一张 →",
+    "finishReading": "完成解读",
+    "unknownCardName": "？？？——一个你还没遇见的小菇灵",
+    "unknownCardMessage": "解锁完整牌组，就能揭开这个小菇灵的寄语。",
+    "lockedSee": "解锁完整牌组，就能看到这个小菇灵。",
+    "lockedStory": "解锁完整牌组，就能读到这个故事。",
+    "lockedMeet": "解锁完整牌组，就能认识这个小菇灵。",
+    "storyTime": "故事时间",
+    "storyBack": "‹ 上一页",
+    "storyNext": "下一页 ›",
+    "storyEnd": "🍄 故事讲完啦 🍄",
+    "storyMissing": "这个小菇灵的故事还在写呢。",
+    "galleryTitle": "图鉴",
+    "galleryIntro": "四十九个小菇灵。你可以把它们一个个都认识一遍，也可以等其中一个来找你。",
+    "journalTitle": "日记",
+    "journalSearch": "🔍 搜索你的日记……",
+    "journalEmptyTitle": "这里还空空的。",
+    "journalEmptyBody": "保存你的第一次解读，日记就从这里开始。",
+    "journalNoMatch": "没有找到与“{query}”相符的记录。",
+    "journalDefaultTitle": "{spread}解读",
+    "journalNoNote": "没有添加笔记",
+    "journalSynthesis": "赛吉的综合解读",
+    "journalConversation": {
+      "other": "完整对话（{count} 条消息）"
+    },
+    "whoYou": "你",
+    "whoSage": "赛吉",
+    "gamesTitle": "小游戏",
+    "gameMatchTitle": "小菇灵配对",
+    "gameMatchDesc": "翻开卡片，把一模一样的小菇灵头像配成对。",
+    "gameQuizTitle": "你是哪个小菇灵？",
+    "gameQuizDesc": "7 道题的性格小测验。",
+    "gameGardenTitle": "种出小花园",
+    "gameGardenDesc": "播下种子，天天连续打卡。",
+    "gameHomeTitle": "送小菇灵回家",
+    "gameHomeDesc": "滑块迷宫拼图，共 10 关。",
+    "gameFireflyTitle": "捉萤火虫",
+    "gameFireflyDesc": "趁萤火虫最亮的那一刻点住它。",
+    "comingSoon": "敬请期待",
+    "gameNotBuilt": "这个原型里还没做好——目前只有“小菇灵配对”可以玩。",
+    "matchLevel": "第 {level} 关",
+    "matchMoves": "步数：{moves}",
+    "matchWin": "第 {level} 关通关啦！步数：{moves}",
+    "matchNextLevel": "下一关 →",
+    "sageTitle": "赛吉",
+    "sageGateTitle": "先完成一次解读吧",
+    "sageGateBody": "赛吉回顾的是一整次解读，而不是孤零零的一张牌。选一个牌阵，从头抽到尾；赛吉会把这些牌编织在一起，给你一份综合解读，之后你想聊多久，就聊多久。",
+    "sageGateButton": "开始一次解读",
+    "chatPlaceholder": "对赛吉说点什么……",
+    "sageThinking": "正在想……",
+    "sageBusy": "赛吉这会儿来访的客人太多啦——过一会儿再试试吧。",
+    "sageLost": "赛吉刚才一下子走神了——再问一次试试吧。",
+    "sageLimitFree": "这是你目前和赛吉的最后一次免费对话了。还想接着聊吗？订阅后每月可以聊 300 次。",
+    "sageLimitPaid": "本月的赛吉对话次数已经用完了。下个月初会重新补满。",
+    "counterFree": "剩余免费对话：{left} / {max}",
+    "counterPaid": "本月剩余对话：{left} / {max}",
+    "synthesisTitle": "赛吉的综合解读",
+    "synthesisWorking": "赛吉正在通读整个牌阵……",
+    "synthesisUsedOne": "已使用一次赛吉对话",
+    "synthesisNoneLeft": "你的赛吉对话次数用完了，所以这次没有综合解读。不过你的牌都还在这里，这次解读也照样可以保存。",
+    "synthesisRetry": "再试一次综合解读",
+    "synthesisOfflineIntro": "你的这几张牌合在一起，是这样说的：",
+    "synthesisOfflineCard": "{position}——{card}：“{message}”",
+    "synthesisOfflineOutro": "把它们当成一场完整的对话来读，而不是一个个分开的答案。哪一张牌让你一次又一次地回头去看？",
+    "saveTitle": "把这次解读保存到日记里吗？",
+    "saveTitlePlaceholder": "给这篇记录起个标题",
+    "saveNotePlaceholder": "想写的话，可以留下你自己的笔记（选填）",
+    "saveButton": "保存到日记",
+    "saveDismiss": "先不用",
+    "savedToast": "已经保存到你的日记里了。",
+    "settingsTitle": "设置",
+    "languageTitle": "语言",
+    "languageBody": "牌、故事、牌阵，还有赛吉，都会说这种语言。",
+    "languageLoading": "正在收集词语……",
+    "languageFailed": "这种语言暂时加载不出来。先继续使用{language}。",
+    "languageChanged": "现在开始说{language}啦。",
+    "unlockTitleLocked": "去认识森林里的其他伙伴吧",
+    "unlockCopyLocked": "你已经认识了 13 个小菇灵。还有 36 个在等着你——还有每一个牌阵、每一个故事、每一个游戏。整副牌一次解锁，永久拥有。",
+    "unlockTitleUnlocked": "整片森林都是你的了",
+    "unlockCopyUnlocked": "全部 49 个小菇灵、每一个牌阵、每一个故事、每一个游戏——都已解锁。",
+    "unlockButton": "$5 解锁全部",
+    "unlockedButton": "已解锁 ✓",
+    "aiGuideTitle": "小菇灵 AI 向导",
+    "aiGuideBody": "每月最多可以和神谕卡的常驻向导赛吉对话 300 次。",
+    "subscribeButton": "开始订阅 $5/月",
+    "aiGuideFine": "每月重置。没用完的对话不会累积到下个月。每次解读的综合解读算作一次对话。",
+    "demoTitle": "演示：预览免费版（锁定）界面",
+    "demoBody": "这个原型打开时一切都已解锁，方便你看到完整的应用。打开这个开关，就能预览没有付费的访客看到的样子。",
+    "toastDemoUnlocked": "演示：已回到完整解锁版",
+    "toastDemoLocked": "演示：正在预览免费版（锁定）界面——赛吉对话 5 / 5",
+    "toastUnlocked": "解锁成功！全部 49 个小菇灵都是你的了。",
+    "toastSubscribed": "已订阅（演示）——本月可以和赛吉对话 300 次。"
+  },
+  "sage": {
+    "topics": [
+      {
+        "key": "anxiety",
+        "words": [
+          "焦虑",
+          "紧张",
+          "压力",
+          "担心",
+          "担忧",
+          "害怕",
+          "恐慌",
+          "不安",
+          "心慌",
+          "慌张",
+          "崩溃",
+          "喘不过气",
+          "忐忑"
+        ],
+        "lines": [
+          "听起来你心里压着不少东西。是某一件具体的事，还是一种藏在所有事情底下、一直嗡嗡作响的感觉？",
+          "这样的担心，只要你直直地看着它，通常都有一个具体的形状。你心里想象的最坏情况，到底是什么？",
+          "你在哪里感觉到它——胸口、肚子，还是脑袋里？有时候，说出它住在哪儿，就能让它少一点力气。"
+        ]
+      },
+      {
+        "key": "work",
+        "words": [
+          "工作",
+          "上班",
+          "老板",
+          "领导",
+          "同事",
+          "公司",
+          "职业",
+          "升职",
+          "辞职",
+          "离职",
+          "开除",
+          "裁员",
+          "面试",
+          "跳槽"
+        ],
+        "lines": [
+          "工作总有办法占掉比它该占的更多地方。这是关于工作本身，还是关于它眼下怎么和你生活里的其他部分搭在一起？",
+          "如果这件事进展顺利，会是什么样子？有时候，这比你害怕的东西更清楚。",
+          "这件事你真的有选择的余地吗，还是感觉更像是它发生在你身上？"
+        ]
+      },
+      {
+        "key": "relationships",
+        "words": [
+          "感情",
+          "伴侣",
+          "朋友",
+          "对象",
+          "老公",
+          "老婆",
+          "家人",
+          "妈妈",
+          "爸爸",
+          "父母",
+          "分手",
+          "恋爱",
+          "爱情",
+          "婚姻"
+        ],
+        "lines": [
+          "人是最难预报的天气。先把你觉得自己“应该”想要的放到一边——你真正希望这里发生什么？",
+          "你们之间以前就有过这样的情况吗，还是这感觉像是头一回？",
+          "这件事里，哪一部分你还没有当面跟对方说过？"
+        ]
+      },
+      {
+        "key": "stuck",
+        "words": [
+          "决定",
+          "选择",
+          "抉择",
+          "纠结",
+          "卡住",
+          "困惑",
+          "迷茫",
+          "不确定",
+          "不知道",
+          "犹豫",
+          "两难",
+          "怎么办",
+          "拿不定"
+        ],
+        "lines": [
+          "你不必现在就想清楚。与其一下子做出整个决定，不如想想：一小步、可以反悔的一步，会是什么样子？",
+          "有时候卡住，是因为两个选项其实都还不错，让人难受的只是“非得选一个”这件事本身。这听起来像你现在的情况吗？",
+          "如果有个朋友跟你讲了一模一样的处境，你会对他说什么？"
+        ]
+      },
+      {
+        "key": "sadness",
+        "words": [
+          "难过",
+          "伤心",
+          "悲伤",
+          "失去",
+          "想念",
+          "孤独",
+          "寂寞",
+          "孤单",
+          "哭",
+          "低落",
+          "心碎",
+          "沮丧",
+          "去世"
+        ],
+        "lines": [
+          "这份心情很沉，要陪着它坐一会儿不容易。你不需要把它说得比实际更小。",
+          "这是最近才发生的事，还是已经跟了你一段时间了？",
+          "我很高兴你把它说了出来，而不是一个人默默扛着。"
+        ]
+      },
+      {
+        "key": "good",
+        "words": [
+          "开心",
+          "高兴",
+          "兴奋",
+          "激动",
+          "期待",
+          "感恩",
+          "骄傲",
+          "自豪",
+          "好消息",
+          "松了口气",
+          "幸福",
+          "快乐",
+          "有希望"
+        ],
+        "lines": [
+          "这是一种很好的感觉，在去想下一件事之前，先在里面多待一会儿吧。",
+          "具体是什么让它这么打动你？这值得留意一下。",
+          "真好——把这份感觉好好收着。"
+        ]
+      },
+      {
+        "key": "greeting",
+        "words": [
+          "你好",
+          "您好",
+          "嗨",
+          "哈喽",
+          "在吗",
+          "早上好",
+          "晚上好",
+          "早安"
+        ],
+        "lines": [
+          "你好。你在想些什么呢？",
+          "嗨。今天是什么把你带到这儿来的？"
+        ]
+      },
+      {
+        "key": "thanks",
+        "words": [
+          "谢谢",
+          "感谢",
+          "多谢",
+          "谢啦",
+          "谢了",
+          "感激",
+          "辛苦了"
+        ],
+        "lines": [
+          "不客气。我在这儿，就是为了这个。",
+          "随时都在。还有什么想再多想一会儿的吗，还是感觉已经说完了？"
+        ]
+      }
+    ],
+    "fallback": [
+      "多说一点吧——它底下藏着的是什么？",
+      "这值得好好想一想。它感觉更像一个问题，还是一个决定？",
+      "我听到了。这件事里，哪一部分你还没有说出口？",
+      "在你开始讲道理之前，你的直觉怎么说？"
+    ]
+  }
+}

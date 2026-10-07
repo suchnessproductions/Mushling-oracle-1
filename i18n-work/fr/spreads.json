@@ -1,0 +1,150 @@
+{
+  "single-spore": {
+    "name": "Spore unique",
+    "description": "Une carte pour la journée — ce que la journée te demande de remarquer.",
+    "longDescription": "Le tirage le plus simple du jeu. Pas besoin de question : tire une carte et laisse-la donner le ton de la journée. Idéal le matin, pendant une pause entre deux tâches, ou à tout moment où tu veux de la compagnie plus que des réponses.",
+    "positions": [
+      "Le Mushling du jour"
+    ],
+    "positionMeanings": [
+      "La seule chose qui mérite de t'accompagner aujourd'hui — une humeur à remarquer, un rappel sur lequel t'appuyer, ou un petit compagnon pour les heures à venir."
+    ]
+  },
+  "two-paths": {
+    "name": "Deux chemins",
+    "description": "Pour te tenir entre deux vraies options — un regard honnête sur chaque route avant de choisir.",
+    "longDescription": "Pour quand tu te trouves entre deux vraies options. Avant de tirer, décide quel choix est la fourche de gauche et lequel est celle de droite. Les cartes ne désigneront pas de gagnant ; elles montrent ce que chaque route exigerait vraiment de toi et ce qu'elle te rendrait, pour que le choix se sente plus facilement.",
+    "positions": [
+      "Fourche gauche · Ce choix",
+      "Fourche droite · L’autre choix"
+    ],
+    "positionMeanings": [
+      "Garde ta première option en tête : ce que ce chemin te demanderait vraiment, et ce qu'il te rendrait en silence.",
+      "Garde ta seconde option en tête : le même regard honnête sur l'autre route. Lis les deux cartes côte à côte, pas comme un duel."
+    ]
+  },
+  "original-draw": {
+    "name": "Le sentier de la forêt",
+    "description": "La lecture Mushling d'origine — ce qui était, ce qui est, et ce qui te guide.",
+    "longDescription": "La lecture Mushling d'origine : une ligne de trois cartes à travers le temps. Les feuilles de la saison dernière deviennent le terreau de celle-ci, la mousse montre ce qui pousse maintenant, et une luciole éclaire le chemin dans l'obscurité. Choisis-la quand rien de précis n'a motivé le tirage et que tu veux simplement savoir où tu en es.",
+    "positions": [
+      "Les feuilles tombées · Ce qui était",
+      "La mousse · Ce qui est",
+      "La luciole · Ce qui te guide"
+    ],
+    "positionMeanings": [
+      "Ce qui est venu avant et te façonne encore — les vieilles feuilles devenues le sol sur lequel tu te tiens.",
+      "Où en sont vraiment les choses maintenant, sans l'histoire que tu te racontes à ce sujet.",
+      "La petite lumière qui vaut la peine d'être suivie à partir d'ici — un instinct, une valeur, ou un appel discret en qui tu peux avoir confiance."
+    ]
+  },
+  "seed-to-bloom": {
+    "name": "De la graine à la fleur",
+    "description": "Pour un objectif, une habitude ou un espoir que tu entretiens — ce que c'est, ce dont ça a besoin, et comment ça pousse déjà.",
+    "longDescription": "Un tirage d'entretien pour un objectif, une habitude, un projet ou un espoir que tu fais grandir. Il ne cherche pas ce qui ne va pas ; il demande ce qu'est vraiment cette chose, ce qui l'aide à s'épanouir, là où elle fonctionne déjà, et ce qu'elle pourrait devenir à sa propre saison. Idéal au début de quelque chose, ou à mi-chemin quand tu as oublié pourquoi tu as commencé.",
+    "positions": [
+      "La graine · Ce que tu plantes",
+      "Le sol · Ce dont elle a besoin",
+      "La pousse · Ce qui grandit déjà",
+      "La fleur · Ce qu'elle peut devenir"
+    ],
+    "positionMeanings": [
+      "Ce que c'est vraiment, au fond — l'intention sous la liste de choses à faire et la pression.",
+      "Les conditions dont elle a besoin pour s'épanouir : le soin quotidien, le genre d'attention, l'espace pour grandir.",
+      "La preuve que ça marche déjà — des progrès devant lesquels tu es peut-être passé sans les voir.",
+      "Ce qu'elle pourrait devenir si tu continues à en prendre soin. Pas une promesse ; une image honnête de sa saison."
+    ]
+  },
+  "the-clearing": {
+    "name": "La clairière",
+    "description": "Pour les fins et les temps intermédiaires — ce qui s'en va, ce que tu gardes, et ce que la lumière nouvelle rend possible.",
+    "longDescription": "Quand un vieil arbre tombe, le soleil atteint le sol de la forêt pour la première fois depuis des années, et des choses poussent là où rien ne pouvait avant. C'est le tirage pour les fins, les adieux et les saisons intermédiaires : un travail, un chez-soi, une relation, une ancienne version de toi-même. Il honore ce qui se termine et montre à quoi sert l'espace ouvert.",
+    "positions": [
+      "L’arbre tombé · Ce qui finit",
+      "Les cernes · Ce que cela t'a donné",
+      "Les racines · Ce que tu tiens",
+      "La lumière · Ce qu’elle ouvre",
+      "La verdure · Ce qui poussera"
+    ],
+    "positionMeanings": [
+      "Ce qui est en train de tomber, ou qui l'a déjà fait — même si tu le soutiens encore.",
+      "Ce que ce chapitre t'a donné et que tu peux garder, porté en toi comme les cernes d'un arbre.",
+      "La part que tu n'as pas encore lâchée, et ce que t'en coûte de t'y accrocher.",
+      "Ce que l'espace ouvert rend possible — une lumière qui ne pouvait pas t'atteindre avant.",
+      "La première petite chose qui veut pousser ici ensuite."
+    ]
+  },
+  "mycelial-web": {
+    "name": "Le réseau mycélien",
+    "description": "Une lecture pour un lien — un ou une partenaire, un ami, la famille, un collègue, ou toute une communauté.",
+    "longDescription": "Les Mushlings ne poussent jamais seuls — sous le sol de la forêt, un réseau de mycélium relie chaque chapeau à tous les autres, en faisant circuler la nourriture dans les deux sens. Ce tirage de six cartes examine un lien dans ta vie : ce que chacun de vous apporte, ce qui vous unit vraiment, où cela s'emmêle, ce qui circule entre vous, et ce qui l'aiderait à s'épanouir. Garde une personne, ou un groupe, en tête pendant que tu tires.",
+    "positions": [
+      "Ton chapeau · Ce que tu apportes",
+      "Son chapeau · Son apport",
+      "Le fil · Ce qui vous unit",
+      "Le nœud · Là où ça accroche",
+      "Le flux · Ce qui passe entre vous",
+      "La nourriture · Ce qui nourrit"
+    ],
+    "positionMeanings": [
+      "Ce que tu apportes à ce lien en ce moment — ton humeur, tes espoirs, ta garde.",
+      "Ce que l'autre semble apporter, du mieux que tu peux le voir d'où tu es.",
+      "La vraie chose qui vous unit, sous l'habitude et l'histoire.",
+      "Là où ça accroche ou s'emmêle — la friction qui vaut la peine d'être regardée avec douceur.",
+      "Ce qui est donné et reçu entre vous, et si cela circule dans les deux sens.",
+      "Ce qui nourrirait ce lien à partir d'ici — une chose que tu pourrais offrir, ou demander."
+    ]
+  },
+  "traditional-draw": {
+    "name": "Le cœur du bois",
+    "description": "La lecture classique en sept cartes pour une question qui compte — toutes les forces autour d'elle, du cœur vers l'extérieur.",
+    "longDescription": "La grande lecture classique du jeu, pour une question précise que tu veux comprendre en profondeur. Elle part du cœur du sujet et s'élargit : ce qui le croise, ce qui n'a pas été dit, ce que tu espères, comment tu te tiens, ce qui échappe à ton contrôle, et le chemin à travers. Dis ta question à voix haute avant de commencer.",
+    "positions": [
+      "Le cœur du bois · L’essentiel",
+      "La ronce · Ce qui la croise",
+      "Sous les feuilles · Le non-dit",
+      "La cime · Ce que tu espères",
+      "Ton ancrage · Ta posture",
+      "Le temps · Hors de ta portée",
+      "La voie · Le tournant"
+    ],
+    "positionMeanings": [
+      "Le cœur du sujet — ce dont parle vraiment cette question quand le bruit est écarté.",
+      "Le défi qui croise ta route en ce moment, et qui n'est peut-être pas celui qu'on accuse.",
+      "Quelque chose de non dit ou d'inaperçu — un sentiment, un fait ou une peur, tapis sous le tapis de feuilles.",
+      "Ce que tu espères en silence qu'il arrive, y compris les espoirs que tu n'as pas avoués.",
+      "La façon dont tu y fais face en ce moment — la posture que tu as prise, stable ou en train de glisser.",
+      "Ce qui ne dépend pas de toi — les autres, le moment, les circonstances : le temps dans lequel tu marches.",
+      "Le prochain tournant du chemin — où cela mène si tu l'affrontes avec ce que tu sais maintenant."
+    ]
+  },
+  "whole-forest": {
+    "name": "Toute la forêt",
+    "description": "Une promenade de dix cartes à travers chaque part de ta vie, pour les grands moments — un anniversaire, une nouvelle année, un tournant.",
+    "longDescription": "Le plus grand tirage du jeu, pour les plus grands moments — un anniversaire, une nouvelle année, le début d'un nouveau chapitre. Au lieu d'une seule question, il parcourt toute la forêt de ta vie : la maison, le travail, l'amour, le corps, l'esprit, les ressources, le jeu et l'âme, encadrés par le thème de la saison et une lanterne à emporter avec toi. Prends ton temps ; c'est beaucoup à accueillir d'un seul coup.",
+    "positions": [
+      "Le ciel · Ta saison actuelle",
+      "Le creux · Foyer et repos",
+      "La fourmilière · Travail",
+      "Le bouquet · Amour et liens",
+      "Le pied · Corps et énergie",
+      "La brise · Esprit et humeur",
+      "Les glands · Ressources",
+      "La flaque · Jeu et joie",
+      "Le vieux chêne · L’âme",
+      "La lanterne · À emporter"
+    ],
+    "positionMeanings": [
+      "L’atmosphère générale de la saison que tu traverses — le ciel suspendu au-dessus de tout le reste.",
+      "Ta vie à la maison, et à quel point tu te reposes bien.",
+      "Ton travail, et s'il te semble encore être le tien.",
+      "Les personnes que tu aimes et auxquelles tu appartiens — partenaires, famille, famille choisie, amis.",
+      "Ton corps et ton énergie : comment tu vas vraiment, pas comment tu te forces à avancer.",
+      "Tes pensées et tes humeurs — ce qui tourne en boucle.",
+      "L'argent, le temps et la sécurité — ce que tu as mis de côté, et ce qui te semble rare.",
+      "L'amusement, le jeu et la légèreté — les choses que tu fais simplement parce que.",
+      "Ton sens de l'émerveillement, du sens, et de l'appartenance à quelque chose de plus grand.",
+      "La seule chose à emporter avec toi vers ce qui vient."
+    ]
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "single-spore": {
+    "name": "Spora singola",
+    "description": "Una carta per la giornata: che cosa ti chiede di notare, oggi.",
+    "longDescription": "La stesa più semplice del mazzo. Non serve nessuna domanda: pesca una carta e lascia che dia il tono alla giornata. Ideale al mattino, in una pausa tra un impegno e l'altro, o in qualsiasi momento in cui hai più voglia di compagnia che di risposte.",
+    "positions": [
+      "Il Mushling di oggi"
+    ],
+    "positionMeanings": [
+      "L'unica cosa che vale la pena portare con te oggi: uno stato d'animo da notare, un promemoria a cui appoggiarti, o un piccolo compagno per le ore che ti aspettano."
+    ]
+  },
+  "two-paths": {
+    "name": "Due sentieri",
+    "description": "Per quando ti trovi tra due possibilità reali: uno sguardo onesto lungo ciascuna strada, prima di scegliere.",
+    "longDescription": "Per quando ti trovi tra due possibilità reali. Prima di pescare, decidi quale scelta è il sentiero di sinistra e quale quello di destra. Le carte non proclameranno un vincitore: ti mostrano che cosa ti chiederebbe davvero percorrere ciascuna strada, e che cosa ti restituirebbe, così la scelta diventa più facile da sentire.",
+    "positions": [
+      "Il Sentiero di Sinistra · Questa scelta",
+      "Il Sentiero di Destra · Quella scelta"
+    ],
+    "positionMeanings": [
+      "Tieni a mente la tua prima possibilità: che cosa ti chiederebbe davvero percorrere questa strada, e che cosa ti restituirebbe, in silenzio.",
+      "Tieni a mente la tua seconda possibilità: lo stesso sguardo onesto lungo l'altra strada. Leggi le due carte fianco a fianco, non come una gara."
+    ]
+  },
+  "original-draw": {
+    "name": "La Stesa Originale",
+    "description": "La lettura originale dei Mushling: ciò che è stato, ciò che è e ciò che ti guida avanti.",
+    "longDescription": "La lettura originale dei Mushling: una linea di tre carte attraverso il tempo. Le foglie della stagione passata diventano il terriccio di quella presente, il muschio mostra cosa sta crescendo adesso, e una lucciola illumina la strada nel buio. Sceglila quando non c'è un motivo preciso per pescare e vuoi semplicemente capire a che punto sei.",
+    "positions": [
+      "Le Foglie Cadute · Ciò che è stato",
+      "Il Muschio · Ciò che è",
+      "La Lucciola · Ciò che ti guida"
+    ],
+    "positionMeanings": [
+      "Ciò che è venuto prima e che ancora ti dà forma: le vecchie foglie diventate il terreno su cui poggi i piedi.",
+      "Come stanno davvero le cose adesso, senza la storia che continui a raccontarti al riguardo.",
+      "La piccola luce che vale la pena seguire da qui in avanti: un istinto, un valore, o un richiamo silenzioso di cui puoi fidarti."
+    ]
+  },
+  "seed-to-bloom": {
+    "name": "Dal seme al fiore",
+    "description": "Per un obiettivo, un'abitudine o una speranza di cui ti prendi cura: che cos'è, di cosa ha bisogno e come sta già crescendo.",
+    "longDescription": "Una stesa per prendersi cura di un obiettivo, un'abitudine, un progetto o una speranza che stai coltivando con pazienza. Non va a caccia di ciò che non va: si chiede che cosa sia davvero questa cosa, che cosa la aiuti a prosperare, dove stia già funzionando e che cosa potrebbe diventare nella sua stagione. Utile all'inizio di qualcosa, oppure a metà strada, quando non ricordi più perché avevi cominciato.",
+    "positions": [
+      "Il Seme · Ciò che stai piantando",
+      "Il Terreno · Ciò di cui ha bisogno",
+      "Il Germoglio · Ciò che sta già crescendo",
+      "Il Fiore · Ciò che può diventare"
+    ],
+    "positionMeanings": [
+      "Che cos'è davvero, nel profondo: l'intenzione che sta sotto la lista delle cose da fare e sotto la pressione.",
+      "Le condizioni di cui ha bisogno per prosperare: la cura di ogni giorno, il giusto tipo di attenzione, lo spazio per crescere.",
+      "La prova che sta già funzionando: progressi che forse ti sono sfuggiti mentre ci passavi accanto.",
+      "Ciò che potrebbe diventare se continui a prendertene cura. Non una promessa: un ritratto onesto della sua stagione."
+    ]
+  },
+  "the-clearing": {
+    "name": "La Radura",
+    "description": "Per i finali e i momenti di passaggio: che cosa se ne va, che cosa tieni e a cosa fa spazio la nuova luce.",
+    "longDescription": "Quando un vecchio albero cade, la luce del sole raggiunge il sottobosco per la prima volta dopo anni, e le cose crescono dove prima non poteva crescere nulla. Questa è la stesa per i finali, gli addii e le stagioni di passaggio: un lavoro, una casa, una relazione, una vecchia versione di te. Rende onore a ciò che finisce e mostra a cosa serve lo spazio che si apre.",
+    "positions": [
+      "L'Albero Caduto · Ciò che finisce",
+      "Gli Anelli · Ciò che ti ha dato",
+      "Le Radici Aggrovigliate · Ciò a cui ti aggrappi ancora",
+      "La Luce che Entra · Ciò a cui lo spazio fa posto",
+      "Il Primo Verde · Ciò che crescerà dopo"
+    ],
+    "positionMeanings": [
+      "Ciò che sta crollando, o è già crollato, anche se continui a tenerlo in piedi.",
+      "Ciò che questo capitolo ti ha dato e che puoi tenere, custodito dentro di te come gli anelli di un albero.",
+      "La parte che non hai ancora lasciato andare, e quanto ti costa continuare a trattenerla.",
+      "Ciò a cui lo spazio aperto fa posto: una luce che prima non riusciva a raggiungerti.",
+      "La prima piccola cosa che vuole crescere qui, adesso."
+    ]
+  },
+  "mycelial-web": {
+    "name": "La Rete del Micelio",
+    "description": "Una lettura per un legame: un partner, un'amicizia, la famiglia, un collega o un'intera comunità.",
+    "longDescription": "I Mushling non crescono mai da soli: sotto il suolo del bosco, una rete di micelio unisce ogni cappello a tutti gli altri, e il nutrimento passa avanti e indietro. Questa stesa di sei carte guarda a un solo legame della tua vita: che cosa porta ciascuno di voi, che cosa vi unisce davvero, dove si ingarbuglia, che cosa passa tra voi e che cosa lo aiuterebbe a prosperare. Tieni a mente una persona, o un gruppo, mentre peschi.",
+    "positions": [
+      "Il Tuo Cappello · Ciò che porti tu",
+      "L'Altro Cappello · Ciò che porta l'altra parte",
+      "Il Filo · Ciò che vi unisce",
+      "Il Nodo · Dove si impiglia",
+      "Il Flusso · Ciò che passa tra voi",
+      "Il Nutrimento · Ciò che lo farebbe crescere"
+    ],
+    "positionMeanings": [
+      "Ciò che stai portando in questo legame adesso: il tuo umore, le tue speranze, le tue difese.",
+      "Ciò che l'altra parte sembra portare, per quanto riesci a vederlo da dove ti trovi.",
+      "La cosa vera che vi unisce, sotto l'abitudine e la storia comune.",
+      "Dove si impiglia o si ingarbuglia: l'attrito che vale la pena guardare con delicatezza.",
+      "Ciò che viene dato e ricevuto tra voi, e se scorre in entrambe le direzioni.",
+      "Ciò che potrebbe nutrire questo legame da qui in avanti: una cosa che potresti offrire, o chiedere."
+    ]
+  },
+  "traditional-draw": {
+    "name": "La Stesa Tradizionale",
+    "description": "La classica lettura a sette carte per una domanda che conta: ogni forza che le gira intorno, dal cuore verso l'esterno.",
+    "longDescription": "La grande lettura classica del mazzo, per una domanda precisa che vuoi capire a fondo. Parte dal cuore della questione e procede verso l'esterno: che cosa la ostacola, che cosa non è stato detto, che cosa speri, come la stai affrontando, che cosa sfugge al tuo controllo e il passaggio per andare oltre. Pronuncia la tua domanda ad alta voce prima di cominciare.",
+    "positions": [
+      "Il Cuore del Legno · Di cosa si tratta davvero",
+      "Il Rovo · Che cosa la ostacola",
+      "Sotto le Foglie · Ciò che non è stato detto",
+      "Le Cime degli Alberi · Ciò che speri",
+      "Il Tuo Appoggio · Come la stai affrontando",
+      "Il Tempo che Fa · Ciò che non dipende da te",
+      "Il Passaggio · Dove la strada svolta"
+    ],
+    "positionMeanings": [
+      "Il cuore della questione: di che cosa parla davvero questa domanda, una volta tolto tutto il rumore.",
+      "La sfida che ti taglia la strada adesso, e che forse non è quella a cui stai dando la colpa.",
+      "Qualcosa di non detto o di non visto: un sentimento, un fatto o una paura nascosti sotto le foglie secche.",
+      "Ciò che speri in silenzio che accada, comprese le speranze che non hai ancora ammesso.",
+      "Come stai affrontando la cosa in questo momento: la posizione che hai preso, salda o vacillante.",
+      "Ciò che non sta a te controllare: le altre persone, i tempi, le circostanze. Il tempo che fa mentre cammini.",
+      "La prossima svolta del sentiero: dove porta tutto questo se lo affronti con ciò che ora sai."
+    ]
+  },
+  "whole-forest": {
+    "name": "Tutta la Foresta",
+    "description": "Un cammino di dieci carte attraverso ogni parte della tua vita, per i grandi momenti: un compleanno, un anno nuovo, una svolta.",
+    "longDescription": "La stesa più grande del mazzo, per i momenti più grandi: un compleanno, un anno nuovo, l'inizio di un nuovo capitolo. Invece di una sola domanda, attraversa l'intera foresta della tua vita: casa, lavoro, amore, corpo, mente, risorse, gioco e spirito, racchiusi tra il tema della stagione e una lanterna da portare con te. Prenditi il tuo tempo: è tanto da accogliere tutto in una volta.",
+    "positions": [
+      "Il Cielo · Il tema di questo capitolo",
+      "La Tana · Casa e riposo",
+      "Il Formicaio · Lavoro e scopo",
+      "La Famigliola · Amore e legami",
+      "Il Gambo · Corpo ed energia",
+      "La Brezza · Mente e umore",
+      "La Scorta di Ghiande · Risorse e sicurezza",
+      "La Pozzanghera · Gioco e gioia",
+      "La Vecchia Quercia · Spirito e meraviglia",
+      "La Lanterna · Ciò da portare con te"
+    ],
+    "positionMeanings": [
+      "La forma generale di questo capitolo: il cielo che sovrasta tutto il resto.",
+      "La tua vita in casa, e quanto stai riposando davvero.",
+      "Il tuo lavoro, e se lo senti ancora tuo.",
+      "Le persone che ami e a cui appartieni: partner, famiglia, famiglia scelta, amici.",
+      "Il tuo corpo e la tua energia: come stai davvero, non come stai tirando avanti a forza.",
+      "I tuoi pensieri e i tuoi stati d'animo: che cosa ti gira per la testa.",
+      "Denaro, tempo e sicurezza: che cosa hai messo da parte, e che cosa ti sembra scarseggiare.",
+      "Divertimento, gioco e leggerezza: le cose che fai solo perché sì.",
+      "Il tuo senso di meraviglia, di significato e di appartenenza a qualcosa di più grande.",
+      "L'unica cosa da portare con te in questo nuovo capitolo."
+    ]
+  }
+}

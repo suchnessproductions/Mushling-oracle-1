@@ -1,4 +1,3 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>The Mushling Oracle</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
@@ -9,16 +8,11 @@
   <section id="screen-home" class="screen active">
     <div class="screen-bg bg-home" style="background-image:url('assets/bg/home.webp')"></div>
     <div class="screen-content">
-      <button class="back-btn" style="position:absolute;top:18px;right:18px;z-index:2" data-nav="screen-settings">⚙️</button>
+      <button class="back-btn" style="position:absolute;top:18px;right:18px;z-index:2" data-nav="screen-settings" aria-label="Settings">⚙️</button>
       <div class="home-hero">
-        <h1 class="display">The Mushling Oracle</h1>
-        <p>49 small guides from the forest floor.</p>
-        <button class="btn-primary" data-nav="screen-reading">Draw a Card</button>
-      </div>
-      <div class="home-quicklinks">
-        <button class="btn-secondary" data-nav="screen-gallery">Gallery</button>
-        <button class="btn-secondary" data-nav="screen-journal">Journal</button>
-        <button class="btn-secondary" data-nav="screen-games">Games</button>
+        <h1 class="display" data-i18n="appName">The Mushling Oracle</h1>
+        <p data-i18n="homeTagline">49 small guides from the forest floor.</p>
+        <button class="btn-primary" data-nav="screen-reading" data-i18n="drawACard">Draw a Card</button>
       </div>
     </div>
   </section>
@@ -29,7 +23,7 @@
     <div class="screen-content">
       <div class="topbar">
         <button class="back-btn" data-nav="screen-home">←</button>
-        <h2>Choose a Spread</h2>
+        <h2 data-i18n="chooseSpread">Choose a Spread</h2>
       </div>
       <div class="spread-picker">
         <div class="spread-pills" id="spread-pills"></div>
@@ -46,20 +40,19 @@
         <button class="back-btn" data-nav="screen-reading">←</button>
         <h2 id="draw-position-label">Today's Mushling</h2>
       </div>
-      <div class="card-progress" id="draw-progress"></div>
       <p class="position-explain" id="draw-position-explain"></p>
       <div class="card-stage">
         <div class="card-art-wrap" id="draw-art-wrap">
           <img id="draw-card-img" src="" alt="">
-          <div class="card-zoom-hint">🔍 tap to enlarge</div>
+          <div class="card-zoom-hint" data-i18n="tapToEnlarge">🔍 tap to enlarge</div>
         </div>
         <div class="card-name display" id="draw-card-name"></div>
       </div>
 
       <div class="draw-tabs" id="draw-tabs">
-        <button class="draw-tab active" data-tab="message">Message</button>
-        <button class="draw-tab" data-tab="meaning">Meaning</button>
-        <button class="draw-tab draw-tab-story" data-action="story">📖 Story</button>
+        <button class="draw-tab active" data-tab="message" data-i18n="tabMessage">Message</button>
+        <button class="draw-tab" data-tab="meaning" data-i18n="tabMeaning">Meaning</button>
+        <button class="draw-tab draw-tab-story" data-action="story" data-i18n="tabStory">📖 Story</button>
       </div>
 
       <div class="draw-tab-panel active" data-panel="message">
@@ -72,8 +65,11 @@
         <p class="card-interp" id="draw-card-interp"></p>
       </div>
 
-      <button class="btn-primary next-card-btn" id="draw-next-btn" style="display:none">Next Card →</button>
-      <button class="btn-primary next-card-btn" id="draw-finish-btn" style="display:none">Finish Reading</button>
+      <div class="draw-nav-row" id="draw-nav-row">
+        <button class="btn-prev" id="draw-prev-btn" style="display:none" data-i18n="prevCard">← Previous</button>
+        <button class="btn-primary next-card-btn" id="draw-next-btn" style="display:none" data-i18n="nextCard">Next Card →</button>
+        <button class="btn-primary next-card-btn" id="draw-finish-btn" style="display:none" data-i18n="finishReading">Finish Reading</button>
+      </div>
     </div>
   </section>
 
@@ -89,11 +85,11 @@
         <p id="story-text"></p>
       </div>
       <div class="story-nav">
-        <button class="link-btn" id="story-prev">‹ Back</button>
+        <button class="story-btn" id="story-prev" data-i18n="storyBack">‹ Back</button>
         <div class="story-dots" id="story-dots"></div>
-        <button class="link-btn" id="story-next">Next ›</button>
+        <button class="story-btn" id="story-next" data-i18n="storyNext">Next ›</button>
       </div>
-      <div class="story-end" id="story-end" style="display:none">🍄 The End 🍄</div>
+      <div class="story-end" id="story-end" style="display:none" data-i18n="storyEnd">🍄 The End 🍄</div>
     </div>
   </section>
 
@@ -103,9 +99,9 @@
     <div class="screen-content">
       <div class="topbar">
         <button class="back-btn" data-nav="screen-home">←</button>
-        <h2>Gallery</h2>
+        <h2 data-i18n="galleryTitle">Gallery</h2>
       </div>
-      <p class="gallery-intro">Forty-nine Mushlings. Meet them all, or let one find you.</p>
+      <p class="gallery-intro" data-i18n="galleryIntro">Forty-nine Mushlings. Meet them all, or let one find you.</p>
       <div class="gallery-grid" id="gallery-grid"></div>
     </div>
   </section>
@@ -116,10 +112,10 @@
     <div class="screen-content">
       <div class="topbar">
         <button class="back-btn" data-nav="screen-home">←</button>
-        <h2>Journal</h2>
+        <h2 data-i18n="journalTitle">Journal</h2>
       </div>
       <div class="journal-search-row" id="journal-search-row">
-        <input type="text" id="journal-search" placeholder="🔍 Search your journal…">
+        <input type="text" id="journal-search" data-i18n-ph="journalSearch" placeholder="🔍 Search your journal…">
       </div>
       <div id="journal-list"></div>
     </div>
@@ -131,32 +127,32 @@
     <div class="screen-content">
       <div class="topbar">
         <button class="back-btn" data-nav="screen-home">←</button>
-        <h2>Mini-Games</h2>
+        <h2 data-i18n="gamesTitle">Mini-Games</h2>
       </div>
       <div class="games-grid">
         <button class="game-tile" data-nav="screen-match">
           <span class="emoji">🍄</span>
-          <div><h3>Mushling Match</h3><p>Flip and pair up Mushling portraits.</p></div>
+          <div><h3 data-i18n="gameMatchTitle">Mushling Match</h3><p data-i18n="gameMatchDesc">Flip and pair up Mushling portraits.</p></div>
         </button>
         <div class="game-tile disabled">
           <span class="emoji">🌻</span>
-          <div><h3>Which Mushling Are You?</h3><p>A 7-question personality quiz.</p></div>
-          <span class="soon-badge">Coming soon</span>
+          <div><h3 data-i18n="gameQuizTitle">Which Mushling Are You?</h3><p data-i18n="gameQuizDesc">A 7-question personality quiz.</p></div>
+          <span class="soon-badge" data-i18n="comingSoon">Coming soon</span>
         </div>
         <div class="game-tile disabled">
           <span class="emoji">🌱</span>
-          <div><h3>Grow the Garden</h3><p>Plant seeds, build a streak.</p></div>
-          <span class="soon-badge">Coming soon</span>
+          <div><h3 data-i18n="gameGardenTitle">Grow the Garden</h3><p data-i18n="gameGardenDesc">Plant seeds, build a streak.</p></div>
+          <span class="soon-badge" data-i18n="comingSoon">Coming soon</span>
         </div>
         <div class="game-tile disabled">
           <span class="emoji">🏡</span>
-          <div><h3>Walk Mushling Home</h3><p>A sliding-puzzle maze, 10 levels.</p></div>
-          <span class="soon-badge">Coming soon</span>
+          <div><h3 data-i18n="gameHomeTitle">Walk Mushling Home</h3><p data-i18n="gameHomeDesc">A sliding-puzzle maze, 10 levels.</p></div>
+          <span class="soon-badge" data-i18n="comingSoon">Coming soon</span>
         </div>
         <div class="game-tile disabled">
           <span class="emoji">✨</span>
-          <div><h3>Firefly Catch</h3><p>Tap fireflies at their bright peak.</p></div>
-          <span class="soon-badge">Coming soon</span>
+          <div><h3 data-i18n="gameFireflyTitle">Firefly Catch</h3><p data-i18n="gameFireflyDesc">Tap fireflies at their bright peak.</p></div>
+          <span class="soon-badge" data-i18n="comingSoon">Coming soon</span>
         </div>
       </div>
     </div>
@@ -168,7 +164,7 @@
     <div class="screen-content">
       <div class="topbar">
         <button class="back-btn" data-nav="screen-games">←</button>
-        <h2>Mushling Match</h2>
+        <h2 data-i18n="gameMatchTitle">Mushling Match</h2>
       </div>
       <div class="match-header">
         <span id="match-level-label">Level 1</span>
@@ -177,7 +173,7 @@
       <div class="match-grid" id="match-grid"></div>
       <div class="match-win" id="match-win" style="display:none">
         <p class="display" id="match-win-text"></p>
-        <button class="btn-primary" id="match-next-level">Next Level →</button>
+        <button class="btn-primary" id="match-next-level" data-i18n="matchNextLevel">Next Level →</button>
       </div>
     </div>
   </section>
@@ -188,22 +184,23 @@
     <div class="screen-content screen-content-chat">
       <div class="topbar">
         <button class="back-btn" data-nav="screen-home">←</button>
-        <h2>Sage</h2>
+        <h2 data-i18n="sageTitle">Sage</h2>
       </div>
 
       <!-- shown until a reading has been finished this session -->
       <div class="sage-gate" id="sage-gate">
-        <p class="display" style="font-size:1.3rem">Finish a reading first</p>
-        <p>Sage reflects on a whole reading, not one card in isolation. Pull a spread, see it through to the end, and Sage will help you make sense of what came up — and keep talking as long as you want.</p>
-        <button class="btn-primary" data-nav="screen-reading">Draw a Reading</button>
+        <p class="display" style="font-size:1.3rem" data-i18n="sageGateTitle">Finish a reading first</p>
+        <p data-i18n="sageGateBody">Sage reflects on a whole reading, not one card in isolation. Pull a spread and see it through to the end; Sage will weave the cards together into a synthesis, then keep talking as long as you like.</p>
+        <button class="btn-primary" data-nav="screen-reading" data-i18n="sageGateButton">Draw a Reading</button>
       </div>
 
       <div class="sage-chat-ui" id="sage-chat-ui">
+        <div class="sage-reading" id="sage-reading"></div>
         <div class="sage-counter" id="sage-counter"></div>
         <div class="chat-log" id="chat-log"></div>
         <div class="chat-input-row">
-          <input type="text" id="chat-input" placeholder="Say something to Sage…">
-          <button id="chat-send">➤</button>
+          <input type="text" id="chat-input" data-i18n-ph="chatPlaceholder" placeholder="Say something to Sage…">
+          <button id="chat-send" aria-label="Send">➤</button>
         </div>
         <div id="sage-save-slot"></div>
       </div>
@@ -216,7 +213,13 @@
     <div class="screen-content">
       <div class="topbar">
         <button class="back-btn" data-nav="screen-home">←</button>
-        <h2>Settings</h2>
+        <h2 data-i18n="settingsTitle">Settings</h2>
+      </div>
+
+      <div class="settings-block">
+        <h3 data-i18n="languageTitle">Language</h3>
+        <p data-i18n="languageBody">Cards, stories, spreads, and Sage will all speak this language.</p>
+        <div class="lang-pills" id="lang-pills"></div>
       </div>
 
       <div class="settings-block">
@@ -226,19 +229,19 @@
       </div>
 
       <div class="settings-block">
-        <h3>Mushling AI Guide</h3>
-        <p>Up to 300 conversations a month with Sage, the Oracle's resident guide.</p>
-        <button class="btn-secondary" id="btn-subscribe">Start for $5/month</button>
-        <p class="fine">Resets monthly. Unused conversations don't carry over.</p>
+        <h3 data-i18n="aiGuideTitle">Mushling AI Guide</h3>
+        <p data-i18n="aiGuideBody">Up to 300 conversations a month with Sage, the Oracle's resident guide.</p>
+        <button class="btn-secondary" id="btn-subscribe" data-i18n="subscribeButton">Start for $5/month</button>
+        <p class="fine" data-i18n="aiGuideFine">Resets monthly. Unused conversations don't carry over. Each reading's synthesis counts as one conversation.</p>
       </div>
 
       <div class="settings-block">
         <div class="toggle-row">
           <div>
-            <h3 style="margin-bottom:2px">Demo: Preview Free-Tier (Locked) View</h3>
-            <p style="margin:0">This prototype opens with everything unlocked so you can see the full app. Flip this to preview what a non-paying visitor sees instead.</p>
+            <h3 style="margin-bottom:2px" data-i18n="demoTitle">Demo: Preview Free-Tier (Locked) View</h3>
+            <p style="margin:0" data-i18n="demoBody">This prototype opens with everything unlocked so you can see the full app. Flip this to preview what a non-paying visitor sees instead.</p>
           </div>
-          <button class="switch" id="demo-toggle"><span class="knob"></span></button>
+          <button class="switch" id="demo-toggle" aria-label="Demo"><span class="knob"></span></button>
         </div>
       </div>
     </div>
@@ -248,12 +251,12 @@
 
 <!-- Bottom nav -->
 <nav class="bottom-nav">
-  <button data-nav="screen-home"><span class="icon">🏠</span>Home</button>
-  <button data-nav="screen-reading"><span class="icon">🔮</span>Draw</button>
-  <button data-nav="screen-gallery"><span class="icon">🖼️</span>Gallery</button>
-  <button data-nav="screen-journal"><span class="icon">📓</span>Journal</button>
-  <button data-nav="screen-games"><span class="icon">🎲</span>Games</button>
-  <button data-nav="screen-sage"><span class="icon">🍄</span>Sage</button>
+  <button data-nav="screen-home"><span class="icon">🏠</span><span data-i18n="navHome">Home</span></button>
+  <button data-nav="screen-reading"><span class="icon">🔮</span><span data-i18n="navDraw">Draw</span></button>
+  <button data-nav="screen-gallery"><span class="icon">🖼️</span><span data-i18n="navGallery">Gallery</span></button>
+  <button data-nav="screen-journal"><span class="icon">📓</span><span data-i18n="navJournal">Journal</span></button>
+  <button data-nav="screen-games"><span class="icon">🎲</span><span data-i18n="navGames">Games</span></button>
+  <button data-nav="screen-sage"><span class="icon">🍄</span><span data-i18n="navSage">Sage</span></button>
 </nav>
 
 <!-- Zoom modal -->
@@ -265,7 +268,6 @@
 <div class="toast" id="toast"></div>
 
 <script src="js/data.js"></script>
+<script src="js/strings.js"></script>
 <script src="js/games.js"></script>
 <script src="js/app.js"></script>
-
-</body></html>
