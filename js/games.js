@@ -1,14 +1,26 @@
-// Mushling Match — flip-and-pair memory game.
-// Prototype scope: levels 1-3 only (the free tier), using the 13 free cards as art.
+// Mushling Match — flip-and-pair memory game, 10 levels.
+// Levels 1-3 are free; the rest need the full deck (which also widens the
+// portrait pool from the 13 free cards to all 49).
 
-// Fewer columns than you'd think — these tiles carry a portrait + a name
-// caption, not just a color or a symbol, so they need real size to read at
-// a glance. 4 columns on a phone-width screen made them too small to use.
+// Tiles carry a portrait + a name caption, so columns stay low until the
+// deck gets big; the last levels go to 6 columns and scroll.
 const MATCH_LEVELS = [
-  { level: 1, cols: 2, pairs: 3 },
-  { level: 2, cols: 3, pairs: 4 },
-  { level: 3, cols: 3, pairs: 6 },
+  { level: 1, cols: 3, pairs: 3 },
+  { level: 2, cols: 4, pairs: 4 },
+  { level: 3, cols: 4, pairs: 6 },
+  { level: 4, cols: 4, pairs: 8 },
+  { level: 5, cols: 5, pairs: 10 },
+  { level: 6, cols: 6, pairs: 12 },
+  { level: 7, cols: 6, pairs: 15 },
+  { level: 8, cols: 6, pairs: 18 },
+  { level: 9, cols: 6, pairs: 21 },
+  { level: 10, cols: 6, pairs: 24 },
 ];
+// Testing switch: true lets any level be chosen with the arrows and ignores the free-tier lock.
+// Set to false to restore progress-gated levels.
+const LEVELS_OPEN = true;
+const MATCH_FREE_LEVELS = 3;
+const MATCH_KEY = 'mushling.matchReached';
 
 const match = {
   levelIndex: 0,
@@ -18,14 +30,24 @@ const match = {
   locked: false,
 };
 
-function freeCardPool() {
-  return MUSHLING_CARDS.filter(c => c.isFree).map(c => c.number);
+function matchCardPool() {
+  return MUSHLING_CARDS.filter(c => state.unlocked || c.isFree).map(c => c.number);
 }
 
 function startMatchLevel(levelIndex) {
-  match.levelIndex = levelIndex % MATCH_LEVELS.length;
+  match.levelIndex = Math.max(0, Math.min(levelIndex, MATCH_LEVELS.length - 1));
   const cfg = MATCH_LEVELS[match.levelIndex];
-  const chosen = sample(freeCardPool(), cfg.pairs);
+  if (match.levelIndex > gameStore.get(MATCH_KEY, 0)) gameStore.set(MATCH_KEY, match.levelIndex);
+  const locked = !LEVELS_OPEN && !state.unlocked && match.levelIndex >= MATCH_FREE_LEVELS;
+  document.getElementById('match-locked').style.display = locked ? 'flex' : 'none';
+  document.getElementById('match-grid').style.display = locked ? 'none' : '';
+  if (locked) {
+    match.tiles = []; match.flipped = []; match.moves = 0; match.locked = false;
+    refreshMatchLabels();
+    document.getElementById('match-win').style.display = 'none';
+    return;
+  }
+  const chosen = sample(matchCardPool(), cfg.pairs);
   const pairDeck = sample(chosen.concat(chosen), chosen.length * 2); // shuffled
   match.tiles = pairDeck.map(n => ({ cardNumber: n, matched: false }));
   match.flipped = [];
@@ -42,14 +64,20 @@ function refreshMatchLabels() {
   const cfg = MATCH_LEVELS[match.levelIndex];
   document.getElementById('match-level-label').textContent = t('matchLevel', { level: cfg.level });
   document.getElementById('match-moves-label').textContent = t('matchMoves', { moves: match.moves });
+  document.getElementById('match-locked-text').textContent = t('matchLocked', { from: MATCH_FREE_LEVELS + 1, to: MATCH_LEVELS.length });
+  const reached = Math.min(gameStore.get(MATCH_KEY, 0), MATCH_LEVELS.length - 1);
+  document.getElementById('match-prev').disabled = match.levelIndex <= 0;
+  document.getElementById('match-fwd').disabled = match.levelIndex >= (LEVELS_OPEN ? MATCH_LEVELS.length - 1 : reached);
   if (document.getElementById('match-win').style.display !== 'none') {
-    document.getElementById('match-win-text').textContent = t('matchWin', { level: cfg.level, moves: match.moves });
+    const last = match.levelIndex === MATCH_LEVELS.length - 1;
+    document.getElementById('match-win-text').textContent = t('matchWin', { level: cfg.level, moves: match.moves }) + (last ? ' ' + t('matchAllDone') : '');
+    document.getElementById('match-next-level').textContent = last ? t('walkAgain') : t('matchNextLevel');
   }
 }
 
 function renderMatchGrid(cols) {
   const grid = document.getElementById('match-grid');
-  grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+  grid.dataset.baseCols = cols;
   grid.innerHTML = '';
   match.tiles.forEach((tile, i) => {
     const el = document.createElement('div');
@@ -59,7 +87,41 @@ function renderMatchGrid(cols) {
     el.addEventListener('click', () => flipMatchTile(i));
     grid.appendChild(el);
   });
+  fitMatchGrid();
 }
+
+// Size the board so it fits the visible screen with no scrolling: pick the column
+// count that gives the biggest 3:4 tiles whose rows still fit the available height.
+function fitMatchGrid() {
+  const grid = document.getElementById('match-grid');
+  const sc = grid.closest('.screen-content');
+  const n = grid.children.length;
+  if (!n) return;
+  const gap = 5, winReserve = 66, bottomPad = 80;
+  const vh = window.innerHeight;
+  const top = grid.offsetParent && grid.getBoundingClientRect().top > 0 ? grid.getBoundingClientRect().top : 128;
+  const availH = Math.max(160, vh - top - bottomPad - winReserve);
+  const availW = Math.min(380, Math.max(200, (sc && sc.clientWidth ? sc.clientWidth - 36 : window.innerWidth - 36)));
+  const base = parseInt(grid.dataset.baseCols, 10) || 3;
+  let best = null;
+  for (let c = base; c <= 12; c++) {
+    const rows = Math.ceil(n / c);
+    const w = Math.min(120, Math.floor((availW - (c - 1) * gap) / c));
+    const h = w * 4 / 3;
+    if (rows * h + (rows - 1) * gap <= availH && (!best || w > best.w)) best = { c, w };
+  }
+  if (!best) { // nothing fits at 3:4: take the widest-column option and squash the height
+    const c = 12, w = Math.floor((availW - (c - 1) * gap) / c);
+    best = { c, w, squash: true };
+  }
+  grid.style.gap = gap + 'px';
+  grid.style.gridTemplateColumns = `repeat(${best.c}, ${best.w}px)`;
+  grid.style.justifyContent = 'center';
+  grid.style.setProperty('--tile-w', best.w + 'px');
+  grid.classList.toggle('tiny', best.w < 70);
+  grid.classList.toggle('dense', best.w < 100);
+}
+window.addEventListener('resize', () => { if (document.getElementById('match-grid').offsetParent) fitMatchGrid(); });
 
 function flipMatchTile(i) {
   const tile = match.tiles[i];
@@ -97,16 +159,20 @@ function flipMatchTile(i) {
 function checkMatchWin() {
   if (match.tiles.every(t => t.matched)) {
     const cfg = MATCH_LEVELS[match.levelIndex];
-    document.getElementById('match-win').style.display = 'block';
-    document.getElementById('match-win-text').textContent = t('matchWin', { level: cfg.level, moves: match.moves });
+    const last = match.levelIndex === MATCH_LEVELS.length - 1;
+    document.getElementById('match-win').style.display = 'flex';
+    document.getElementById('match-win-text').textContent = t('matchWin', { level: cfg.level, moves: match.moves }) + (last ? ' ' + t('matchAllDone') : '');
+    document.getElementById('match-next-level').textContent = last ? t('walkAgain') : t('matchNextLevel');
   }
 }
 
 document.getElementById('match-next-level').addEventListener('click', () => {
-  startMatchLevel(match.levelIndex + 1);
+  startMatchLevel(match.levelIndex === MATCH_LEVELS.length - 1 ? 0 : match.levelIndex + 1);
 });
+document.getElementById('match-prev').addEventListener('click', () => startMatchLevel(match.levelIndex - 1));
+document.getElementById('match-fwd').addEventListener('click', () => startMatchLevel(match.levelIndex + 1));
 
-// Start/restart level 1 whenever the Match screen is opened via the hub tile.
+// Open at the furthest level reached whenever the Match screen is opened via the hub tile.
 document.querySelector('[data-nav="screen-match"]').addEventListener('click', () => {
-  startMatchLevel(0);
+  startMatchLevel(Math.min(gameStore.get(MATCH_KEY, 0), MATCH_LEVELS.length - 1));
 });

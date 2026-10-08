@@ -145,7 +145,10 @@ function switchScreen(id) {
   window.scrollTo(0, 0);
 
   if (id === 'screen-reading') renderSpreadList();
-  if (id === 'screen-gallery') renderGallery();
+  if (id === 'screen-gallery') {
+    renderGallery();
+    if (state.galleryReturn) { document.querySelector('#screen-gallery .screen-content').scrollTop = state.galleryScroll || 0; state.galleryReturn = false; }
+  }
   if (id === 'screen-journal') renderJournal();
   if (id === 'screen-sage') renderSageScreen();
   if (id === 'screen-settings') renderLanguagePicker();
@@ -270,6 +273,9 @@ function renderDrawResult() {
   document.getElementById('draw-prev-btn').style.display = (!isGalleryLookup && r.index > 0) ? 'block' : 'none';
   document.getElementById('draw-nav-row').classList.toggle('has-prev', !isGalleryLookup && r.index > 0);
 
+  // Back goes to wherever the card was opened from: the Gallery for a look-up, the spread picker otherwise
+  document.querySelector('#screen-draw-result .back-btn').dataset.nav = isGalleryLookup ? 'screen-gallery' : 'screen-reading';
+
   // stash current card number on the action row for story/sage/journal handlers
   document.getElementById('screen-draw-result').dataset.currentCard = n;
 
@@ -292,6 +298,10 @@ document.getElementById('draw-tabs').addEventListener('click', (e) => {
 document.getElementById('draw-next-btn').addEventListener('click', () => {
   state.reading.index++;
   renderDrawResult();
+});
+
+document.querySelector('#screen-draw-result .back-btn').addEventListener('click', () => {
+  state.galleryReturn = !!(state.reading && state.reading.spreadId === 'gallery');
 });
 
 document.getElementById('draw-prev-btn').addEventListener('click', () => {
@@ -348,10 +358,19 @@ let storyCard = null;
 // optionally followed by a closing quote or bracket.
 function paginateStory(text) {
   const sentences = text.match(/[^.!?…。！？]+[.!?…。！？]+["'”’»」』)\]]*\s*|[^.!?…。！？]+$/g) || [text];
+  // a very long sentence is broken at its commas / semicolons so no page grows past the fixed box
+  const pieces = [];
+  sentences.forEach(s => {
+    if (s.length <= 200) { pieces.push(s); return; }
+    const parts = s.match(/[^,;:，、；：—–]+[,;:，、；：—–]*\s*/g) || [s];
+    let buf = '';
+    parts.forEach(pt => { if ((buf + pt).length > 160 && buf) { pieces.push(buf); buf = ''; } buf += pt; });
+    if (buf) pieces.push(buf);
+  });
   const pages = [];
   let cur = '';
-  sentences.forEach(s => {
-    if ((cur + s).length > 260 && cur) {
+  pieces.forEach(s => {
+    if ((cur + s).length > 200 && cur) {
       pages.push(cur.trim());
       cur = '';
     }
@@ -404,6 +423,7 @@ function renderGallery() {
     `;
     tile.addEventListener('click', () => {
       if (!revealed) { showToast(t('lockedMeet')); return; }
+      state.galleryScroll = document.querySelector('#screen-gallery .screen-content').scrollTop;
       state.reading = { spreadId: 'gallery', cardNumbers: [card.number], index: 0 };
       switchScreen('screen-draw-result');
       renderDrawResult();
@@ -934,6 +954,7 @@ function rerenderActiveScreen() {
   }
   if (active.id === 'screen-sage' && state.lastFinishedReading) { renderReadingStrip(); renderSageCounter(); }
   if (active.id === 'screen-match' && typeof refreshMatchLabels === 'function') refreshMatchLabels();
+  if (typeof refreshGameLabels === 'function') refreshGameLabels();
 }
 
 function applyLanguage() {
@@ -1000,15 +1021,6 @@ document.getElementById('btn-subscribe').addEventListener('click', () => {
 });
 
 // ---------- mini-games hub ----------
-
-// The four "Coming soon" tiles are inert by design (only Mushling Match is
-// built for this prototype) — but a tap that does nothing reads as broken,
-// not as "not built yet". Give it an explicit answer instead of silence.
-document.querySelectorAll('.game-tile.disabled').forEach(el => {
-  el.addEventListener('click', () => {
-    showToast(t('gameNotBuilt'));
-  });
-});
 
 // ---------- boot ----------
 

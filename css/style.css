@@ -122,7 +122,7 @@ img { max-width: 100%; display: block; }
 .bg-journal::after { background-image: linear-gradient(to top, rgba(10,14,10,0.35) 0%, transparent 45%); }
 .bg-minigames::after { background-image: linear-gradient(to bottom, rgba(10,14,10,0.2) 0%, transparent 35%); }
 .bg-ai-chat::after { background-image: linear-gradient(to top, rgba(10,14,10,0.3) 0%, transparent 55%); }
-.bg-settings::after { background-color: rgba(8,10,8,0.78); }
+.bg-settings::after { background-color: rgba(8,10,8,0.40); }
 
 /* ---------- Top bar ---------- */
 
@@ -738,15 +738,6 @@ img { max-width: 100%; display: block; }
 .game-tile .emoji { font-size: 1.8rem; }
 .game-tile h3 { font-size: 1.02rem; margin-bottom: 2px; }
 .game-tile p { font-size: 0.85rem; color: var(--cream-dim); margin: 0; }
-.game-tile.disabled { opacity: 0.55; }
-.game-tile .soon-badge {
-  margin-left: auto;
-  font-size: 0.74rem;
-  background: rgba(246,239,224,0.18);
-  padding: 3px 9px;
-  border-radius: 999px;
-  white-space: nowrap;
-}
 
 /* ---------- Mushling Match ---------- */
 
@@ -764,7 +755,9 @@ img { max-width: 100%; display: block; }
 
 .match-grid {
   display: grid;
-  gap: 10px;
+  gap: 8px;
+  max-width: 380px;
+  margin: 0 auto;
 }
 
 .match-tile {
@@ -802,10 +795,10 @@ img { max-width: 100%; display: block; }
   left: 0; right: 0; bottom: 0;
   background: linear-gradient(to top, rgba(5,7,5,0.95) 40%, transparent);
   color: var(--cream);
-  font-size: 0.82rem;
+  font-size: 0.68rem;
   font-weight: 700;
   text-align: center;
-  padding: 16px 6px 7px;
+  padding: 12px 3px 4px;
   line-height: 1.2;
 }
 
@@ -1114,3 +1107,253 @@ img { max-width: 100%; display: block; }
 }
 .story-btn:active { transform: scale(0.97); }
 .story-nav { margin-top: 18px; }
+
+/* ---------- Mini-games: quiz, garden, walk home, firefly ---------- */
+
+.quiz-progress { background: var(--panel); border-radius: var(--radius-sm); padding: 8px 14px; font-size: 0.9rem; color: var(--cream-dim); margin-bottom: 14px; }
+.quiz-bar { height: 6px; border-radius: 3px; background: rgba(246,239,224,0.18); margin-top: 6px; overflow: hidden; }
+.quiz-bar i { display: block; height: 100%; background: var(--honey); transition: width .3s; }
+.quiz-q { font-size: 1.25rem; line-height: 1.3; margin: 6px 0 14px; }
+.quiz-options { display: flex; flex-direction: column; gap: 10px; }
+.quiz-option {
+  background: var(--panel); border: 1px solid rgba(246,239,224,0.22); color: var(--cream);
+  border-radius: var(--radius-md); padding: 14px 16px; text-align: left; font-size: 1rem; line-height: 1.3;
+}
+.quiz-option:active { background: var(--moss); }
+.quiz-result { text-align: center; background: var(--panel); border-radius: var(--radius-md); padding: 14px 16px 18px; }
+.quiz-result img { width: min(62%, 240px); border-radius: 14px; box-shadow: 0 6px 20px rgba(0,0,0,0.55); margin: 8px auto 12px; display: block; }
+.quiz-intro { color: var(--cream-dim); margin: 0; }
+.quiz-trait { font-weight: 700; color: var(--honey); margin: 4px 0 8px; }
+.quiz-message { font-style: italic; margin: 0 0 16px; }
+
+.garden-header { display: flex; justify-content: space-between; align-items: center; background: var(--panel); border-radius: var(--radius-sm); padding: 8px 14px; margin-bottom: 10px; font-weight: 700; }
+.garden-header #garden-best { color: var(--cream-dim); font-weight: 400; font-size: 0.9rem; }
+.garden-note { margin: 0 0 12px; color: var(--cream-dim); font-size: 0.95rem; }
+.garden-plot { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; }
+.garden-cell {
+  aspect-ratio: 1; border-radius: 12px; font-size: 1.9rem; display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(circle at 50% 70%, #5a3f26, #3a2818); border: 1px solid rgba(246,239,224,0.12); padding: 0;
+}
+.garden-cell.has-plant { border-color: rgba(201,138,63,0.55); }
+.garden-detail { background: var(--panel); border-radius: var(--radius-md); padding: 12px 14px; margin-bottom: 12px; }
+.garden-detail p { margin: 6px 0 0; font-style: italic; }
+.garden-tap { text-align: center; font-size: 0.85rem; color: var(--cream-dim); margin: 10px 0 0; }
+#garden-plant-btn { width: 100%; }
+#garden-plant-btn:disabled { opacity: 0.5; }
+
+.walk-board {
+  --n: 5; position: relative; display: grid; grid-template-columns: repeat(var(--n), 1fr);
+  width: min(100%, 420px); margin: 0 auto 12px; aspect-ratio: 1; touch-action: none;
+  background: rgba(10,15,10,0.55); border: 2px solid var(--moss); border-radius: 14px; overflow: hidden;
+}
+.walk-cell { display: flex; align-items: center; justify-content: center; font-size: clamp(1rem, 6.5vw, 1.8rem); border: 1px solid rgba(246,239,224,0.06); }
+.walk-cell.rock { background: rgba(76,122,82,0.35); }
+.walk-cell.home { background: rgba(201,138,63,0.3); }
+.walk-player {
+  position: absolute; width: calc(100% / var(--n)); height: calc(100% / var(--n));
+  display: flex; align-items: center; justify-content: center; font-size: clamp(1rem, 6.5vw, 1.8rem);
+  transition-property: left, top; transition-timing-function: ease-out; pointer-events: none;
+  filter: drop-shadow(0 0 6px rgba(201,138,63,0.9));
+}
+.walk-pad { display: grid; grid-template-columns: repeat(3, 64px); grid-template-areas: ". up ." "left down right"; gap: 8px; justify-content: center; margin: 4px auto 8px; }
+.walk-pad button { height: 56px; border-radius: 14px; background: var(--moss); color: var(--cream); font-size: 1.3rem; border: 2px solid var(--honey); }
+.walk-pad [data-dir="up"] { grid-area: up; } .walk-pad [data-dir="left"] { grid-area: left; }
+.walk-pad [data-dir="down"] { grid-area: down; } .walk-pad [data-dir="right"] { grid-area: right; }
+.walk-hint { text-align: center; font-size: 0.85rem; color: var(--cream-dim); margin: 6px 0 10px; }
+#walk-restart { display: block; margin: 0 auto; }
+
+.ff-field {
+  position: relative; height: min(62vh, 460px); border-radius: 16px; overflow: hidden; touch-action: none;
+  background: radial-gradient(ellipse at 50% 100%, #15291c, #070b08 75%); border: 2px solid var(--moss);
+}
+.ff-overlay { position: absolute; inset: 0; z-index: 3; display: flex; flex-direction: column; gap: 16px; align-items: center; justify-content: center; text-align: center; padding: 24px; background: rgba(6,9,7,0.78); }
+.ff-overlay p { margin: 0; font-size: 1.05rem; line-height: 1.4; max-width: 28ch; }
+.ff-fly {
+  --g: 0; position: absolute; width: 64px; height: 64px; margin: -32px 0 0 -32px; padding: 0; border: 0; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,226,120, calc(var(--g) * 0.75)) 0%, rgba(255,200,80, calc(var(--g) * 0.35)) 45%, rgba(255,200,80,0) 72%);
+}
+.ff-fly::after { content: ""; position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%;
+  background: rgba(255,245,200, calc(0.3 + var(--g) * 0.7)); box-shadow: 0 0 calc(var(--g) * 18px) calc(var(--g) * 6px) rgba(255,214,102, calc(var(--g) * 0.8)); }
+.ff-pop { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+.ff-pop-item { position: absolute; transform: translate(-50%, -50%); font-weight: 700; color: var(--honey); animation: ffRise .8s ease-out forwards; text-shadow: 0 1px 6px #000; }
+.ff-pop-item.bad { color: #e48a76; }
+@keyframes ffRise { to { transform: translate(-50%, -140%); opacity: 0; } }
+
+/* level stepper in game headers */
+.lvl-nav{display:inline-flex;align-items:center;gap:8px}
+.lvl-btn{background:transparent;border:1px solid var(--cream-dim);color:var(--cream);border-radius:50%;width:26px;height:26px;line-height:1;font-size:1.1rem;padding:0;cursor:pointer}
+.lvl-btn:disabled{opacity:.3;cursor:default}
+.match-grid.dense{gap:5px}
+.match-grid.dense .tile-name{font-size:.5rem;line-height:1.1;padding:10px 1px 3px;overflow-wrap:anywhere;hyphens:auto}
+
+/* ---------- calm centre, detail at the borders ----------
+   The art stays sharp around the edges; the middle, where the boards and text
+   live, is darkened and softly blurred. */
+.screen-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(ellipse 78% 68% at 50% 52%, rgba(8,14,8,.30) 0%, rgba(8,14,8,.20) 55%, rgba(8,14,8,0) 100%);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  -webkit-mask-image: radial-gradient(ellipse 78% 68% at 50% 52%, #000 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 78% 68% at 50% 52%, #000 40%, transparent 100%);
+  pointer-events: none;
+}
+/* the home screen is the hero: keep it open and bright */
+#screen-home .screen-bg::before { opacity: .45; }
+
+/* optional frame art: set --frame: url(assets/frame.webp) on :root when the file exists */
+.screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background-image: var(--frame, none);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+/* the new card art carries its own carved number badge; hide the overlay one so they don't stack */
+.gallery-tile .num-badge { display: none; }
+
+/* ---- new art: never clip it ----
+   The art has its number badge in the top-left corner, so corners stay nearly square,
+   the zoom hint moves off the badge, and the draw preview is bigger. */
+.gallery-tile { border-radius: 4px; }
+.card-art-wrap { border-radius: 6px; max-width: 250px; }
+.card-zoom-hint { top: auto; bottom: 8px; right: 50%; transform: translateX(50%); white-space: nowrap; }
+.modal-backdrop { padding: 12px; }
+.modal-backdrop img { border-radius: 4px; max-height: 92vh; }
+.match-tile { border-radius: 5px; }
+
+/* Restart + Next Level share one row so the whole screen fits without scrolling */
+.walk-actions { display: flex; gap: 10px; justify-content: center; align-items: center; margin-top: 8px; }
+.walk-actions button { margin: 0; flex: 0 1 auto; padding-left: 20px; padding-right: 20px; white-space: nowrap; }
+.walk-win-line { margin: 6px 0 0; padding: 8px 12px; }
+.walk-win-line p { margin: 0; font-size: 1rem; }
+.walk-hint { margin: 6px 0; }
+.walk-actions #walk-restart { display: inline-block; margin: 0; }
+
+/* compact Walk screen: board sized to the viewport height, one-row pad, tight hint */
+.walk-board { width: min(100%, 420px, max(240px, calc(100vh - 390px))); margin-bottom: 8px; }
+.walk-pad { grid-template-columns: repeat(4, 64px); grid-template-areas: "left up down right"; margin: 2px auto 4px; }
+.walk-pad button { height: 46px; }
+.walk-hint { font-size: 0.74rem; line-height: 1.25; margin: 2px 0 4px; }
+.walk-actions { margin-top: 6px; }
+.walk-actions button { padding-top: 8px; padding-bottom: 8px; }
+.walk-win-line { margin: 4px 0 0; padding: 6px 10px; }
+#screen-walk .screen-content { padding-bottom: 80px; }
+
+/* ---- compact Match: no scrolling ---- */
+.match-header { margin-bottom: 8px; padding: 6px 12px; }
+.match-tile { aspect-ratio: 3/4; }
+.match-grid { max-width: none; }
+.match-grid.tiny .tile-name { display: none; }
+.match-grid.tiny .tile-back { font-size: 1rem; }
+.match-grid.tiny .match-tile.matched .tile-face::after { width: 14px; height: 14px; font-size: .6rem; top: 2px; right: 2px; }
+.match-grid.tiny .match-tile { border-width: 1px; box-shadow: 0 1px 4px rgba(0,0,0,.5); }
+#match-win, #match-locked { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 8px; padding: 8px 12px; text-align: left; min-height: 50px; }
+#match-win[style*="none"], #match-locked[style*="none"] { display: none; }
+#match-win p, #match-locked p { margin: 0; font-size: .92rem; line-height: 1.25; flex: 1 1 auto; }
+#match-win button, #match-locked button { margin: 0; flex: 0 0 auto; padding: 8px 14px; white-space: nowrap; }
+#screen-match .screen-content { padding-bottom: 80px; }
+
+/* home: the new home art is bright, so no scrim or darkening; dark-green title with a soft cream glow */
+#screen-home .screen-bg::before { display: none; }
+.bg-home::after { background-image: none; }
+#screen-home .home-hero { padding-top: 9vh; }
+#screen-home .home-hero .display { color: #1f3a22; text-shadow: 0 0 14px rgba(255,250,230,.95), 0 0 4px rgba(255,250,230,.9); }
+#screen-home .home-hero p { color: #2c4a2e; font-weight: 600; text-shadow: 0 0 10px rgba(255,250,230,.95), 0 0 3px rgba(255,250,230,.9); }
+
+/* journal, story and settings use the bright mushroom-meadow art: no scrim; dark titles with a cream glow, panels stay dark */
+#screen-journal .screen-bg::before, #screen-story .screen-bg::before, #screen-settings .screen-bg::before { display: none; }
+.bg-journal::after { background-image: none; }
+.bg-settings::after { background-color: transparent; }
+#screen-journal .topbar h2, #screen-settings .topbar h2, #screen-story .topbar h2,
+#screen-journal .journal-empty, #screen-journal .journal-empty * { color: #1f3a22; text-shadow: 0 0 10px rgba(255,250,230,.95), 0 0 3px rgba(255,250,230,.9); }
+.journal-search-row input { background: rgba(14,22,14,.72); }
+#screen-journal .journal-empty { background: rgba(250,246,228,.82); border-radius: 14px; padding: 16px 18px; margin: 10px 0; text-shadow: none; }
+#screen-journal .journal-empty, #screen-journal .journal-empty * { color: #1f3a22; text-shadow: none; }
+
+/* Story Time: one fixed-size box for every page of every story in every language
+   (the longest page, Spanish at 360 px wide, needs about 370 px of text height) */
+.story-page { box-sizing: border-box; height: 300px; min-height: 0; overflow-y: auto; }
+#screen-story .story-end { min-height: 24px; }
+#screen-story .topbar h2 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; flex: 1 1 auto; }
+#screen-story .story-nav { height: 56px; box-sizing: border-box; }
+#screen-story .story-dots { flex: 1 1 auto; min-width: 0; justify-content: center; flex-wrap: nowrap; overflow: hidden; gap: 4px; }
+#screen-story .story-dots span { flex: 0 0 6px; width: 6px; height: 6px; }
+#screen-story .story-btn { white-space: nowrap; height: 48px; box-sizing: border-box; padding-top: 0; padding-bottom: 0; padding-left: 16px; padding-right: 16px; min-width: 104px; }
+
+/* games: bright meadow art with the Mushlings along the bottom; no scrim, dark titles with a cream glow, dark boards stay */
+#screen-games .screen-bg::before, #screen-match .screen-bg::before, #screen-quiz .screen-bg::before, #screen-garden .screen-bg::before,
+#screen-walk .screen-bg::before, #screen-firefly .screen-bg::before { display: none; }
+.bg-minigames::after { background-image: none; }
+#screen-games .topbar h2, #screen-match .topbar h2, #screen-quiz .topbar h2, #screen-garden .topbar h2, #screen-walk .topbar h2, #screen-firefly .topbar h2 {
+  color: #1f3a22; text-shadow: 0 0 10px rgba(255,250,230,.95), 0 0 3px rgba(255,250,230,.9); }
+
+/* the bright new art needs no flat darkening either */
+.bg-home, .bg-journal, .bg-minigames, .bg-settings { --scrim: transparent; }
+
+/* loose text on the bright games art gets a dark rounded backing so it stays readable */
+.quiz-q, .garden-note, .garden-tap, .walk-hint {
+  background: rgba(16,22,15,.78); border-radius: 12px; padding: 8px 12px; color: var(--cream);
+}
+.quiz-q { padding: 12px 14px; }
+.garden-tap, .walk-hint { display: block; }
+#walk-restart { background: rgba(16,22,15,.82); color: var(--cream); border-color: var(--honey); }
+#screen-story .story-dots { flex: 0 1 auto; max-width: 42%; margin: 0 8px; padding: 7px 10px; background: rgba(16,22,15,.78); border-radius: 999px; }
+
+/* Walk board: cells must shrink with the board (a 1fr column won't go below its emoji's width, which pushed the right and bottom of big boards out of view) */
+.walk-board { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); grid-template-rows: repeat(var(--n), minmax(0, 1fr)); box-sizing: border-box; container-type: inline-size; }
+.walk-cell { min-width: 0; min-height: 0; overflow: hidden; font-size: calc(62cqw / var(--n)); line-height: 1; }
+.walk-player { font-size: calc(62cqw / var(--n)); line-height: 1; }
+
+/* Garden: the "tap a plant" hint sits low, over the flower strip, so the Mushlings stay visible */
+#screen-garden .garden-tap { position: absolute; left: 18px; right: 18px; bottom: 68px; margin: 0; }
+/* Firefly: the field fills the whole space down to the nav bar; no empty bar underneath */
+#ff-best { display: none; }
+#screen-firefly .ff-field { height: calc(100vh - 188px); min-height: 260px; max-height: none; }
+#screen-firefly .screen-content { padding-bottom: 72px; }
+
+/* Walk: controls live in one row at the bottom (over the flower strip) so the Mushlings stay visible */
+.walk-bar { position: absolute; left: 12px; right: 12px; bottom: 68px; display: flex; gap: 8px; justify-content: center; align-items: center; }
+.walk-bar .walk-pad { grid-template-columns: repeat(4, 50px); margin: 0; gap: 6px; }
+.walk-bar .walk-pad button { height: 46px; }
+.walk-bar .walk-actions { margin: 0; }
+.walk-bar .walk-actions button { padding: 11px 16px; }
+/* once the level is won the arrows aren't needed: Restart and Next Level take the row */
+#screen-walk.walk-won .walk-pad { display: none !important; }
+#screen-walk.walk-won .walk-hint { display: none; }
+
+/* Draw, spread and Gallery screens: bright art, no scrim, dark titles */
+#screen-reading .screen-bg::before, #screen-draw-result .screen-bg::before, #screen-gallery .screen-bg::before { display: none; }
+.bg-reading::after, .bg-gallery::after { background-image: none; }
+.bg-reading, .bg-gallery { --scrim: transparent; }
+#screen-reading .topbar h2, #screen-draw-result .topbar h2, #screen-gallery .topbar h2 { color: #1f3a22; text-shadow: 0 0 10px rgba(255,250,230,.95), 0 0 3px rgba(255,250,230,.9); }
+.spread-pill:not(.active) { background: rgba(16,22,15,.78); border-color: rgba(246,239,224,.25); }
+#screen-gallery .topbar h2 { background: rgba(250,246,228,.7); border-radius: 999px; padding: 3px 12px; text-shadow: none; }
+/* the draw result carries a lot of cream text straight on the art, so it keeps a soft dark veil */
+#screen-draw-result .screen-bg::after { background-color: rgba(10,16,10,.62); }
+#screen-draw-result .topbar h2 { color: var(--cream); text-shadow: 0 1px 6px rgba(0,0,0,.7); }
+
+/* Walk: arrows centred in the row, Restart as a round icon at the right edge (full label once the level is won) */
+.walk-bar { justify-content: center; }
+.walk-bar .walk-actions { position: absolute; right: 0; top: 0; }
+#screen-walk:not(.walk-won) #walk-restart { font-size: 0; width: 46px; height: 46px; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+#screen-walk:not(.walk-won) #walk-restart::before { content: "↻"; font-size: 1.5rem; line-height: 1; color: var(--cream); }
+#screen-walk.walk-won .walk-bar .walk-actions { position: static; }
+
+/* Walk: bigger board that uses the full width and more of the height; the hint drops below it */
+.walk-board { width: min(100%, 420px, max(240px, calc(100vh - 322px))); }
+
+/* Glowcap: bright meadow art, no scrim; dark title; the gate message gets a dark panel */
+#screen-sage .screen-bg::before { display: none; }
+.bg-ai-chat::after { background-image: none; }
+.bg-ai-chat { --scrim: transparent; }
+#screen-sage .topbar h2 { color: #1f3a22; text-shadow: 0 0 10px rgba(255,250,230,.95), 0 0 3px rgba(255,250,230,.9); }
+#sage-gate { background: rgba(16,22,15,.8); border-radius: 18px; padding: 18px 18px 20px; }
+#screen-sage .sage-counter { background: rgba(16,22,15,.8); border-radius: 999px; padding: 4px 12px; display: inline-block; align-self: center; }

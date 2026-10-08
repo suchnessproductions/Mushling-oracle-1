@@ -75,7 +75,7 @@
 
   <!-- ============ STORY TIME ============ -->
   <section id="screen-story" class="screen">
-    <div class="screen-bg bg-journal" style="background-image:url('assets/bg/journal.webp')"></div>
+    <div class="screen-bg bg-journal" style="background-image:url('assets/bg/story.webp')"></div>
     <div class="screen-content">
       <div class="topbar">
         <button class="back-btn" data-nav="screen-draw-result">←</button>
@@ -134,26 +134,22 @@
           <span class="emoji">🍄</span>
           <div><h3 data-i18n="gameMatchTitle">Mushling Match</h3><p data-i18n="gameMatchDesc">Flip and pair up Mushling portraits.</p></div>
         </button>
-        <div class="game-tile disabled">
+        <button class="game-tile" data-nav="screen-quiz">
           <span class="emoji">🌻</span>
           <div><h3 data-i18n="gameQuizTitle">Which Mushling Are You?</h3><p data-i18n="gameQuizDesc">A 7-question personality quiz.</p></div>
-          <span class="soon-badge" data-i18n="comingSoon">Coming soon</span>
-        </div>
-        <div class="game-tile disabled">
+        </button>
+        <button class="game-tile" data-nav="screen-garden">
           <span class="emoji">🌱</span>
           <div><h3 data-i18n="gameGardenTitle">Grow the Garden</h3><p data-i18n="gameGardenDesc">Plant seeds, build a streak.</p></div>
-          <span class="soon-badge" data-i18n="comingSoon">Coming soon</span>
-        </div>
-        <div class="game-tile disabled">
+        </button>
+        <button class="game-tile" data-nav="screen-walk">
           <span class="emoji">🏡</span>
           <div><h3 data-i18n="gameHomeTitle">Walk Mushling Home</h3><p data-i18n="gameHomeDesc">A sliding-puzzle maze, 10 levels.</p></div>
-          <span class="soon-badge" data-i18n="comingSoon">Coming soon</span>
-        </div>
-        <div class="game-tile disabled">
+        </button>
+        <button class="game-tile" data-nav="screen-firefly">
           <span class="emoji">✨</span>
           <div><h3 data-i18n="gameFireflyTitle">Firefly Catch</h3><p data-i18n="gameFireflyDesc">Tap fireflies at their bright peak.</p></div>
-          <span class="soon-badge" data-i18n="comingSoon">Coming soon</span>
-        </div>
+        </button>
       </div>
     </div>
   </section>
@@ -167,7 +163,7 @@
         <h2 data-i18n="gameMatchTitle">Mushling Match</h2>
       </div>
       <div class="match-header">
-        <span id="match-level-label">Level 1</span>
+        <span class="lvl-nav"><button class="lvl-btn" id="match-prev" aria-label="previous level">‹</button><span id="match-level-label">Level 1</span><button class="lvl-btn" id="match-fwd" aria-label="next level">›</button></span>
         <span id="match-moves-label">Moves: 0</span>
       </div>
       <div class="match-grid" id="match-grid"></div>
@@ -175,6 +171,106 @@
         <p class="display" id="match-win-text"></p>
         <button class="btn-primary" id="match-next-level" data-i18n="matchNextLevel">Next Level →</button>
       </div>
+      <div class="match-win" id="match-locked" style="display:none">
+        <p class="display" id="match-locked-text"></p>
+        <button class="btn-primary" data-nav="screen-settings" data-i18n="unlockToUse">Unlock to use →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHICH MUSHLING ARE YOU ============ -->
+  <section id="screen-quiz" class="screen">
+    <div class="screen-bg bg-minigames" style="background-image:url('assets/bg/minigames.webp')"></div>
+    <div class="screen-content">
+      <div class="topbar">
+        <button class="back-btn" data-nav="screen-games">←</button>
+        <h2 data-i18n="gameQuizTitle">Which Mushling Are You?</h2>
+      </div>
+      <div id="quiz-question-view">
+        <div class="quiz-progress"><span id="quiz-progress-label"></span><div class="quiz-bar"><i id="quiz-bar-fill"></i></div></div>
+        <h3 class="quiz-q display" id="quiz-q"></h3>
+        <div class="quiz-options" id="quiz-options"></div>
+      </div>
+      <div id="quiz-result-view" style="display:none" class="quiz-result">
+        <p class="quiz-intro" id="quiz-result-intro"></p>
+        <img id="quiz-result-img" alt="">
+        <h3 class="display" id="quiz-result-name"></h3>
+        <p class="quiz-trait" id="quiz-result-trait"></p>
+        <p class="quiz-message" id="quiz-result-message"></p>
+        <button class="btn-primary" id="quiz-again" data-i18n="quizAgain">Take it again</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GROW THE GARDEN ============ -->
+  <section id="screen-garden" class="screen">
+    <div class="screen-bg bg-minigames" style="background-image:url('assets/bg/minigames.webp')"></div>
+    <div class="screen-content">
+      <div class="topbar">
+        <button class="back-btn" data-nav="screen-games">←</button>
+        <h2 data-i18n="gameGardenTitle">Grow the Garden</h2>
+      </div>
+      <div class="garden-header"><span id="garden-streak"></span><span id="garden-best"></span></div>
+      <p class="garden-note" id="garden-note"></p>
+      <div class="garden-plot" id="garden-plot"></div>
+      <div class="garden-detail" id="garden-detail" style="display:none"></div>
+      <button class="btn-primary" id="garden-plant-btn"></button>
+      <p class="garden-tap" data-i18n="gardenTap">Tap a plant to read what it grew from.</p>
+    </div>
+  </section>
+
+  <!-- ============ WALK MUSHLING HOME ============ -->
+  <section id="screen-walk" class="screen">
+    <div class="screen-bg bg-minigames" style="background-image:url('assets/bg/minigames.webp')"></div>
+    <div class="screen-content">
+      <div class="topbar">
+        <button class="back-btn" data-nav="screen-games">←</button>
+        <h2 data-i18n="gameHomeTitle">Walk Mushling Home</h2>
+      </div>
+      <div class="match-header"><span class="lvl-nav"><button class="lvl-btn" id="walk-prev" aria-label="previous level">‹</button><span id="walk-level-label"></span><button class="lvl-btn" id="walk-fwd" aria-label="next level">›</button></span><span id="walk-moves-label"></span></div>
+      <div class="walk-board" id="walk-board"></div>
+      
+      <p class="walk-hint" data-i18n="walkHint">Swipe, or use the arrows.</p>
+      <div class="match-win walk-win-line" id="walk-win" style="display:none">
+        <p class="display" id="walk-win-text"></p>
+      </div>
+      
+      <div class="match-win" id="walk-locked" style="display:none">
+        <p class="display" id="walk-locked-text"></p>
+        <button class="btn-primary" data-nav="screen-settings" data-i18n="unlockToUse">Unlock to use →</button>
+      </div>
+      <div class="walk-bar" id="walk-bar">
+        <div class="walk-pad">
+        <button data-dir="up" aria-label="up">▲</button>
+        <button data-dir="left" aria-label="left">◀</button>
+        <button data-dir="down" aria-label="down">▼</button>
+        <button data-dir="right" aria-label="right">▶</button>
+      </div>
+        <div class="walk-actions">
+        <button class="btn-secondary" id="walk-restart" data-i18n="walkRestart">Restart</button>
+        <button class="btn-primary" id="walk-next" style="display:none"></button>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FIREFLY CATCH ============ -->
+  <section id="screen-firefly" class="screen">
+    <div class="screen-bg bg-minigames" style="background-image:url('assets/bg/minigames.webp')"></div>
+    <div class="screen-content">
+      <div class="topbar">
+        <button class="back-btn" data-nav="screen-games">←</button>
+        <h2 data-i18n="gameFireflyTitle">Firefly Catch</h2>
+      </div>
+      <div class="match-header"><span class="lvl-nav"><button class="lvl-btn" id="ff-prev" aria-label="previous level">‹</button><span id="ff-level-label">Level 1</span><button class="lvl-btn" id="ff-fwd" aria-label="next level">›</button></span><span id="ff-score"></span><span id="ff-lives"></span></div>
+      <div class="ff-field" id="ff-field">
+        <div class="ff-overlay" id="ff-overlay">
+          <p id="ff-overlay-text"></p>
+          <button class="btn-primary" id="ff-start"></button>
+        </div>
+        <div class="ff-pop" id="ff-pop"></div>
+      </div>
+      <p class="garden-tap" id="ff-best"></p>
     </div>
   </section>
 
@@ -270,4 +366,5 @@
 <script src="js/data.js"></script>
 <script src="js/strings.js"></script>
 <script src="js/games.js"></script>
+<script src="js/games2.js"></script>
 <script src="js/app.js"></script>
